@@ -1,0 +1,29 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: ${{ matrix.job.os }} (${{ matrix.job.emacs_version }})
+    runs-on: ${{ matrix.job.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - { os: ubuntu-22.04, emacs_version: snapshot }
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        path: .emacs.d
+
+    - uses: purcell/setup-emacs@master
+      with:
+        version: ${{ matrix.job.emacs_version }}
+
+    - name: Check emacs version
+      run: emacs --version
+
+    - name: Test the config
+      run: |
+        emacs --batch
