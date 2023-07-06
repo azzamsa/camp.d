@@ -57,8 +57,6 @@
 ;; Emacs doesn't play well with fish
 (setq shell-file-name "/bin/zsh")
 
-(setq projectile-project-search-path '("~/projects" "~/office" "~/playground"))
-
 (with-eval-after-load 'eglot
   ;; Auto enable Eglot in modes `+eglot-auto-enable-modes' using
   ;; `+eglot-auto-enable' (from the `prog' module). You can use

@@ -97,6 +97,12 @@
   (require 'vertico-directory)
   (vertico-mode 1))
 
+(defun +vertico/project-search-from-cwd ()
+  "Search files from the current working directory using Vertico and Consult."
+  (interactive)
+  (let ((dir (file-truename default-directory)))
+    (consult-ripgrep dir)))
+
 (use-package consult
   :straight t
   :after camp-loaded
@@ -111,26 +117,23 @@
   (keymap-global-set "C-s" 'consult-line)
   (keymap-global-set "C-s" 'consult-line)
   (+map!
-    ;;; <leader> b --- buffer
-    "bb"   '(consult-buffer               :wk "Search buffer")
-    "bB"   '(consult-line-multi           :wk "Search all open buffers")
-    "bl"   '(consult-line                 :wk "Search line")
-    "bB"   '(consult-buffer-other-window  :wk "Switch buffer (other window)")
-    "bF"   '(consult-buffer-other-frame   :wk "Switch buffer (other frame)")
-    "bi"   '(consult-imenu                :wk "Imenu")
-    "bO"   '(consult-outline              :wk "Outline")
+    [remap bookmark-jump]                 '(consult-bookmark        :wk "Jump to bookmark")
+    [remap evil-show-marks]               '(consult-mark            :wk "Show marks")
+    [remap evil-show-registers]           '(consult-register        :wk "Show registers")
+    [remap goto-line]                     '(consult-goto-line       :wk "Go to line")
+    [remap imenu]                         '(consult-imenu           :wk "Imenu")
+    [remap Info-search]                   '(consult-info            :wk "Search in Info")
+    [remap locate]                        '(consult-locate          :wk "Locate")
+    [remap load-theme]                    '(consult-theme           :wk "Load theme")
+    [remap man]                           '(consult-man             :wk "Man")
+    [remap recentf-open-files]            '(consult-recent-file     :wk "Open recent file")
+    [remap switch-to-buffer]              '(consult-buffer          :wk "Switch to buffer")
+    [remap switch-to-buffer-other-window] '(consult-buffer-other-window :wk "Switch to buffer (other window)")
+    [remap switch-to-buffer-other-frame]  '(consult-buffer-other-frame  :wk "Switch to buffer (other frame)")
+    [remap yank-pop]                      '(consult-yank-pop        :wk "Yank pop")
+
      ;;; <leader> f --- file
-    "fr"   '(consult-recent-file          :wk "Recent files")
-    ;;; <leader> s --- search
-    "ss"   '(consult-ripgrep              :wk "Ripgrep search")
-    ;; project
-    "pi"   '(consult-imenu-multi          :wk "Imenu multi")
-    ;; insert
-    "iy"   '(consult-yank-from-kill-ring  :wk "Yank from kill ring")
-    "ir"   '(nil                          :wk "register")
-    "irr"  '(consult-register             :wk "Consult register")
-    "irl"  '(consult-register-load        :wk "Load register")
-    "irs"  '(consult-register-store       :wk "Store register"))
+    "fr"   '(consult-recent-file          :wk "Recent files"))
   :config
   (setq-default completion-in-region-function #'consult-completion-in-region)
   (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))

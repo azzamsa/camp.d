@@ -21,6 +21,8 @@
    (when (getenv "EMACS_GC_HACK")
      (require 'camp-gc))))
 
+(require 'camp-splash)
+
 ;;; Write user custom variables to separate file instead of init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
@@ -53,6 +55,11 @@
 (push '(menu-bar-lines . 0) default-frame-alist)
 (push '(vertical-scroll-bars) default-frame-alist)
 (push '(mouse-color . "blue") default-frame-alist)
+;; No hostname in frame title
+;; Without setting the `icon-title-format`. The window title will revert
+;; back to its original value after loosing its focus.
+(setq frame-title-format '("" invocation-name " - " "%b"))
+(setq icon-title-format '("" invocation-name " - " "%b"))
 
 ;; Make the initial buffer load faster by setting its mode to fundamental-mode
 (customize-set-variable 'initial-major-mode 'text-mode)

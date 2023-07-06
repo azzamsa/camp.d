@@ -8,6 +8,10 @@
   (project-list-file (concat camp-cache-dir "project-list.el"))
   (project-vc-extra-root-markers '(".projectile.el" ".project.el" ".project")))
 
+(defun +project-from-dir (&optional dir)
+  "Return project instance if DIR is a valid project."
+  (project--find-in-directory dir))
+
 (use-package consult-project-extra
   :straight t)
 
@@ -16,9 +20,7 @@
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
   (setq neo-smart-open t)
-  (setq neo-autorefresh t)
-  ;;work with projectile
-  (setq projectile-switch-project-action 'neotree-projectile-action)
+  ;; (setq neo-autorefresh t)
   (setq neo-hidden-regexp-list
         '(;; vcs folders
           "^\\.\\(?:git\\|hg\\|svn\\)$"

@@ -76,4 +76,26 @@ Invoke again to revert to the window configuration before it was activated."
     (let ((writeroom-global-effects (remq 'writeroom-set-fullscreen writeroom-global-effects)))
       (call-interactively #'+zen/toggle))))
 
+(use-package dashboard
+  :straight t
+  :after evil evil-collection
+  :demand t
+  :custom
+  (dashboard-set-heading-icons t)
+  (dashboard-set-file-icons t)
+  (dashboard-center-content t)
+  (dashboard-banner-ascii "Camp")
+  (dashboard-banner-logo-title "Want to go camping?")
+  (dashboard-items '((recents . 5) (projects . 5) (bookmarks . 5)))
+  (dashboard-image-banner-max-width 600)
+  (dashboard-projects-backend 'project-el)
+  (dashboard-startup-banner (concat user-emacs-directory "docs/logo.png"))
+  :config
+  ;; Ensure setting the keybindings before openning the dashboard
+  (evil-collection-dashboard-setup)
+
+  ;; Avoid openning the dashboard when Emacs starts with an open file.
+  (unless (cl-some #'buffer-file-name (buffer-list))
+    (dashboard-open)))
+
 (provide 'camp-ui)

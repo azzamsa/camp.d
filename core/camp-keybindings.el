@@ -70,25 +70,35 @@
 
     ;;; <leader> b --- buffer
     "b"    '(nil                    :wk "buffer")
+    "bb"   '(consult-buffer         :wk "Switch workspace buffer")
+    "bB"   '(switch-to-buffer       :wk "Switch buffer")
     "bd"   '(kill-current-buffer    :wk "Kill buffer")
     "bk"   '(kill-current-buffer    :wk "Kill buffer")
-    "bK"   '(aza-kill-other-buffers :wk "Kill all buffers")
+    "bK"   '(doom/kill-all-buffers  :wk "Kill all buffers")
+    "bO"   '(aza-kill-other-buffers :wk "Kill other buffers")
     "br"   '(revert-buffer          :wk "Revert buffer")
     "bR"   '(rename-buffer          :wk "Rename buffer")
     "bs"   '(basic-save-buffer      :wk "Save buffer")
     "bS"   '(evil-write-all         :wk "Save all buffers")
 
     ;;; <leader> c --- code
-    "c"   '(nil :wk "code")
-    "cw"  '(delete-trailing-whitespace :wk "Delete trailing whitespace")
+    "c"   '(nil                           :wk "code")
+    "ca"  '(eglot-code-actions            :wk "LSP Execute code action")
+    "cr"  '(eglot-rename                  :wk "LSP Rename")
+    "cw"  '(delete-trailing-whitespace    :wk "Delete trailing whitespace")
+    "cj"  '(consult-lsp-symbols           :wk "Jump to symbol in current workspace")
+    "cJ"  '((+cmd!! #'consult-lsp-symbols 'all-workspaces) :wk "Jump to symbol in any workspace")
+    "co"  '(eglot-code-actions-organize-imports :wk "LSP Organize imports")
 
     ;;; <leader> f --- file
-    "f"    '(nil                 :wk "file")
-    "fd"   '(dired               :wk "Find directory")
-    "ff"   '(find-file           :wk "Find file")
-    "fs"   '(save-buffer         :wk "Save file")
-    "fu"   '(doom/sudo-find-file :wk "Find file as sudo")
-    "fU"   '(doom/sudo-this-file :wk "Edit file as sudo")
+    "f"    '(nil                          :wk "file")
+    "fd"   '(dired                        :wk "Find directory")
+    "ff"   '(find-file                    :wk "Find file")
+    "fe"   '(camp/find-file-in-emacsd     :wk "Find file in emacs.d")
+    "fE"   '(camp/browse-in-emacsd        :wk "Browse emacs.d")
+    "fs"   '(save-buffer                  :wk "Save file")
+    "fu"   '(doom/sudo-find-file          :wk "Find file as sudo")
+    "fU"   '(doom/sudo-this-file          :wk "Edit file as sudo")
 
     ;;; <leader> g --- git/version control
     "g"   '(nil :wk "git/vc")
@@ -98,6 +108,7 @@
     "h"   '(nil                :wk "help")
     "hf"  '(helpful-function   :wk "Describe function")
     "hk"  '(helpful-key        :wk "Describe key")
+    "ho"  '(helpful-symbol     :wk "Describe anyhting")
     "hv"  '(helpful-variable   :wk "Describe variable")
 
    ;;; <leader> i --- insert
@@ -114,6 +125,7 @@
     "p"   '(nil                          :wk "project")
     "pf"  '(project-find-file            :wk "Find file in project")
     "pp"  '(consult-project-extra-find   :wk "Switch project")
+    "pb"  '(consult-project-buffer       :wk "Switch to project buffer")
 
     ;;; <leader> q --- quit/session
     "q"   '(nil                        :wk "quit/session")
@@ -126,6 +138,10 @@
 
     ;;; <leader> s --- search
     "s"    '(nil   :wk "search")
+    "sb"   '(consult-line :wk "Search buffer")
+    "sB"   '((+cmd!! #'consult-line-multi 'all-buffers) :wk "Search all open buffers")
+    "sd"    '(+vertico/project-search-from-cwd :wk "Search current directory")
+    "si"   '(imenu :wk "Jump to symbol")
     "su"   '(vundo :wk "Undo history")
 
     ;;; <leader> t --- toggle
@@ -136,7 +152,7 @@
     "tw"  '(visual-line-mode              :wk "Soft line wrapping")
     "tm"  '(minimap-mode                  :wk "Minimap mode")
     "tz"  '(+zen/toggle                   :wk "Zen mode")
-    "tZ"  '(+zen/toggle-fullscreen         :wk "Zen mode (fullscreen)")
+    "tZ"  '(+zen/toggle-fullscreen        :wk "Zen mode (fullscreen)")
 
     ;;; <leader> w --- window
     "w"     '(nil                 :wk "window")

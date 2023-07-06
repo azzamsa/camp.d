@@ -1,10 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 (defvar camp-lisp-modules
-  '(camp aza files ui))
+  '(camp aza files ui project))
 
 (defvar camp-core-modules
-  '(defaults bootstrap builtin keybindings evil completion gc os utils vars splash))
+  '(defaults bootstrap builtin keybindings evil completion os utils vars))
 
 (defvar camp-modules
   '(data editor lisp prog project spell tools ui vc workspaces multi-cursors files))

@@ -14,7 +14,7 @@ I want to go camping...
 ---
 
 <div align="center">
-    <img src="https://github.com/azzamsa/capm.d/assets/17734314/1722d785-c51e-4de1-913b-107cfbfbe843" alt="Splash screen" />
+    <img src="https://github.com/azzamsa/capm.d/assets/17734314/132c6f0f-6c17-4907-b32a-5471fc83ddb4" alt="Splash screen" />
 </div>
 
 ## Features
@@ -27,9 +27,9 @@ I want to go camping...
 
 ## Contribution
 
-I don't plan to accept any contribution that adds new functionality. But it is OK for fixes and improvement.
+I won't be accepting any functionality or behavior changes. But it is OK for fixes and refinement.
 I don't recommend using this repository directly. Instead, use it as a source of inspiration.
 
 ## Credit
 
-A config built upon the great [MinEmacs](https://github.com/abougouffa/minemacs/tree/3cb7bdc5cd6297e7cd18bdce7654b03be065fc81) (MIT) that ties closely with holy [Doom](https://github.com/doomemacs/doomemacs/) philosophy.
+A config built upon the great [MinEmacs](https://github.com/abougouffa/minemacs/tree/3cb7bdc5cd6297e7cd18bdce7654b03be065fc81) (MIT) that ties closely with holy [Doom](https://github.com/doomemacs/doomemacs/) philosophy (MIT).

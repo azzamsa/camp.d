@@ -37,4 +37,9 @@
   :config
   (setq save-abbrevs 'silently))
 
+(use-package tab-bar
+  :straight (:type built-in)
+  :custom
+  (tab-bar-show nil))
+
 (provide 'camp-builtin)
