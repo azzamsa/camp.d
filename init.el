@@ -4,7 +4,7 @@
   '(camp aza files ui))
 
 (defvar camp-core-modules
-  '(defaults bootstrap builtin keybindings evil completion splash))
+  '(defaults bootstrap builtin keybindings evil completion gc os utils vars splash))
 
 (defvar camp-modules
   '(data editor lisp prog project spell tools ui vc workspaces multi-cursors files))
@@ -39,4 +39,4 @@
 ;; Load fonts early (they are read from the default `camp-default-fonts').
 (+set-fonts)
 
-(+log "Loaded early-config.el")
+(+log "Loaded init.el")

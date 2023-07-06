@@ -30,4 +30,11 @@
   :custom
   (tramp-default-remote-shell "/bin/bash"))
 
+(use-package abbrev
+  :straight (:type built-in)
+  :init
+  (setq-default abbrev-mode t)
+  :config
+  (setq save-abbrevs 'silently))
+
 (provide 'camp-builtin)

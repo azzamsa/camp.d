@@ -20,7 +20,7 @@
 (global-auto-revert-mode t)
 
 ;; Sort by modified time
-(setq dired-listing-switches "-alhFt --ignore=. --ignore=..")
+(setq dired-listing-switches "-l --time=ctime --almost-all --human-readable --group-directories-first --no-group --ignore=. --ignore=..")
 
 ;; Text mode is initial mode
 (setq initial-major-mode 'text-mode)

@@ -58,6 +58,7 @@
     "."   '(find-file                :wk "Find file")
     "/"   '(consult-ripgrep          :wk "Search project")
     "SPC" '(project-find-file        :wk "Find file in project")
+    "RET" '(consult-bookmark         :wk "Jump to bookmark")
     "x"   '(camp-scratch-buffer      :wk "Pop up scratch buffer")
     "'"   '(vertico-repeat           :wk "Resume last search")
     "w"   '(evil-window-map          :wk "window")
@@ -197,7 +198,7 @@ It is deferred until `general' gets loaded and configured."
 (defmacro +nmap! (&rest args)
   "A wrapper around `general-nmap'.
 It is deferred until `general' gets loaded and configured.
-Define keybindings specific to normal and visual modes."
+Define keybindings specific to normal state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-nmap ,@args)))
@@ -206,7 +207,7 @@ Define keybindings specific to normal and visual modes."
 (defmacro +vmap! (&rest args)
   "A wrapper around `general-vmap'.
 It is deferred until `general' gets loaded and configured.
-Define keybindings specific to visual mode."
+Define keybindings specific to visual state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-vmap ,@args)))
@@ -215,7 +216,7 @@ Define keybindings specific to visual mode."
 (defmacro +mmap! (&rest args)
   "A wrapper around `general-mmap'.
 It is deferred until `general' gets loaded and configured.
-Defines keybindings specific to motion mode."
+Defines keybindings specific to motion state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-mmap ,@args)))
@@ -224,7 +225,7 @@ Defines keybindings specific to motion mode."
 (defmacro +imap! (&rest args)
   "A wrapper around `general-imap'.
 It is deferred until `general' gets loaded and configured.
-Defines keybindings specific to insert mode."
+Defines keybindings specific to insert state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-imap ,@args)))
@@ -241,7 +242,8 @@ Defines keybindings specific to Emacs state."
 ;;;###autoload
 (defmacro +omap! (&rest args)
   "A wrapper around `general-omap'.
-It is deferred until `general' gets loaded and configured."
+It is deferred until `general' gets loaded and configured.
+Define keybindings specific to operator state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-omap ,@args)))
@@ -250,7 +252,7 @@ It is deferred until `general' gets loaded and configured."
 (defmacro +rmap! (&rest args)
   "A wrapper around `general-rmap'.
 It is deferred until `general' gets loaded and configured.
-Defines keybindings specific to replace mode."
+Defines keybindings specific to replace state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-rmap ,@args)))
@@ -259,7 +261,7 @@ Defines keybindings specific to replace mode."
 (defmacro +iemap! (&rest args)
   "A wrapper around `general-iemap'.
 It is deferred until `general' gets loaded and configured.
-Defines keybindings specific to insert mode in Evil. "
+Defines keybindings specific to insert and emacs state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-iemap ,@args)))
@@ -268,7 +270,7 @@ Defines keybindings specific to insert mode in Evil. "
 (defmacro +nvmap! (&rest args)
   "A wrapper around `general-nvmap'.
 It is deferred until `general' gets loaded and configured.
-Defines keybindings specific to normal and visual modes."
+Defines keybindings specific to normal and visual state."
   (declare (indent defun))
   `(with-eval-after-load 'camp-general-ready
      (general-nvmap ,@args)))

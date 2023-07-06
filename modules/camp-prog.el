@@ -87,4 +87,9 @@
   :straight (:type built-in)
   :mode "\\.rs\\'")
 
+(use-package web-mode
+  :straight t
+  :defer t
+  :mode "\\.njk\\'")
+
 (provide 'camp-prog)

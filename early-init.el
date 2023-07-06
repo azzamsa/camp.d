@@ -6,7 +6,6 @@
 
 ;; Add direcotries to `load-path'
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "modules/extras" user-emacs-directory))
 
 (require 'camp-vars)
 (require 'camp-utils)

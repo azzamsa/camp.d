@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*- Garbage collector
+;; -*- lexical-binding: t; -*-
 
 (use-package gcmh
   :straight t

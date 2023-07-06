@@ -54,19 +54,37 @@
 
 (use-package evil-surround
   :straight t
+  :commands (global-evil-surround-mode
+             evil-surround-edit
+             evil-Surround-edit
+             evil-surround-region)
   :init
-  (+nvmap!
-    "S" #'evil-surround-region
-    "s" #'evil-surround-edit)
+  (+vmap!
+    "S" '(evil-surround-region :wk "Surround region"))
+  (+omap!
+    "s" '(evil-surround-edit :wk "Surround edit")
+    "S" '(evil-Surround-edit :wk "Surround edit"))
   :config
   (global-evil-surround-mode 1))
+
+(use-package evil-snipe
+  :straight t
+  :commands evil-snipe-local-mode evil-snipe-override-local-mode
+  :init
+  (setq evil-snipe-smart-case t
+        evil-snipe-scope 'line
+        evil-snipe-repeat-scope 'visible
+        evil-snipe-char-fold t)
+  :config
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
 
 (use-package evil-nerd-commenter
   :straight t
   :after evil camp-loaded
   :init
   (+nvmap!
-    "gc" #'evilnc-comment-operator
-    "gC" #'evilnc-copy-and-comment-operator))
+    "gc" '(evilnc-comment-operator :wk "Comment")
+    "gC" '(evilnc-copy-and-comment-operator :wk "Copy and comment")))
 
 (provide 'camp-evil)

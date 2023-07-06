@@ -6,15 +6,26 @@
   :init
   (+map! :infix "g"
     "g" #'magit-status)
+
+  (+map-local! :keymaps 'magit-mode-map
+    "l" '(magit-log-current :wk "Show log"))
+
+  (+nvmap! :keymaps 'git-rebase-mode-map
+    "M-e"  #'git-rebase-move-line-up
+    "M-n"  #'git-rebase-move-line-down)
   :config
-  ;; Most of the Magit keybindings don't work seamlessly in visual mode.
-  ;; Invoking 'evil-insert' is needed every time in the 'magit-status-mode'.
-  (evil-set-initial-state 'magit-status-mode 'emacs)
   ;; Avoid invoking `evil-insert` in `commit-mode`
-  (add-hook 'git-commit-mode-hook 'evil-insert-state)
-  (add-hook 'git-rebase-mode-hook 'evil-insert-state)
-  ;; Show all differences
+  (evil-set-initial-state 'git-commit-mode 'insert)
+  (evil-set-initial-state 'git-rebase-mode 'insert)
+
+  ;; I love to have my backticks highlighted
+  (setq git-commit-major-mode 'markdown-mode)
+
+  ;; Enable granular diff-highlights for all hunks
+  ;; By default, changes are highlighted linewise for all but the selected hunk. This has performance reasons.
+  ;; https://magit.vc/manual/magit/Performance.html
   (setq magit-diff-refine-hunk 'all)
+
   ;; Relative time is hard to pin point.
   (setq magit-log-margin '(t "%Y-%b-%d %I:%M %p " magit-log-margin-width t 18))
   :custom
@@ -47,8 +58,8 @@
   :after camp-loaded
   :init
   (+nvmap! :keymaps 'git-timemachine-mode-map
-    "C-p" #'git-timemachine-show-previous-revision
-    "C-n" #'git-timemachine-show-next-revision
+    "C-n" #'git-timemachine-show-previous-revision
+    "C-e" #'git-timemachine-show-next-revision
     "gb"  #'git-timemachine-blame
     "gtc" #'git-timemachine-show-commit)
   :config

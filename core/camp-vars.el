@@ -72,8 +72,10 @@
   :group 'camp-prog
   :type '(repeat symbol))
 
-
-(defvar camp-scratch-buffer-file nil
+(defvar camp-scratch-file nil
   "Location of Camp persistence scratch buffer.")
+
+(defvar camp-abbrev-file nil
+  "Path to the abbreviations file.")
 
 (provide 'camp-vars)
