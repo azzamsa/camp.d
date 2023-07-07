@@ -43,8 +43,6 @@
           (insert (concat (propertize " 🏕️ Camp " 'face 'bold)
                           (format "(GNU Emacs %s) " emacs-version)))
           (center-line) (insert "\n")
-          (insert (propertize (format "Loaded in %s" (emacs-init-time)) 'face 'shadow))
-          (center-line) (insert "\n")
 
           ;; Copyright text
           (center-line) (insert "\n")

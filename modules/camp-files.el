@@ -17,12 +17,6 @@
   (dirvish-use-header-line t) ; 'global make header line span all panes
   (dirvish-use-mode-line t)
   (dired-omit-mode t)
-
-  ;; dirvish-side
-  (dirvish-side-width 30)
-  (dirvish-side-follow-mode)
-  (dirvish-side-auto-expand t)
-
   :init
   (+map!
     ;; Open
@@ -30,7 +24,6 @@
   :config
   (+nvmap! :keymaps 'dirvish-mode-map
     "?"          '(dirvish-dispatch                   :wk "Dispatch")
-    "a"          '(dired-up-directory                 :wk "Up directory")
     "f"          '(dirvish-file-info-menu             :wk "File info menu")
     "q"          '(dirvish-quit                       :wk "Quit")
     "s"          '(dirvish-subtree-toggle             :wk "Toggle subtree")
@@ -38,13 +31,22 @@
     "X"          '(dired-do-flagged-delete            :wk "Flagged delete")
     "x"          '(dired-do-delete                    :wk "Delete")
     "y"          '(dirvish-yank-menu                  :wk "Yank menu")
-    [remap dired-sort-toggle-or-edit]   '(dirvish-quicksort         :wk "Toggle or edit sort order")
-    [remap dired-do-redisplay]          '(dirvish-ls-switches-menu  :wk "LS switches menu")
+
+    ;; Can't rebind `dired-up-directory` to anything but `a` and `o`. Even if using `evil-collection-define-key`
+    ;; to set the default dired key or the key defined by evil-collection to `nil`.
+    ;; I browse mostly using one (right) hand. So `o` is more comfortable to press.
+    ;; [remap dired-sort-toggle-or-edit]   '(dirvish-quicksort         :wk "Toggle or edit sort order")
+    "o"          '(dired-up-directory                 :wk "Up directory")
+
     ;; I need to simple copy file in place with different name
     ;; [remap dired-do-copy]               '(dirvish-yank-menu         :wk "Copy menu")
-    )
+
+    [remap dired-do-redisplay]          '(dirvish-ls-switches-menu  :wk "LS switches menu"))
 
   (+map-local! :keymaps 'dirvish-mode-map
-    "h"          '(dired-omit-mode             :wk "Omit uninteresting files")))
+    "f" '(dirvish-copy-file-name  :wk "Copy filename")
+    "F" '(dirvish-copy-file-path  :wk "Copy file path")
+    "h" '(dired-omit-mode         :wk "Omit uninteresting files")
+    "o" '(dirvish-quicksort       :wk "Toggle or edit sort order")))
 
 (provide 'camp-files)

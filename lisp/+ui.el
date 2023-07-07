@@ -2,7 +2,7 @@
 (defun doom/window-enlargen (&optional arg)
   "Enlargen the current window (i.e. shrinks others) so you can focus on it.
 Use `winner-undo' to undo this. Alternatively, use
-`doom/window-maximize-buffer'."
+`delete-other-windows'."
   (interactive "P")
   (let* ((window (selected-window))
          (dedicated-p (window-dedicated-p window))

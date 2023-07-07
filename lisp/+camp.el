@@ -4,7 +4,7 @@
 (defun camp-scratch-buffer ()
   "Toggle persistent scratch buffer"
   (interactive)
-  (let ((filename camp-scratch-buffer-file))
+  (let ((filename camp-scratch-file))
     (if-let ((buffer (find-buffer-visiting filename)))
         (if (eq (selected-window) (get-buffer-window buffer))
             (delete-window)

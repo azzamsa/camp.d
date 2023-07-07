@@ -14,7 +14,8 @@
     "M-e"  #'git-rebase-move-line-up
     "M-n"  #'git-rebase-move-line-down)
   :config
-  ;; Avoid invoking `evil-insert` in `commit-mode`
+  ;; Avoid invoking `evil-insert` everytime.
+  (evil-set-initial-state 'magit-status-mode 'insert)
   (evil-set-initial-state 'git-commit-mode 'insert)
   (evil-set-initial-state 'git-rebase-mode 'insert)
 

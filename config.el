@@ -12,17 +12,7 @@
 ;; UI
 ;;
 
-;;
-;; Why <current theme name>?
-;; 1.  `catpuccin-*' has so manny issue I need to fix myself
-;; - [active region almost unnoticable · Issue #112 · catppuccin/emacs](https://github.com/catppuccin/emacs/issues/112)
-;; - [No iedit faces specified (used by evil-multiedit) · Issue #108 · catppuccin/emacs](https://github.com/catppuccin/emacs/issues/108)
-;; doesn't have noticeable region color during evil multi-cursor.
-;; 2. `doom-palenight' too muted for me.
-;; 2. `doom-material' has she same issue as catppuccin. The highlighted text is unnoticable.
 (setq camp-theme 'doom-dracula)
-;; Why <current font name>?
-;; - `VictorMono Nerd Font' is too thin
 (setq camp-fonts '(:font-family "Iosevka Nerd Font"
                                     :font-size 18
                                     :variable-pitch-font-family "Iosevka Nerd Font"
@@ -44,7 +34,7 @@
 ;; Camp
 ;;
 
-(setq camp-scratch-file "~/.local/share/**scratch**.md")
+(setq camp-scratch-file "~/.local/share/meta/**scratch**.md")
 (+ensure-directory camp-scratch-file)
 
 (setq camp-abbrev-file "~/.local/share/meta/abbrevs.el")

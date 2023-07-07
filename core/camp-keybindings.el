@@ -119,7 +119,9 @@
 
     ;;; <leader> o --- open
     "o"   '(nil :wk "open")
+    "oo"  '(file-manager-here :wk "Open file manager here")
     "op"  '(neotree-project-dir :wk "Side panel")
+    "oT"  '(terminal-here :wk "Open terminal here")
 
     ;;; <leader> p --- project
     "p"   '(nil                          :wk "project")

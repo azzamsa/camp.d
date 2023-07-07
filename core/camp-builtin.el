@@ -42,4 +42,20 @@
   :custom
   (tab-bar-show nil))
 
+(use-package elisp-mode
+  ;; defined in lisp/progmodes/elisp-mode.el
+  ;; using `use-package emacs-lisp-mode' produces
+  ;; so many oddities
+  :straight (:type built-in)
+  :after evil evil-collection camp-loaded
+  :hook (prog-mode-defaults . emacs-lisp-mode)
+  :config
+  (evil-collection-define-key 'normal 'emacs-lisp-mode-map
+    "gz" 'nil))
+
+(use-package winner
+  :straight (:type built-in)
+  :config
+  (winner-mode 1))
+
 (provide 'camp-builtin)

@@ -17,8 +17,8 @@
 
 (use-package evil-mc
   :straight t
-  :after evil
-  :init
+  :after evil camp-loaded
+  :config
   (+nvmap!
     "gzd"  '(evil-mc-make-and-goto-next-match       :wk "Make and goto next match")
     "gzD"  '(evil-mc-make-and-goto-prev-match       :wk "Make and goto previous match")
@@ -29,12 +29,16 @@
     "gzj"  '(evil-mc-make-cursor-move-next-line     :wk "Make cursor move to next line")
     "gzk"  '(evil-mc-make-cursor-move-prev-line     :wk "Make cursor move to previous line")
     "gzm"  '(evil-mc-make-all-cursors               :wk "Make all cursors")
-    "gznn" '(evil-mc-make-and-goto-next-cursor      :wk "Make and goto next cursor")
-    "gzNN" '(evil-mc-make-and-goto-last-cursor      :wk "Make and goto last cursor")
-    "gznp" '(evil-mc-make-and-goto-prev-cursor      :wk "Make and goto previous cursor")
-    "gzNP" '(evil-mc-make-and-goto-first-cursor     :wk "Make and goto first cursor")
+    "gzn"  '(evil-mc-make-and-goto-next-cursor      :wk "Make and goto next cursor")
+    "gzN"  '(evil-mc-make-and-goto-last-cursor      :wk "Make and goto last cursor")
+    "gzp"  '(evil-mc-make-and-goto-prev-cursor      :wk "Make and goto previous cursor")
+    "gzP"  '(evil-mc-make-and-goto-first-cursor     :wk "Make and goto first cursor")
     "gzq"  '(evil-mc-undo-all-cursors               :wk "Undo all cursors")
     "gzI"  '(evil-mc-make-cursor-in-visual-selection-beg :wk "Make cursor in visual selection begin")
-    "gzA"  '(evil-mc-make-cursor-in-visual-selection-end :wk "Make cursor in visual selection end")))
+    "gzA"  '(evil-mc-make-cursor-in-visual-selection-end :wk "Make cursor in visual selection end"))
+  (+nvmap! :keymaps 'evil-mc-key-map
+    "C-g"  '(evil-mc-undo-all-cursors               :wk "Undo all cursors"))
+  :config
+  (global-evil-mc-mode 1))
 
 (provide 'multi-cursors)

@@ -7,7 +7,7 @@
   '(defaults bootstrap builtin keybindings evil completion os utils vars))
 
 (defvar camp-modules
-  '(data editor lisp prog project spell tools ui vc workspaces multi-cursors files))
+  '(data editor prog project spell tools ui vc workspaces multi-cursors files))
 
 (defun camp-reload (&optional without-core)
   "Reload all configuration, including user's config.el."
