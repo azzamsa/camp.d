@@ -99,6 +99,7 @@
     "fs"   '(save-buffer                  :wk "Save file")
     "fu"   '(doom/sudo-find-file          :wk "Find file as sudo")
     "fU"   '(doom/sudo-this-file          :wk "Edit file as sudo")
+    "fy"   '(dirvish-copy-file-name       :wk "Yank filename")
 
     ;;; <leader> g --- git/version control
     "g"   '(nil :wk "git/vc")
@@ -125,9 +126,10 @@
 
     ;;; <leader> p --- project
     "p"   '(nil                          :wk "project")
-    "pf"  '(project-find-file            :wk "Find file in project")
-    "pp"  '(consult-project-extra-find   :wk "Switch project")
     "pb"  '(consult-project-buffer       :wk "Switch to project buffer")
+    "pf"  '(project-find-file            :wk "Find file in project")
+    "pk"  '(project-kill-buffers         :wk "Kill project buffers")
+    "pp"  '(consult-project-extra-find   :wk "Switch project")
 
     ;;; <leader> q --- quit/session
     "q"   '(nil                        :wk "quit/session")

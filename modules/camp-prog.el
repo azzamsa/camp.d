@@ -1,11 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Use built-in `treesit' when available
-(use-package treesit
-  :straight (:type built-in)
-  :custom
-  (treesit-font-lock-level 4))
-
 (use-package treesit-auto
   :straight (:host github :repo "renzmann/treesit-auto")
   :after treesit camp-loaded
@@ -14,11 +8,8 @@
   :config
   ;; Install all languages when calling `treesit-auto-install-all'
   (setq treesit-language-source-alist (treesit-auto--build-treesit-source-alist))
-
+  ;; (treesit-auto-install-all)
   (global-treesit-auto-mode))
-
-;; To avoid installing `tree-sitter' as this fork uses the built-in `treesit'
-(push 'tree-sitter straight-built-in-pseudo-packages)
 
 ;;; Eglot + LSP
 (use-package eglot

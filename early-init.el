@@ -21,8 +21,6 @@
    (when (getenv "EMACS_GC_HACK")
      (require 'camp-gc))))
 
-(require 'camp-splash)
-
 ;;; Write user custom variables to separate file instead of init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 

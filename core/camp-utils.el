@@ -5,13 +5,13 @@
 (defun +log (msg &rest vars)
   "Log MSG and VARS using `message' when `init-file-debug' is non-nil."
   (when init-file-debug
-    (apply #'message (cons (concat "[Camp] " msg) vars))))
+    (apply #'message (cons (concat "[Camp:Log] " msg) vars))))
 
  ;;;###autoload
 (defun +info (msg &rest vars)
   "Log info MSG and VARS using `message'."
   (let ((inhibit-message))
-    (apply #'message (cons (concat "[Camp] " msg) vars))))
+    (apply #'message (cons (concat "[Camp:Info] " msg) vars))))
 
 (defmacro +cmd! (&rest body)
   "Returns (lambda () (interactive) ,@body)

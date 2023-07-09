@@ -14,13 +14,13 @@ I want to go camping...
 ---
 
 <div align="center">
-    <img src="https://github.com/azzamsa/capm.d/assets/17734314/132c6f0f-6c17-4907-b32a-5471fc83ddb4" alt="Splash screen" />
+    <img src="https://github.com/azzamsa/capm.d/assets/17734314/132c6f0f-6c17-4907-b32a-5471fc83ddb4" alt="Demo" />
 </div>
 
 ## Features
 
 - Evil mode (Doom experience) 👾
-- Colemak-dh ✌️
+- Colemak-dh 🐲
 - Tree-sitter 🌴
 - Pinned packages
 - Custom emoji font

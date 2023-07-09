@@ -8,7 +8,10 @@
     "g" #'magit-status)
 
   (+map-local! :keymaps 'magit-mode-map
-    "l" '(magit-log-current :wk "Show log"))
+    "l" '(magit-log-current :wk "Show log")
+    ;; `evil-insert` can'b be invoked with `u` in `magit-status` buffer.
+    ;; `M-x evil-insert` is uncompfortable to type.
+    "u" '(evil-insert-state :wk "Evil insert"))
 
   (+nvmap! :keymaps 'git-rebase-mode-map
     "M-e"  #'git-rebase-move-line-up

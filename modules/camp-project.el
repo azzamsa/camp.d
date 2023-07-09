@@ -1,17 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package project
-  :straight (:type built-in)
-  :after camp-loaded
-  :demand t
-  :custom
-  (project-list-file (concat camp-cache-dir "project-list.el"))
-  (project-vc-extra-root-markers '(".projectile.el" ".project.el" ".project")))
-
-(defun +project-from-dir (&optional dir)
-  "Return project instance if DIR is a valid project."
-  (project--find-in-directory dir))
-
 (use-package consult-project-extra
   :straight t)
 

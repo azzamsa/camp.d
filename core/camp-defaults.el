@@ -1,133 +1,258 @@
-;; -*- lexical-binding: t; -*-
-
-(setq-default font-lock-multiline 'undecided)
+;;  -*- lexical-binding: t; -*-
 
 ;;; Better defaults
-(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+(set-charset-priority 'unicode)
 (set-default-coding-systems 'utf-8)
-(setq default-input-method nil)
 
-;; No message in scratch buffer
-(setq initial-scratch-message nil)
+(setopt
+ ;; ====== Default directories for builtin packages ======
+ auto-insert-directory (+ensure-directory camp-var-dir "auto-insert/")
+ auto-save-list-file-prefix (+ensure-directory camp-var-dir "auto-save/")
+ backup-directory-alist (list (cons "." (+ensure-directory camp-var-dir "backup/")))
+ bookmark-default-file (concat camp-var-dir "bookmark.el")
+ project-list-file (concat camp-var-dir "project-list.el")
+ save-place-file (concat camp-var-dir "save-place.el")
+ savehist-file (concat camp-var-dir "savehist.el")
 
-;; Revert buffers automatically when underlying files are changed externally
-(global-auto-revert-mode t)
+ ;; ====== Additional directories for non-builtin but common packages ======
+ pcache-directory (concat camp-cache-dir "pcache/")
 
-;; Sort by modified time
-(setq dired-listing-switches "-l --time=ctime --almost-all --human-readable --group-directories-first --no-group --ignore=. --ignore=..")
+ ;; ====== Default behavior ======
+ ;; Inhibit startup message
+ inhibit-startup-message t
+ ;; Do not ring
+ ring-bell-function #'ignore
+ ;; Set to non-nil to flash!
+ visible-bell nil
+ ;; Increase the large file threshold to 50 MiB
+ large-file-warning-threshold (* 50 1024 1024)
+ ;; No message in scratch buffer
+ initial-scratch-message nil
+ ;; Set initial buffer to fundamental-mode for faster load
+ initial-major-mode 'fundamental-mode
+ ;; Always prompt in minibuffer (no GUI)
+ use-dialog-box nil
+ ;; Use y or n instead of yes or no
+ use-short-answers t
+ ;; Confirm before quitting
+ confirm-kill-emacs #'y-or-n-p
+ ;; Filter duplicate entries in kill ring
+ kill-do-not-save-duplicates t
+ ;; Save existing clipboard text into the kill ring before replacing it.
+ save-interprogram-paste-before-kill t
+ ;; Save files only in sub-directories of current project
+ save-some-buffers-default-predicate #'save-some-buffers-root
+ ;; Use single space between sentences
+ sentence-end-double-space nil
+ ;; Move stuff to trash
+ delete-by-moving-to-trash t
+ ;; Select help window for faster quit!
+ help-window-select t
+ ;; More info on completions
+ completions-detailed t
+ ;; Do not ask obvious questions, follow symlinks
+ vc-follow-symlinks t
+ ;; Display the true file name for symlinks
+ find-file-visit-truename t
+ ;; Use completion in the minibuffer instead of definitions buffer
+ xref-show-definitions-function #'xref-show-definitions-completing-read
+ ;; Enable recursive calls to minibuffer
+ enable-recursive-minibuffers t
+ ;; Kill the shell buffer after exit
+ shell-kill-buffer-on-exit t
+ ;; Revert non-file buffers like dired
+ global-auto-revert-non-file-buffers t
+ ;; Don't prompt for confirmation when we create a new file or buffer
+ confirm-nonexistent-file-or-buffer nil
+ ;; More intuitive buffer naming style
+ uniquify-buffer-name-style 'forward
 
-;; Text mode is initial mode
-(setq initial-major-mode 'text-mode)
+ ;; ====== Performances ======
+ ;; Don’t compact font caches during GC
+ inhibit-compacting-font-caches t
+ ;; Increase single chunk bytes to read from subprocess (default 4096)
+ read-process-output-max (condition-case nil
+                             ;; Android may raise permission-denied error
+                             (with-temp-buffer
+                               (insert-file-contents "/proc/sys/fs/pipe-max-size")
+                               (string-to-number (buffer-string)))
+                           ;; If an error occured, fallback to the default value
+                           (error read-process-output-max))
 
-;; Text mode is default major mode
-(setq default-major-mode 'text-mode)
+ ;; ====== Aesthetics and UI ======
+ ;; Do force frame size to be a multiple of char size
+ frame-resize-pixelwise t
+ ;; Stretch cursor to the glyph width
+ x-stretch-cursor t
+ ;; Resize window combinations proportionally
+ window-combination-resize t
+ ;; No ugly button for widgets
+ widget-image-enable nil
+ ;; Show unprettified symbol under cursor (when in `prettify-symbols-mode')
+ prettify-symbols-unprettify-at-point t
+ ;; Make tooltips last a bit longer (default 10s)
+ tooltip-hide-delay 20
+ ;; Use small frames to display tooltips instead of the default OS tooltips
+ use-system-tooltips nil
+ ;; Set line width for the divider in `window-divider-mode' to 2px
+ window-divider-default-bottom-width 2
+ window-divider-default-right-width 2
 
-;; Tree-Sitter grammars
-(add-to-list 'treesit-extra-load-path (expand-file-name "tree-sitter" camp-var-dir))
+ ;; ====== Undo ======
+ ;; 10MB (default is 160kB)
+ undo-limit 10000000
+ ;; 50MB (default is 240kB)
+ undo-strong-limit 50000000
+ ;; 150MB (default is 24MB)
+ undo-outer-limit 150000000
 
-;;; Set files and directories for built-in packages
-(setq project-list-file (expand-file-name "projects" camp-var-dir)
-      recentf-save-file (expand-file-name "recentf" camp-var-dir)
-      auto-save-list-file-prefix (expand-file-name "autosave/" camp-var-dir)
-      tramp-auto-save-directory  (expand-file-name "tramp-autosave/" camp-var-dir)
-      tramp-persistency-file-name (expand-file-name "tramp-persistency" camp-var-dir)
-      backup-directory-alist (list (cons "." (expand-file-name "backup/" camp-var-dir)))
-      transient-history-file (expand-file-name "transient/history.el" camp-var-dir)
-      transient-levels-file (expand-file-name "transient/levels.el" camp-var-dir)
-      transient-values-file (expand-file-name "transient/values.el" camp-var-dir)
-      eshell-aliases-file (expand-file-name "eshell/aliases" camp-var-dir)
-      eshell-directory-name (expand-file-name "eshell/" camp-var-dir)
-      eshell-history-file-name (expand-file-name "eshell/history" camp-var-dir)
-      eshell-last-dir-ring-file-name (expand-file-name "eshell/lastdir" camp-var-dir))
+ ;; ====== Editing ======
+ ;; Hitting TAB behavior
+ tab-always-indent 'complete
+ ;; End files with newline
+ require-final-newline t
+ ;; Enable Drag-and-Drop of regions
+ mouse-drag-and-drop-region t
+ ;; Enable Drag-and-Drop of regions from Emacs to external programs
+ mouse-drag-and-drop-region-cross-program t
 
-(setq visible-bell nil ;; set to non-nil to flash!
-      ring-bell-function 'ignore
-      large-file-warning-threshold 52428800 ;; change to 50 MiB
-      use-short-answers t ;; y or n istead of yes or no
-      confirm-kill-emacs 'yes-or-no-p ;; confirm before quitting
-      frame-resize-pixelwise t
-      trash-directory nil ;; Use FreeDesktop.org trashcan (default)
-      ;; Delete files to trash, as an extra layer of precaution against
-      ;; accidentally deleting wanted files.
-      delete-by-moving-to-trash t)
+ ;; ====== Backups ======
+ ;; Disable lockfiles
+ create-lockfiles nil
+ ;; Enable making backup files
+ make-backup-files t
+ ;; Number each backup file
+ version-control t
+ ;; Copy instead of renaming current file
+ backup-by-copying t
+ ;; Clean up after itself
+ delete-old-versions t
+ ;; Keep up to 5 old versions of each file
+ kept-old-versions 5
+ ;; Keep up to 5 new versions of each file
+ kept-new-versions 5
 
-;;; Undo
-(setq undo-limit        10000000 ;; 1MB (default is 160kB)
-      undo-strong-limit 100000000 ;; 100MB (default is 240kB)
-      undo-outer-limit  1000000000) ;; 1GB (default is 24MB)
+ ;; ====== Scrolling ======
+ ;; Do not adjust window-vscroll to view tall lines. Fixes some lag issues see:
+ ;; emacs.stackexchange.com/a/28746
+ auto-window-vscroll nil
+ ;; Fast scrolling
+ fast-but-imprecise-scrolling t
+ ;; Keep the point in the same position while scrolling
+ scroll-preserve-screen-position t
+ ;; Do not move cursor to the center when scrolling
+ scroll-conservatively 101
+ ;; Scroll at a margin of one line
+ scroll-margin 1
+ ;; The number of lines to scroll
+ scroll-step 1
+ ;; Columns from the window edge point allowed before horizontal scroll
+ hscroll-margin 2
+ ;; The number of columns to scroll
+ hscroll-step 1
+ ;; Make mouse scroll a little faster
+ mouse-wheel-scroll-amount  '(2 ((shift) . hscroll) ((meta) . nil) ((control meta) . global-text-scale) ((control) . text-scale))
+ ;; Make mouse scroll a little faster horizontally
+ mouse-wheel-scroll-amount-horizontal 2
 
-;;; Editing
-(setq-default display-line-numbers-width 3
-              display-line-numbers-type 'relative
-              truncate-lines nil
-              fill-column 80
-              tab-width 2
-              indent-tabs-mode nil
-              tab-always-indent nil)
+ ;; ====== Auto-Saving, sessions ======
+ ;; Enable auto-save (use `recover-file' or `recover-session' to recover)
+ auto-save-default t
+ ;; Include big deletions
+ auto-save-include-big-deletions t
+ ;; Set file naming transform
+ auto-save-file-name-transforms
+ `(;; Prefix tramp autosaves with "tramp-"
+   ("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat auto-save-list-file-prefix "tramp-\\2") t)
+   ;; Local autosaves
+   (".*" ,auto-save-list-file-prefix t)))
 
-;;; Backups
-;; Disable backup and lockfiles
-(setq create-lockfiles nil
-      make-backup-files nil
-      version-control t ;; number each backup file
-      backup-by-copying t ;; copy instead of renaming current file
-      delete-old-versions t ;; clean up after itself
-      kept-old-versions 5
-      kept-new-versions 5
-      tramp-backup-directory-alist backup-directory-alist)
+(setq-default
+ ;; ====== Buffer-local variables ======
+ ;; Display long lines
+ truncate-lines nil
+ ;; Default fill column width
+ fill-column 80
+ ;; Never mix, use only spaces
+ indent-tabs-mode nil
+ ;; Width for line numbers
+ display-line-numbers-width nil
+ ;; Display absolute line numbers in narrowed regions
+ display-line-numbers-widen t
+ ;; Relative line numbering
+ display-line-numbers-type 'relative
+ ;; Small tab is enough!
+ tab-width 2)
 
-;;; Auto-Saving, sessions...
-;; Enable auto-save (use `recover-file' or `recover-session' to recover)
-(setq auto-save-default t
-      auto-save-include-big-deletions t
-      auto-save-file-name-transforms
-      (list (list "\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
-                  ;; Prefix tramp autosaves to prevent conflicts with local ones
-                  (concat auto-save-list-file-prefix "tramp-\\2") t)
-            (list ".*" auto-save-list-file-prefix t)))
+;; ====== Misc hooks and advices ======
+;; Advice `emacs-session-filename' to ensure creating "session.ID" files in
+;; a sub-directory
+(with-eval-after-load 'x-win
+  (advice-add
+   #'emacs-session-filename :filter-return
+   (defun +emacs-session-filename--in-subdir-a (session-filename)
+     "Put the SESSION-FILENAME in the \"x-win/\" sub-directory."
+     (concat (+ensure-directory camp-var-dir "x-win/")
+             (file-name-nondirectory session-filename)))))
 
-(setq sentence-end-double-space nil)
-
-;;; Scrolling
-(setq hscroll-step 1
-      hscroll-margin 0
-      scroll-step 1
-      scroll-margin 0
-      scroll-conservatively 101
-      scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01
-      scroll-preserve-screen-position 'always
-      auto-window-vscroll nil
-      fast-but-imprecise-scrolling t)
-
-;; Stretch cursor to the glyph width
-(setq-default x-stretch-cursor t)
-
-(setq-default window-combination-resize t)
-
-;; Enable global modes
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'text-mode-hook #'display-line-numbers-mode)
-
-;; Guess major mode when saving a file (from Doom Emacs)
+;; Kill the minibuffer when switching by mouse to another window.
+;; Adapted from: trey-jackson.blogspot.com/2010/04/emacs-tip-36-abort-minibuffer-when.html
 (add-hook
- 'after-save-hook
- (defun camp-guess-file-mode-h ()
-   "Guess major mode when saving a file in `fundamental-mode'.
+ 'mouse-leave-buffer-hook
+ (defun +minibuffer--kill-on-mouse-h ()
+   "Kill the minibuffer when switching to window with mouse."
+   (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
+     (abort-recursive-edit))))
 
-Likely, something has changed since the buffer was opened. e.g. A shebang line
-or file path may exist now."
-   (when (eq major-mode 'fundamental-mode)
-     (let ((buffer (or (buffer-base-buffer) (current-buffer))))
-       (and (buffer-file-name buffer)
-            (eq buffer (window-buffer (selected-window))) ;; Only visible buffers
-            (set-auto-mode))))))
+;; ====== Tweaks on file save ======
+;; Make scripts (files starting wiht shebang "#!") executable when saved
+(add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
+
+;; ====== Modes enabled locally, mainly for `prog-mode', `conf-mode' and `text-mode' ======
+;; Show line numbers
+(add-hook 'prog-mode-hook  #'display-line-numbers-mode)
+(add-hook 'conf-mode-hook  #'display-line-numbers-mode)
+(add-hook 'text-mode-hook  #'display-line-numbers-mode)
+
+;; Wrap long lines
+(add-hook 'prog-mode-hook  #'visual-line-mode)
+(add-hook 'conf-mode-hook  #'visual-line-mode)
+(add-hook 'text-mode-hook  #'visual-line-mode)
+
+;; Show trailing whitespace in `prog-mode' and `conf-mode'
+(defun +show-trailing-whitespace-h ()
+  (setq-local show-trailing-whitespace t))
+(add-hook 'prog-mode-hook  #'+show-trailing-whitespace-h)
+(add-hook 'conf-mode-hook  #'+show-trailing-whitespace-h)
+(add-hook 'text-mode-hook  #'+show-trailing-whitespace-h)
 
 (with-eval-after-load 'camp-loaded
-  ;; Highlight current line
-  (global-hl-line-mode 1)
-  ;; Enable recentf-mode globally
-  (recentf-mode 1)
+  ;; ====== Modes enabled globally ======
+  ;; Display divider between windows
+  (window-divider-mode 1)
+
+  ;; Scroll pixel by pixel, in Emacs29+ there is a more pricise mode way to scroll
+  (if (>= emacs-major-version 29)
+      (pixel-scroll-precision-mode 1)
+    (pixel-scroll-mode 1))
+
+  ;; Replace selection after start typing
+  (delete-selection-mode 1)
+  ;; Show recursion depth in minibuffer (see `enable-recursive-minibuffers')
+  (minibuffer-depth-indicate-mode 1)
+  ;; Save place in files
+  (save-place-mode 1)
+  ;; Enable saving minibuffer history
+  (savehist-mode 1)
+  ;; Auto load files changed on disk
+  (global-auto-revert-mode 1)
+  ;; Show line number in mode-line
+  (line-number-mode 1)
+  ;; Show column numbers (a.k.a. cursor position) in the mode-line
+  (column-number-mode 1)
+  ;; Better handling for files with so long lines
+  (global-so-long-mode 1)
   ;; Global SubWord mode
   (global-subword-mode 1))
 
