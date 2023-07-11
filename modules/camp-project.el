@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package consult-project-extra
-  :straight t)
+(use-package consult-project-extra :straight t)
 
 (use-package neotree
   :straight t

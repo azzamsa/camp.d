@@ -74,7 +74,6 @@
     "bB"   '(switch-to-buffer       :wk "Switch buffer")
     "bd"   '(kill-current-buffer    :wk "Kill buffer")
     "bk"   '(kill-current-buffer    :wk "Kill buffer")
-    "bK"   '(doom/kill-all-buffers  :wk "Kill all buffers")
     "bO"   '(aza-kill-other-buffers :wk "Kill other buffers")
     "br"   '(revert-buffer          :wk "Revert buffer")
     "bR"   '(rename-buffer          :wk "Rename buffer")
@@ -93,12 +92,12 @@
     ;;; <leader> f --- file
     "f"    '(nil                          :wk "file")
     "fd"   '(dired                        :wk "Find directory")
+    "fD"   '(crux-delete-file-and-buffer  :wk "Delete this file")
     "ff"   '(find-file                    :wk "Find file")
     "fe"   '(camp/find-file-in-emacsd     :wk "Find file in emacs.d")
     "fE"   '(camp/browse-in-emacsd        :wk "Browse emacs.d")
     "fs"   '(save-buffer                  :wk "Save file")
-    "fu"   '(doom/sudo-find-file          :wk "Find file as sudo")
-    "fU"   '(doom/sudo-this-file          :wk "Edit file as sudo")
+    "fU"   '(crux-sudo-edit               :wk "Edit file as sudo")
     "fy"   '(dirvish-copy-file-name       :wk "Yank filename")
 
     ;;; <leader> g --- git/version control

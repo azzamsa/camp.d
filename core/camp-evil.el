@@ -17,6 +17,9 @@
   (evil-respect-visual-line-mode nil)
   (evil-ex-interactive-search-highlight 'selected-window)
   :config
+  (+nvmap!
+    "C-u" '(evil-scroll-up :wk "Scroll up"))
+
   (+map!
     ;; buffer
     "bN" '(evil-buffer-new :wk "New buffer")

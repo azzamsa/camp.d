@@ -55,8 +55,11 @@
             (add-to-list '+eglot-auto-enable-modes mode)))))))
   )
 
-(use-package editorconfig
-  :straight t)
+(use-package editorconfig :straight t)
+
+(use-package rainbow-mode
+  :straight t
+  :hook (prog-mode . rainbow-mode))
 
 (use-package rainbow-delimiters
   :straight t
@@ -71,8 +74,7 @@
   :config
   (smartparens-global-mode))
 
-(use-package flymake
-  :straight t)
+(use-package flymake :straight t)
 
 (use-package rust-ts-mode
   :straight (:type built-in)
@@ -82,5 +84,7 @@
   :straight t
   :defer t
   :mode "\\.njk\\'")
+
+(use-package lua-mode :straight t)
 
 (provide 'camp-prog)

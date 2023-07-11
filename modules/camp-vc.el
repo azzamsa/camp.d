@@ -13,9 +13,13 @@
     ;; `M-x evil-insert` is uncompfortable to type.
     "u" '(evil-insert-state :wk "Evil insert"))
 
+  (+map-local! :keymaps 'git-rebase-mode-map
+    "u" '(evil-insert-state :wk "Evil insert"))
+
   (+nvmap! :keymaps 'git-rebase-mode-map
     "M-e"  #'git-rebase-move-line-up
-    "M-n"  #'git-rebase-move-line-down)
+    "M-n"  #'git-rebase-move-line-down
+    "u" '(evil-insert-state :wk "Evil insert"))
   :config
   ;; Avoid invoking `evil-insert` everytime.
   (evil-set-initial-state 'magit-status-mode 'insert)
