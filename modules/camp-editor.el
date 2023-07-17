@@ -95,10 +95,10 @@
 (use-package drag-stuff
   :straight t
   :defer t
-  :bind (("<M-up>"   . 'drag-stuff-up)
-         ("<M-down>"  . 'drag-stuff-down)
-         ("<M-left>"  . 'drag-stuff-left)
-         ("<M-right>" . 'drag-stuff-right)))
+  :init
+  (+nvmap!
+    "<M-up>"   '(drag-stuff-up   :wk "Drag up")
+    "<M-down>" '(drag-stuff-down :wk "Drag down")))
 
 (use-package highlight-indent-guides
   :straight t

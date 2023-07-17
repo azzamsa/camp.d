@@ -7,10 +7,13 @@
   (dirvish-override-dired-mode)
   :custom
   (dirvish-quick-access-entries
-   '(("h" "~/" "Home")
-     ("p" "~/project/" "Project")
-     ("t" "~/.tmp/" "Temp")))
-  (dirvish-attributes '(subtree-state nerd-icons file-size vc-state git-msg))
+   '(("h" "~/"            "Home")
+     ("p" "~/project/"    "Project")
+     ("l" "~/playground/" "Playgound")
+     ("o" "~/office/"     "Office")
+     ("t" "~/tmp/"        "Temp")
+     ("T" "/tmp"          "/tmp")))
+  (dirvish-attributes '(subtree-state nerd-icons file-size))
   (dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir))
   (dirvish-mode-line-format '(:left (sort file-time symlink) :right (omit yank index)))
   (dirvish-fd-default-dir "~/")
@@ -23,6 +26,7 @@
   :config
   (+nvmap! :keymaps 'dirvish-mode-map
     "?"          '(dirvish-dispatch                   :wk "Dispatch")
+    "a"          '(dirvish-quick-access               :wk "Quick Access")
     "f"          '(dirvish-file-info-menu             :wk "File info menu")
     "q"          '(dirvish-quit                       :wk "Quit")
     "s"          '(dirvish-subtree-toggle             :wk "Toggle subtree")
@@ -42,5 +46,9 @@
     "F" '(dirvish-copy-file-path  :wk "Yank file path")
     "h" '(dired-omit-mode         :wk "Omit uninteresting files")
     "o" '(dirvish-quicksort       :wk "Toggle or edit sort order")))
+
+(use-package dirvish-extras
+  :ensure nil
+  :after dirvish)
 
 (provide 'camp-files)

@@ -55,6 +55,14 @@
   (evil-snipe-smart-case t)
   (evil-snipe-auto-scroll t))
 
+(use-package evil-avy
+  :straight t
+  :after evil camp-loaded
+  :config
+  (+nvmap!
+    "gss" '(evil-avy-goto-char-2 :wk "Avy go to char")
+    "gs/" '(evil-avy-goto-char-timer :wk "Avy go to char")))
+
 (use-package evil-surround
   :straight t
   :commands (global-evil-surround-mode

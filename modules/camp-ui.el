@@ -46,7 +46,9 @@
 (use-package writeroom-mode
   :straight t
   :defer t
-  :after camp-loaded)
+  :after camp-loaded
+  :config
+  (setq writeroom-width 90))
 
 ;;;###autoload
 (defalias '+zen/toggle #'writeroom-mode)

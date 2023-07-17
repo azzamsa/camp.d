@@ -7,4 +7,7 @@
 (use-package crux
   :straight t)
 
+(use-package dockerfile-mode
+  :straight t)
+
 (provide 'camp-tools)

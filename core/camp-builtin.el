@@ -20,7 +20,7 @@
 (use-package auth-source
   :straight (:type built-in)
   :custom
-  (auth-sources '("~/.authinfo.gpg")) ; Default auth-sources to GPG
+  (auth-sources '("~/.local/share/.authinfo.gpg")) ; Default auth-sources to GPG
   (auth-source-do-cache t) ; Enable caching, do not keep asking about GPG key
   (auth-source-cache-expiry 86400)) ; All day, default is 2h (7200)
 
@@ -126,7 +126,7 @@
   :config
   (setq recentf-save-file (concat camp-var-dir "recentf-save.el")
         ;; Increase the maximum number of saved items
-        recentf-max-saved-items 100
+        recentf-max-saved-items 300
         ;; Ignore case when searching recentf files
         recentf-case-fold-search t
         ;; Exclude some files from being remembered by recentf

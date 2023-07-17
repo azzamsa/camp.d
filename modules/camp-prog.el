@@ -72,6 +72,7 @@
 (use-package smartparens
   :straight t
   :config
+  (sp-local-pair 'markdown-mode "```" "```")
   (smartparens-global-mode))
 
 (use-package flymake :straight t)
@@ -86,5 +87,6 @@
   :mode "\\.njk\\'")
 
 (use-package lua-mode :straight t)
+(use-package fish-mode :straight t)
 
 (provide 'camp-prog)

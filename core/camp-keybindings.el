@@ -97,6 +97,7 @@
     "fe"   '(camp/find-file-in-emacsd     :wk "Find file in emacs.d")
     "fE"   '(camp/browse-in-emacsd        :wk "Browse emacs.d")
     "fs"   '(save-buffer                  :wk "Save file")
+    "fu"   '(crux-sudo-edit               :wk "Find file as sudo")
     "fU"   '(crux-sudo-edit               :wk "Edit file as sudo")
     "fy"   '(dirvish-copy-file-name       :wk "Yank filename")
 

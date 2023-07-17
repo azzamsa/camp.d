@@ -45,7 +45,7 @@
 ;;
 
 ;; Emacs doesn't play well with fish
-(setq shell-file-name "/bin/zsh")
+(setq shell-file-name "/bin/bash")
 
 (with-eval-after-load 'eglot
   ;; Auto enable Eglot in modes `+eglot-auto-enable-modes' using
