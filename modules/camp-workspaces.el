@@ -7,6 +7,8 @@
   :custom
   (tabspaces-use-filtered-buffers-as-default t)
   (tabspaces-default-tab "Main")
+  (tabspaces-session t)
+  (tabspaces-session-file (+ensure-directory camp-var-dir "tabspaces/session.el"))
   :init
   (+map! :infix "TAB"
     "TAB" '(tabspaces-switch-or-create-workspace   :wk "Switch or create")
