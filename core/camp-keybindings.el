@@ -82,12 +82,12 @@
 
     ;;; <leader> c --- code
     "c"   '(nil                           :wk "code")
-    "ca"  '(eglot-code-actions            :wk "LSP Execute code action")
-    "cr"  '(eglot-rename                  :wk "LSP Rename")
     "cw"  '(delete-trailing-whitespace    :wk "Delete trailing whitespace")
     "cj"  '(consult-lsp-symbols           :wk "Jump to symbol in current workspace")
     "cJ"  '((+cmd!! #'consult-lsp-symbols 'all-workspaces) :wk "Jump to symbol in any workspace")
-    "co"  '(eglot-code-actions-organize-imports :wk "LSP Organize imports")
+
+    "ca"  '(lsp-execute-code-action       :wk "LSP Execute code action")
+    "cr"  '(lsp-rename                    :wk "LSP Rename")
 
     ;;; <leader> f --- file
     "f"    '(nil                          :wk "file")

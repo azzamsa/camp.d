@@ -64,14 +64,6 @@
                    :variable-pitch-font-size 18)
     "Default fonts of camp."))
 
-(defcustom +eglot-auto-enable-modes
-  '(python-mode python-ts-mode rust-mode rust-ts-mode
-                js-mode js-ts-mode typescript-mode typescript-ts-mode
-                json-mode json-ts-mode js-json-mode)
-  "Modes for which Eglot can be automatically enabled by `+eglot-auto-enable'."
-  :group 'camp-prog
-  :type '(repeat symbol))
-
 (defvar camp-scratch-file nil
   "Location of Camp persistence scratch buffer.")
 

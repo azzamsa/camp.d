@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Without this package lsp-mode or eglot-mode can't find
-;; the servers
+;; Without this package, several Emacs packages fail to locate the necessary binary files.
 (use-package exec-path-from-shell
   :straight t
   :demand t

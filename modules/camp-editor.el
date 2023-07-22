@@ -147,7 +147,7 @@
   (defvar yas-snippet-dirs nil)
   :config
   ;; ~/.emacs.d/etc/yasnippet/snippets
-  (setq private-yas-dir (expand-file-name "yasnippet/snippets/"camp-etc-dir))
+  (setq private-yas-dir (expand-file-name "yasnippet/snippets/" camp-etc-dir))
   (+ensure-directory private-yas-dir)
   (push private-yas-dir yas-snippet-dirs)
 

@@ -47,15 +47,6 @@
 ;; Emacs doesn't play well with fish
 (setq shell-file-name "/bin/bash")
 
-(with-eval-after-load 'eglot
-  ;; Auto enable Eglot in modes `+eglot-auto-enable-modes' using
-  ;; `+eglot-auto-enable' (from the `prog' module). You can use
-  (+eglot-auto-enable)
-
-  ;; You can use this to fill `+eglot-auto-enable-modes' with all supported
-  ;; modes from `eglot-server-programs'
-  (+eglot-use-on-all-supported-modes eglot-server-programs))
-
 ;; Module: `natural-langs' -- Package: `spell-fu'
 (with-eval-after-load 'spell-fu
   ;; We can use Camp' helper macro `+spell-fu-register-dictionaries!'

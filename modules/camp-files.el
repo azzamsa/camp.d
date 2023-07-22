@@ -8,12 +8,12 @@
   :custom
   (dirvish-quick-access-entries
    '(("h" "~/"            "Home")
-     ("p" "~/project/"    "Project")
      ("l" "~/playground/" "Playgound")
+     ("p" "~/projects/"   "Projects")
      ("o" "~/office/"     "Office")
      ("t" "~/tmp/"        "Temp")
      ("T" "/tmp"          "/tmp")))
-  (dirvish-attributes '(subtree-state nerd-icons file-size))
+  (dirvish-attributes '(subtree-state nerd-icons file-size vc-state git-msg))
   (dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir))
   (dirvish-mode-line-format '(:left (sort file-time symlink) :right (omit yank index)))
   (dirvish-fd-default-dir "~/")

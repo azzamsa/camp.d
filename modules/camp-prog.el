@@ -11,49 +11,42 @@
   ;; (treesit-auto-install-all)
   (global-treesit-auto-mode))
 
-;;; Eglot + LSP
-(use-package eglot
+(use-package lsp-mode
   :straight t
-  :init
-  (+map! :keymaps 'eglot-mode-map
-    :infix "c"
-    "fF" #'eglot-format-buffer
-    "d"  '(eglot-find-declaration :wk "Find declaration")
-    "i"  '(eglot-find-implementation :wk "Find implementation")
-    "t"  '(eglot-find-typeDefinition :wk "Find type definition")
-    "a"  '(eglot-code-actions :wk "Code actions")
-    "r"  '(nil :wk "refactor")
-    "rr" '(eglot-rename :wk "Rename")
-    "rR" '(eglot-code-action-rewrite :wk "Rewrite")
-    "rf" '(eglot-code-action-quickfix :wk "Quick fix")
-    "ri" '(eglot-code-action-inline :wk "Inline")
-    "re" '(eglot-code-action-extract :wk "Extract")
-    "ro" '(eglot-code-action-organize-imports :wk "Organize imports")
-    "eq" '(eglot-shutdown :wk "Shutdown")
-    "er" '(eglot-reconnect :wk "Reconnect")
-    "eQ" '(eglot-shutdown-all :wk "Shutdown all")
-    "w"  '(eglot-show-workspace-configuration :wk "Eglot workspace config"))
+  :after camp-loaded
+  :commands (lsp lsp-deferred)
+  :hook ((before-save . lsp-format-buffer)
+         (before-save . lsp-organize-imports))
+  :hook (rust-ts-mode . lsp-deferred)
   :config
-  (defun +eglot-auto-enable ()
-    "Auto-enable Eglot in configured modes in `+eglot-auto-enable-modes'."
-    (interactive)
-    (dolist (mode +eglot-auto-enable-modes)
-      (let ((hook (intern (format "%s-hook" mode))))
-        (add-hook hook #'eglot-ensure))))
+  ;; Disable invasive lsp-mode features
+  (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
+        lsp-ui-doc-enable nil        ; slow and redundant with K
+        lsp-enable-symbol-highlighting nil
+        ;; If an LSP server isn't present when I start a prog-mode buffer, you
+        ;; don't need to tell me. I know. On some systems I don't care to have a
+        ;; whole development environment for some ecosystems.
+        +lsp-prompt-to-install-server nil
+        lsp-inlay-hint-enable t
+        lsp-rust-analyzer-cargo-watch-command "clippy"
+        lsp-rust-analyzer-server-display-inlay-hints t
+        lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial"
+        lsp-rust-analyzer-display-chaining-hints t
+        lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil
+        lsp-rust-analyzer-display-closure-return-type-hints t
+        lsp-rust-analyzer-display-parameter-hints nil
+        lsp-rust-analyzer-display-reborrow-hints nil)
 
-  ;; Modified from Crafted Emacs, pass `eglot-server-programs' to this function
-  ;; to fill `+eglot-auto-enable-modes' with all supported modes.
-  (defun +eglot-use-on-all-supported-modes (mode-list)
-    (dolist (mode-def mode-list)
-      (let ((mode (if (listp mode-def) (car mode-def) mode-def)))
-        (cond
-         ((listp mode) (+eglot-use-on-all-supported-modes mode))
-         (t
-          (when (and (not (eq 'clojure-mode mode)) ; prefer cider
-                     (not (eq 'lisp-mode mode))    ; prefer sly
-                     (not (eq 'scheme-mode mode))) ; prefer geiser
-            (add-to-list '+eglot-auto-enable-modes mode)))))))
-  )
+  (lsp-inlay-hints-mode))
+
+(use-package lsp-ui
+  :straight t
+  :after lsp-mode
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
+        ;; redundant with K
+        lsp-ui-doc-enable nil))
 
 (use-package editorconfig :straight t)
 

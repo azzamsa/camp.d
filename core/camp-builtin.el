@@ -53,7 +53,8 @@
 (defun +dired-copy-dirpath-as-kill ()
   "Copy the current directory path into the kill ring."
   (interactive)
-  (kill-new default-directory))
+  (kill-new default-directory)
+  (message "Copied: %s" default-directory))
 
 (use-package tramp
   :straight (:type built-in)
