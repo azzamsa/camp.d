@@ -27,6 +27,9 @@
         ;; don't need to tell me. I know. On some systems I don't care to have a
         ;; whole development environment for some ecosystems.
         +lsp-prompt-to-install-server nil
+        ;; shut down if all buffer killed
+        lsp-keep-workspace-alive nil
+
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-server-display-inlay-hints t
         lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial"
