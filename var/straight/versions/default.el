@@ -61,7 +61,7 @@
  ("kind-icon" . "b0fb83be6ff6837446274e44e799ade836854a39")
  ("ligature.el" . "3d1460470736777fd8329e4bb4ac359bf4f1460a")
  ("list-utils" . "f02dcef36330871855346f9eab97eef58d323d9a")
- ("lsp-mode" . "05c88ea1bd1ac56bf2a386541047a96240676047")
+ ("lsp-mode" . "1d60519acceef5d9f3da67c6a326c814e36ac2ce")
  ("lsp-tailwindcss" . "b36304210421160477a4ab453fa272fc411ce297")
  ("lsp-ui" . "295d8984da06a745b0a36c56e28ce915bc389adb")
  ("lua-mode" . "ad639c62e38a110d8d822c4f914af3e20b40ccc4")
