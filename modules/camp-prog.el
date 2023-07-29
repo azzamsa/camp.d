@@ -27,7 +27,6 @@
         ;; don't need to tell me. I know. On some systems I don't care to have a
         ;; whole development environment for some ecosystems.
         +lsp-prompt-to-install-server nil
-        lsp-inlay-hint-enable t
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-server-display-inlay-hints t
         lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial"
@@ -35,9 +34,7 @@
         lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil
         lsp-rust-analyzer-display-closure-return-type-hints t
         lsp-rust-analyzer-display-parameter-hints nil
-        lsp-rust-analyzer-display-reborrow-hints nil)
-
-  (lsp-inlay-hints-mode))
+        lsp-rust-analyzer-display-reborrow-hints nil))
 
 (use-package lsp-ui
   :straight t
