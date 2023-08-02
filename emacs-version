@@ -1,0 +1,1 @@
+2af83f2 Jsonrpc: fix error code in jsonrpc-error function (bug#64888) (João Távora)
