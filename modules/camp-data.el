@@ -29,4 +29,8 @@
   :straight t
   :mode ("README\\.md\\'" . gfm-mode))
 
+(use-package graphql-mode
+  :straight t
+  :defer t)
+
 (provide 'camp-data)
