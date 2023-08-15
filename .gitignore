@@ -1,0 +1,41 @@
+# Ignore everything in the root directory
+/*
+
+# Adding myself to the party!
+!.gitignore
+
+!early-init.el
+!init.el
+!config.el
+
+!core
+!docs
+!lisp
+!modules
+!snippets
+
+!LICENSE
+!README.md
+!CHANGELOG.md
+
+# Lock file
+!/var/
+/var/*
+!/var/straight/
+/var/straight/*
+!/var/straight/versions/
+/var/straight/versions/*
+!/var/straight/versions/default.el
+
+# Transient persistence configuration
+!/var/transient/
+/var/transient/*
+!/var/transient/values.el
+
+!.github
+!emacs-version
+!version
+
+!scripts
+!configs
+!justfile
