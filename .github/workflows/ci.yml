@@ -3,6 +3,24 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+
+  code_quality:
+    name: Code quality
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Install latest just release
+        uses: taiki-e/install-action@just
+
+      - name: Install latest dprint release
+        uses: taiki-e/install-action@dprint
+
+      - name: Ensure `fmt` has been run
+        run:  just fmt-check
+
   test:
     name: ${{ matrix.job.os }} (${{ matrix.job.emacs_version }})
     runs-on: ${{ matrix.job.os }}
