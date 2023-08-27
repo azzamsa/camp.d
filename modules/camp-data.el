@@ -33,4 +33,8 @@
   :straight t
   :defer t)
 
+(use-package vimrc-mode
+  :straight t
+  :defer t)
+
 (provide 'camp-data)
