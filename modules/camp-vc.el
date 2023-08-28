@@ -5,7 +5,8 @@
   :after camp-loaded
   :init
   (+map! :infix "g"
-    "g" #'magit-status)
+    "g" #'magit-status
+    "l" #'magit-log-current)
 
   (+map-local! :keymaps 'magit-mode-map
     "l" '(magit-log-current :wk "Show log")
