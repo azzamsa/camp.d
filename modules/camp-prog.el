@@ -11,6 +11,8 @@
   ;; (treesit-auto-install-all)
   (global-treesit-auto-mode))
 
+(use-package consult-lsp :straight t)
+
 (use-package lsp-mode
   :straight t
   :after camp-loaded

@@ -82,12 +82,12 @@
 
     ;;; <leader> c --- code
     "c"   '(nil                           :wk "code")
-    "cw"  '(delete-trailing-whitespace    :wk "Delete trailing whitespace")
-    "cj"  '(consult-lsp-symbols           :wk "Jump to symbol in current workspace")
-    "cJ"  '((+cmd!! #'consult-lsp-symbols 'all-workspaces) :wk "Jump to symbol in any workspace")
-
     "ca"  '(lsp-execute-code-action       :wk "LSP Execute code action")
+    "cd"  '(lsp-find-definition           :wk "Jump to definition")
+    "cj"  '(consult-lsp-symbols           :wk "Jump to symbol in current workspace")
+    "cJ"  `(,(+cmd!! (consult-lsp-symbols 'all-workspaces)) :wk "Jump to symbol in any workspace")
     "cr"  '(lsp-rename                    :wk "LSP Rename")
+    "cw"  '(delete-trailing-whitespace    :wk "Delete trailing whitespace")
 
     ;;; <leader> f --- file
     "f"    '(nil                          :wk "file")
@@ -143,7 +143,7 @@
     ;;; <leader> s --- search
     "s"    '(nil   :wk "search")
     "sb"   '(consult-line :wk "Search buffer")
-    "sB"   '((+cmd!! #'consult-line-multi 'all-buffers) :wk "Search all open buffers")
+    "sB"   `(,(+cmd!! (consult-line-multi 'all-buffers)) :wk "Search all open buffers")
     "sd"    '(+vertico/project-search-from-cwd :wk "Search current directory")
     "si"   '(imenu :wk "Jump to symbol")
     "su"   '(vundo :wk "Undo history")
