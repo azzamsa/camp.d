@@ -79,7 +79,8 @@
 (use-package web-mode
   :straight t
   :defer t
-  :mode "\\.njk\\'")
+  :mode ("\\.njk\\'"
+         "\\.svelte\\'"))
 
 (use-package lua-mode :straight t)
 (use-package fish-mode :straight t)
