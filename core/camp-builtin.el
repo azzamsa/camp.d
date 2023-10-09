@@ -34,6 +34,7 @@
     ;; to set the default dired key or the key defined by evil-collection to `nil`.
     ;; I browse mostly using one (right) hand. So `o` is more comfortable to press.
     ;; [remap dired-sort-toggle-or-edit]   '(dirvish-quicksort         :wk "Toggle or edit sort order")
+    "a"          '(dired-up-directory                 :wk "Up directory")
     "o"          '(dired-up-directory                 :wk "Up directory"))
   :config
   (setopt

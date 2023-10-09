@@ -11,8 +11,7 @@
      ("l" "~/playground/" "Playgound")
      ("p" "~/projects/"   "Projects")
      ("o" "~/office/"     "Office")
-     ("t" "~/tmp/"        "Temp")
-     ("T" "/tmp"          "/tmp")))
+     ("t" "/tmp"          "/tmp")))
   (dirvish-attributes '(subtree-state nerd-icons file-size vc-state git-msg))
   (dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir))
   (dirvish-mode-line-format '(:left (sort file-time symlink) :right (omit yank index)))
@@ -26,7 +25,6 @@
   :config
   (+nvmap! :keymaps 'dirvish-mode-map
     "?"          '(dirvish-dispatch                   :wk "Dispatch")
-    "a"          '(dirvish-quick-access               :wk "Quick Access")
     "f"          '(dirvish-file-info-menu             :wk "File info menu")
     "q"          '(dirvish-quit                       :wk "Quit")
     "s"          '(dirvish-subtree-toggle             :wk "Toggle subtree")
@@ -41,6 +39,7 @@
     [remap dired-do-redisplay]          '(dirvish-ls-switches-menu  :wk "LS switches menu"))
 
   (+map-local! :keymaps 'dirvish-mode-map
+    "g" '(dirvish-quick-access    :wk "Quick Access")
     "d" '(+dired-copy-dirpath-as-kill  :wk "Yank dir path")
     "f" '(dirvish-copy-file-name  :wk "Yank filename")
     "F" '(dirvish-copy-file-path  :wk "Yank file path")
