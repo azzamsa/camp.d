@@ -76,11 +76,16 @@
   :straight (:type built-in)
   :mode "\\.rs\\'")
 
+(use-package typescript-ts-mode
+  :straight (:type built-in)
+  :mode "\\.ts\\'")
+
 (use-package web-mode
   :straight t
   :defer t
   :mode ("\\.njk\\'"
-         "\\.svelte\\'"))
+         "\\.svelte\\'"
+         "\\.vue\\'"))
 
 (use-package lua-mode :straight t)
 (use-package fish-mode :straight t)
