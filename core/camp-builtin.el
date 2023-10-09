@@ -26,7 +26,7 @@
 
 (use-package dired
   :straight (:type built-in)
-  :after evil evil-collection camp-loaded
+  :after dirvish evil evil-collection camp-loaded
   :hook (dired-mode . dired-omit-mode)
   :init
   (+nvmap! :keymaps 'dired-mode-map
