@@ -16,7 +16,9 @@
           ;; generated files, caches or local pkgs
           ;; `cdata': container data
           ;; `target': rust generated directory
-          "^\\(?:node_modules\\|eln-cache\\|target\\|cdata\\|vendor\\|.\\(project\\|cask\\|yardoc\\|sass-cache\\)\\)$"
+          "^\\(?:eln-cache\\|vendor\\|.\\(project\\|projectile\\|env\\|example.env\\|sqlx\\|netlify\\|parcel-cache\\)\\)$"
+          "^\\(?:target\\|dist\\|cdata\\|pnpm-lock.yaml\\|.\\(gitignore\\|gitattributes\\|gitmodules\\|github\\|dockerignore\\)\\)$"
+          "^\\(?:node_modules\\|target\\|_\\(build\\|cache\\)\\)$"
           ;; org-mode folders
           "^\\.\\(?:sync\\|export\\|attach\\)$"
           ;; temp files
