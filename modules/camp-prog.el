@@ -32,6 +32,8 @@
         ;; shut down if all buffer killed
         lsp-keep-workspace-alive nil
 
+        lsp-session-file (expand-file-name "lsp-session" camp-cache-dir)
+
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-server-display-inlay-hints t
         lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial"
