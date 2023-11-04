@@ -85,8 +85,7 @@
 (use-package web-mode
   :straight t
   :defer t
-  :mode ("\\.njk\\'"
-         "\\.svelte\\'"
+  :mode ("\\.njk\\'" "\\.svelte\\'" "\\.html\\'"
          "\\.vue\\'"))
 
 (use-package lua-mode :straight t)
