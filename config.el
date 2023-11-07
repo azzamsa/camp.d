@@ -12,7 +12,6 @@
 ;; UI
 ;;
 
-(setq camp-theme 'doom-dracula)
 (setq camp-fonts '(:font-family "Iosevka Nerd Font"
                                     :font-size 18
                                     :variable-pitch-font-family "Iosevka Nerd Font"
