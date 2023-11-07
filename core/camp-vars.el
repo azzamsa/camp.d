@@ -33,11 +33,6 @@
   :group 'camp-keybinding
   :type 'string)
 
-(defcustom camp-theme 'doom-one
-  "The theme of camp."
-  :group 'camp-ui
-  :type 'symbol)
-
 (defcustom camp-fonts nil
   "Fonts to use within camp."
   :group 'camp-ui
