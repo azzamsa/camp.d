@@ -38,6 +38,12 @@
     "o"          '(dired-up-directory                 :wk "Up directory"))
   :config
   (setopt
+   ;; always delete and copy recursively
+   dired-recursive-deletes 'always
+   dired-recursive-copies 'always
+   ;; if there is a dired buffer displayed in the next window, use its
+   ;; current subdir, instead of the current subdir of this dired buffer
+   dired-dwim-target t
    ;; Keep up to 5 versions when cleaning a directory
    dired-kept-versions 5
    ;; Sort by modified time
