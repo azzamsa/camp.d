@@ -180,7 +180,7 @@
     "wU"    '(winner-redo             :wk "Redo window config")
     "wo"    '(doom/window-enlargen    :wk "Enlarge window")
 
-    ;; ======  Mode specific a.k.a. "local leader" ======
+    ;; ===  Mode specific a.k.a. "local leader" ===
     "m"   '(nil :wk "mode-specific"))
 
   ;; To handle repeated "SPC u" like repeated "C-u"

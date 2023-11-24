@@ -5,8 +5,15 @@
 (set-charset-priority 'unicode)
 (set-default-coding-systems 'utf-8)
 
+;; === Configure advance features ===
+;; I never use overwrite-mode.
+(put 'overwrite-mode 'disabled t)
+
+(put 'downcase-region 'disabled nil)
+
+
 (setopt
- ;; ====== Default directories for builtin packages ======
+ ;; === Default directories for builtin packages ===
  auto-insert-directory (+ensure-directory camp-var-dir "auto-insert/")
  auto-save-list-file-prefix (+ensure-directory camp-var-dir "auto-save/")
  backup-directory-alist (list (cons "." (+ensure-directory camp-var-dir "backup/")))
@@ -15,10 +22,10 @@
  save-place-file (concat camp-var-dir "save-place.el")
  savehist-file (concat camp-var-dir "savehist.el")
 
- ;; ====== Additional directories for non-builtin but common packages ======
+ ;; === Additional directories for non-builtin but common packages ===
  pcache-directory (concat camp-cache-dir "pcache/")
 
- ;; ====== Default behavior ======
+ ;; === Default behavior ===
  ;; Inhibit startup message
  inhibit-startup-message t
  ;; Do not ring
@@ -68,7 +75,7 @@
  ;; More intuitive buffer naming style
  uniquify-buffer-name-style 'forward
 
- ;; ====== Performances ======
+ ;; === Performances ===
  ;; Don’t compact font caches during GC
  inhibit-compacting-font-caches t
  ;; Increase single chunk bytes to read from subprocess (default 4096)
@@ -80,7 +87,7 @@
                            ;; If an error occured, fallback to the default value
                            (error read-process-output-max))
 
- ;; ====== Aesthetics and UI ======
+ ;; === Aesthetics and UI ===
  ;; Do force frame size to be a multiple of char size
  frame-resize-pixelwise t
  ;; Stretch cursor to the glyph width
@@ -99,7 +106,7 @@
  window-divider-default-bottom-width 2
  window-divider-default-right-width 2
 
- ;; ====== Undo ======
+ ;; === Undo ===
  ;; 10MB (default is 160kB)
  undo-limit 10000000
  ;; 50MB (default is 240kB)
@@ -107,7 +114,7 @@
  ;; 150MB (default is 24MB)
  undo-outer-limit 150000000
 
- ;; ====== Editing ======
+ ;; === Editing ===
  ;; Hitting TAB behavior
  tab-always-indent 'complete
  ;; End files with newline
@@ -117,7 +124,7 @@
  ;; Enable Drag-and-Drop of regions from Emacs to external programs
  mouse-drag-and-drop-region-cross-program t
 
- ;; ====== Backups ======
+ ;; === Backups ===
  ;; Disable lockfiles
  create-lockfiles nil
  ;; Enable making backup files
@@ -133,7 +140,7 @@
  ;; Keep up to 5 new versions of each file
  kept-new-versions 5
 
- ;; ====== Scrolling ======
+ ;; === Scrolling ===
  ;; Do not adjust window-vscroll to view tall lines. Fixes some lag issues see:
  ;; emacs.stackexchange.com/a/28746
  auto-window-vscroll nil
@@ -156,7 +163,7 @@
  ;; Make mouse scroll a little faster horizontally
  mouse-wheel-scroll-amount-horizontal 2
 
- ;; ====== Auto-Saving, sessions ======
+ ;; === Auto-Saving, sessions ===
  ;; Enable auto-save (use `recover-file' or `recover-session' to recover)
  auto-save-default t
  ;; Include big deletions
@@ -169,7 +176,7 @@
    (".*" ,auto-save-list-file-prefix t)))
 
 (setq-default
- ;; ====== Buffer-local variables ======
+ ;; === Buffer-local variables ===
  ;; Display long lines
  truncate-lines nil
  ;; Default fill column width
@@ -185,7 +192,7 @@
  ;; Small tab is enough!
  tab-width 2)
 
-;; ====== Misc hooks and advices ======
+;; === Misc hooks and advices ===
 ;; Advice `emacs-session-filename' to ensure creating "session.ID" files in
 ;; a sub-directory
 (with-eval-after-load 'x-win
@@ -205,11 +212,11 @@
    (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
      (abort-recursive-edit))))
 
-;; ====== Tweaks on file save ======
+;; === Tweaks on file save ===
 ;; Make scripts (files starting wiht shebang "#!") executable when saved
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
-;; ====== Modes enabled locally, mainly for `prog-mode', `conf-mode' and `text-mode' ======
+;; === Modes enabled locally, mainly for `prog-mode', `conf-mode' and `text-mode' ===
 ;; Show line numbers
 (add-hook 'prog-mode-hook  #'display-line-numbers-mode)
 (add-hook 'conf-mode-hook  #'display-line-numbers-mode)
@@ -228,7 +235,7 @@
 (add-hook 'text-mode-hook  #'+show-trailing-whitespace-h)
 
 (with-eval-after-load 'camp-loaded
-  ;; ====== Modes enabled globally ======
+  ;; === Modes enabled globally ===
   ;; Display divider between windows
   (window-divider-mode 1)
 
