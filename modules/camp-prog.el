@@ -98,9 +98,16 @@
 
 (use-package web-mode
   :straight t
-  :defer t
   :mode ("\\.njk\\'" "\\.svelte\\'" "\\.html\\'"
          "\\.vue\\'"))
+
+(use-package emmet-mode
+  :straight t
+  :hook (web-mode . emmet-mode)
+  :after web-mode)
+
+(use-package apheleia
+  :straight t)
 
 (use-package lua-mode :straight t)
 (use-package fish-mode :straight t)

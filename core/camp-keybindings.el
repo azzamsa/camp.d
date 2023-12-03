@@ -84,6 +84,7 @@
     "c"   '(nil                           :wk "code")
     "ca"  '(lsp-execute-code-action       :wk "LSP Execute code action")
     "cd"  '(lsp-find-definition           :wk "Jump to definition")
+    "cf"  '(apheleia-format-buffer        :wk "Format buffer")
     "cj"  '(consult-lsp-symbols           :wk "Jump to symbol in current workspace")
     "cJ"  `(,(+cmd!! (consult-lsp-symbols 'all-workspaces)) :wk "Jump to symbol in any workspace")
     "cr"  '(lsp-rename                    :wk "LSP Rename")
