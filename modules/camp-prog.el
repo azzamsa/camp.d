@@ -19,7 +19,8 @@
   :commands (lsp lsp-deferred)
   :hook ((before-save . lsp-format-buffer)
          (before-save . lsp-organize-imports))
-  :hook (rust-ts-mode . lsp-deferred)
+  :hook ((rust-ts-mode . lsp-deferred)
+         (web-mode . lsp-deferred))
   :config
   ;; Disable invasive lsp-mode features
   (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
@@ -51,6 +52,19 @@
   (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
         ;; redundant with K
         lsp-ui-doc-enable nil))
+
+(use-package lsp-tailwindcss
+  :straight t
+  :after lsp-mode
+  :init
+  ;; Specify lsp-tailwindcss as add-on so it can work with other language servers.
+  (setq lsp-tailwindcss-add-on-mode t)
+  :config
+  (setq lsp-tailwindcss-major-modes '(html-mode sgml-mode mhtml-mode web-mode css-mode))
+  ;; LSP-mode doesn't know what is njk producing `Unable to calculate the languageId for buffer …'
+  (add-to-list 'lsp-language-id-configuration '(".*\\.njk$" . "html"))
+  (add-to-list 'lsp-language-id-configuration '(".*\\.vue$" . "html"))
+  (add-to-list 'lsp-language-id-configuration '(".*\\.svelte$" . "html")))
 
 (use-package editorconfig :straight t)
 

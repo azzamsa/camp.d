@@ -52,13 +52,6 @@
   ;; to enable multi-language spell checking.
   (+spell-fu-register-dictionaries! "en" "id"))
 
-(use-package lsp-tailwindcss
-  :straight t
-  :after web-mode
-  :config
-  ;; LSP-mode doesn't know what is njk producing `Unable to calculate the languageId for buffer …'
-  (add-to-list 'lsp-language-id-configuration '(".*\\.njk$" . "html")))
-
 (use-package ron-mode
   :straight t
   :defer t
