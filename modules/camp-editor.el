@@ -5,12 +5,15 @@
   :straight t
   :after camp-loaded
   :config
-  (add-to-list 'super-save-triggers 'vertico)
-  (add-to-list 'super-save-triggers 'magit)
-  (add-to-list 'super-save-triggers 'find-file)
-  (add-to-list 'super-save-triggers 'winner-undo)
+  (setq super-save-auto-save-when-idle t)
+
+  (add-to-list 'super-save-triggers 'magit-status)
+  (add-to-list 'super-save-triggers 'consult-buffer)
+  (add-to-list 'super-save-triggers 'consult-recent-file)
 
   (setq super-save-all-buffers t)
+  ;; Save silently
+  (setq super-save-silent t)
   ;; Need to explicitly load the mode
   (super-save-mode +1))
 
