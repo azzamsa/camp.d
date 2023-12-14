@@ -37,6 +37,9 @@
 
   ;; Relative time is hard to pin point.
   (setq magit-log-margin '(t "%Y-%b-%d %I:%M %p " magit-log-margin-width t 18))
+
+  ;; Default args
+  (setq transient-values '((magit-rebase "--autosquash" "--autostash" "--committer-date-is-author-date")))
   :custom
   (magit-diff-refine-hunk t)
   (magit-revision-show-gravatars t)
