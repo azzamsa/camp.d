@@ -9,6 +9,8 @@
   (add-to-list 'super-save-triggers 'magit)
   (add-to-list 'super-save-triggers 'find-file)
   (add-to-list 'super-save-triggers 'winner-undo)
+
+  (setq super-save-all-buffers t)
   ;; Need to explicitly load the mode
   (super-save-mode +1))
 
