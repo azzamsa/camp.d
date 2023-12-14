@@ -3,7 +3,7 @@
 ;; It is the 21st century, should I save file manually?
 (use-package super-save
   :straight t
-  :defer 3
+  :after camp-loaded
   :config
   (add-to-list 'super-save-triggers 'vertico)
   (add-to-list 'super-save-triggers 'magit)

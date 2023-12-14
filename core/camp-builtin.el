@@ -154,7 +154,7 @@
   (recentf-mode 1))
 
 (use-package desktop
-  :defer 2
+  :after camp-loaded
   :config
   (setopt
    desktop-dirname (+ensure-directory camp-var-dir "desktop/")
