@@ -10,34 +10,28 @@ jobs:
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install latest just release
-        uses: taiki-e/install-action@just
+      - uses: taiki-e/install-action@just
+      - uses: taiki-e/install-action@dprint
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: typos-cli
 
-      - name: Install latest dprint release
-        uses: taiki-e/install-action@dprint
+      - run:  just check
 
-      - name: Ensure `fmt` has been run
-        run:  just fmt-check
-
-  test:
-    name: ${{ matrix.job.os }} (${{ matrix.job.emacs_version }})
-    runs-on: ${{ matrix.job.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        job:
-          - { os: ubuntu-22.04, emacs_version: snapshot }
-
+  msv:
+    name: Minimum supported version
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v3
+
+    - uses: actions/checkout@v4
       with:
         path: .emacs.d
 
     - uses: purcell/setup-emacs@master
       with:
-        version: ${{ matrix.job.emacs_version }}
+        version: 29.1
 
     - name: Check emacs version
       run: emacs --version
