@@ -19,7 +19,7 @@
                                     :unicode-font-family "Twemoji"))
 
 ;;
-;; Buit-in
+;; Built-in
 ;;
 
 (with-eval-after-load 'company
