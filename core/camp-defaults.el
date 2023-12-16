@@ -84,7 +84,7 @@
                              (with-temp-buffer
                                (insert-file-contents "/proc/sys/fs/pipe-max-size")
                                (string-to-number (buffer-string)))
-                           ;; If an error occured, fallback to the default value
+                           ;; If an error occurred, fallback to the default value
                            (error read-process-output-max))
 
  ;; === Aesthetics and UI ===
@@ -213,7 +213,7 @@
      (abort-recursive-edit))))
 
 ;; === Tweaks on file save ===
-;; Make scripts (files starting wiht shebang "#!") executable when saved
+;; Make scripts (files starting with shebang "#!") executable when saved
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
 ;; === Modes enabled locally, mainly for `prog-mode', `conf-mode' and `text-mode' ===

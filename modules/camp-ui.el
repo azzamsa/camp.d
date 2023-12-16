@@ -82,7 +82,7 @@ Invoke again to revert to the window configuration before it was activated."
   :init
   (defun aza/dashboard-insert-quote (list-size)
     "Inserts a random non-comment quote from the 'quotes' file into the dashboard."
-    (dashboard-insert-heading "Quote of the Day:" nil (all-the-icons-faicon "commenting-o"))
+    (dashboard-insert-heading "Quote of the Day:" nil (all-the-icons-faicon "commenting-o" :face 'dashboard-heading))
     (insert "\n")
     (let* ((lines (with-temp-buffer
                     (insert-file-contents (concat camp-etc-dir "quotes"))
@@ -110,10 +110,10 @@ Invoke again to revert to the window configuration before it was activated."
                                (projects . dashboard-insert-projects)
                                (bookmarks . dashboard-insert-bookmarks)))
   :config
-  ;; Ensure setting the keybindings before openning the dashboard
+  ;; Ensure setting the keybindings before opening the dashboard
   (evil-collection-dashboard-setup)
 
-  ;; Avoid openning the dashboard when Emacs starts with an open file.
+  ;; Avoid opening the dashboard when Emacs starts with an open file.
   (unless (cl-some #'buffer-file-name (buffer-list))
     (dashboard-open)))
 

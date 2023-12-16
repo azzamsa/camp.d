@@ -4,13 +4,13 @@
 ;; Increase the GC threshold for faster startup
 (setq gc-cons-threshold (* 64 1024 1024))
 
-;; Add direcotries to `load-path'
+;; Add directories to `load-path'
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 
 (require 'camp-vars)
 (require 'camp-utils)
 
-;; Syncronization point!
+;; Synchronization point!
 ;; Profile emacs startup and trigger `camp-loaded' 5s after loading Emacs
 (add-hook
  'emacs-startup-hook

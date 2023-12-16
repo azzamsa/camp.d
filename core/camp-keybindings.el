@@ -110,7 +110,7 @@
     "h"   '(nil                :wk "help")
     "hf"  '(helpful-function   :wk "Describe function")
     "hk"  '(helpful-key        :wk "Describe key")
-    "ho"  '(helpful-symbol     :wk "Describe anyhting")
+    "ho"  '(helpful-symbol     :wk "Describe anything")
     "hv"  '(helpful-variable   :wk "Describe variable")
 
    ;;; <leader> i --- insert
