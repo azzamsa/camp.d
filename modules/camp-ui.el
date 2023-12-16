@@ -11,10 +11,10 @@
   (svg-lib-icons-dir (expand-file-name "svg-lib" camp-cache-dir))) ; Change cache dir
 
 ;; Themes
-(use-package doom-themes
-  :straight t
+(use-package catppuccin-theme
+  :straight (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
   :config
-  (load-theme 'doom-dracula t))
+  (load-theme 'catppuccin :no-confirm))
 
 ;; Modeline
 (use-package doom-modeline
