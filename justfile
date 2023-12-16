@@ -5,10 +5,10 @@ _default:
     just --list --unsorted
 
 # Tasks to make the code-base comply with the rules. Mostly used in git hooks.
-comply: fmt
+comply: fmt lint
 
 # Check if the repository comply with the rules and ready to be pushed.
-check: fmt-check
+check: fmt-check lint
 
 # Format the codebase.
 fmt:
@@ -17,6 +17,10 @@ fmt:
 # Check is the codebase properly formatted.
 fmt-check:
     dprint check --config configs/dprint.json
+
+# Lint the codebase.
+lint:
+    typos --config configs/typos.toml
 
 # Create a new release. Example `just release v2.2.0`
 release version:
