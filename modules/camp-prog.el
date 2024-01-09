@@ -34,15 +34,7 @@
         lsp-keep-workspace-alive nil
 
         lsp-session-file (expand-file-name "lsp-session" camp-cache-dir)
-
-        lsp-rust-analyzer-cargo-watch-command "clippy"
-        lsp-rust-analyzer-server-display-inlay-hints t
-        lsp-rust-analyzer-display-lifetime-elision-hints-enable "skip_trivial"
-        lsp-rust-analyzer-display-chaining-hints t
-        lsp-rust-analyzer-display-lifetime-elision-hints-use-parameter-names nil
-        lsp-rust-analyzer-display-closure-return-type-hints t
-        lsp-rust-analyzer-display-parameter-hints nil
-        lsp-rust-analyzer-display-reborrow-hints nil))
+        lsp-completion-provider :none))
 
 (use-package lsp-ui
   :straight t

@@ -12,9 +12,9 @@
 ;; UI
 ;;
 
-(setq camp-fonts '(:font-family "Iosevka Nerd Font"
+(setq camp-fonts '(:font-family "JetBrainsMono Nerd Font"
                                     :font-size 18
-                                    :variable-pitch-font-family "Iosevka Nerd Font"
+                                    :variable-pitch-font-family "JetBrainsMono Nerd Font"
                                     :variable-pitch-font-size 18
                                     :unicode-font-family "Twemoji"))
 
