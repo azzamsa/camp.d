@@ -174,12 +174,15 @@
     "wi"         '(evil-window-right   :wk "Move to right window")
 
     "w="    '(balance-windows         :wk "Balance windows")
-    "w C-o" '(delete-other-windows    :wk "Delete other windows")
     "wD"    '(delete-windows-on       :wk "Delete windows on")
     "wh"    '(maximize-window         :wk "Maximize window")
     "wu"    '(winner-undo             :wk "Undo window config")
     "wU"    '(winner-redo             :wk "Redo window config")
-    "wo"    '(doom/window-enlargen    :wk "Enlarge window")
+
+    ;; `w o` is definitely easier than `w C-o`. I keep this for Doom compatibility.
+    "w C-o" '(delete-other-windows    :wk "Delete other windows")
+    "wo"    '(delete-other-windows    :wk "Delete other windows")
+    ;; "wo"    '(doom/window-enlargen    :wk "Enlarge window")
 
     ;; ===  Mode specific a.k.a. "local leader" ===
     "m"   '(nil :wk "mode-specific"))
