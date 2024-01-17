@@ -1,5 +1,10 @@
 #!/usr/bin/env -S just --justfile
 
+alias f := fmt
+alias l := lint
+alias c := comply
+alias k := check
+
 # List available commands.
 _default:
     just --list --unsorted
