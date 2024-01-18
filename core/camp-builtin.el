@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package transient
-  :straight (:type built-in)
+  :straight t
   :config
   ;; Map ESC and q to quit transient
   (keymap-set transient-map "<escape>" 'transient-quit-one)

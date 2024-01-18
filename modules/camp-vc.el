@@ -2,7 +2,7 @@
 
 (use-package magit
   :straight t
-  :after camp-loaded
+  :after transient camp-loaded
   :init
   (+map! :infix "g"
     "g" #'magit-status
