@@ -12,22 +12,10 @@
 
 ;; Themes
 
-(use-package catppuccin-theme
-  :straight (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
+(use-package doom-themes
+  :straight t
   :config
-
-  ;; During the day
-  ;; (setq catppuccin-flavor 'latte)
-
-  ;; During the night
-  (setq catppuccin-flavor 'mocha)
-
-  ;; Mocha colors with macchiato background make it more readable
-  (catppuccin-set-color 'base "#24273a" 'mocha)
-  (catppuccin-set-color 'surface0 "#363a4f" 'mocha) ;  macchiato: surface0
-
-  (catppuccin-reload)
-  (load-theme 'catppuccin :no-confirm))
+  (load-theme 'doom-tokyo-night t))
 
 ;; Modeline
 (use-package doom-modeline
