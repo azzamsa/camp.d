@@ -192,7 +192,7 @@
  ;; Small tab is enough!
  tab-width 2)
 
-;; === Misc hooks and advices ===
+;; === Misc hooks and advice ===
 ;; Advice `emacs-session-filename' to ensure creating "session.ID" files in
 ;; a sub-directory
 (with-eval-after-load 'x-win
