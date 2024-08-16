@@ -24,6 +24,7 @@
 
   ;; Mocha colors with macchiato background make it more readable
   (catppuccin-set-color 'base "#24273a" 'mocha)
+  (catppuccin-set-color 'surface0 "#363a4f" 'mocha) ;  macchiato: surface0
 
   (catppuccin-reload)
   (load-theme 'catppuccin :no-confirm))
