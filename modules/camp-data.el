@@ -37,4 +37,12 @@
   :straight t
   :defer t)
 
+(use-package nushell-mode
+  :straight t
+  :defer t)
+
+(use-package hledger-mode
+  :straight t
+  :defer t)
+
 (provide 'camp-data)
