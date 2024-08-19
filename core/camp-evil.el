@@ -41,11 +41,10 @@
   :config
   (evil-collection-init))
 
-(use-package evil-colemak-basics
-  :straight t
+(use-package evil-miryoku
+  :straight (evil-miryoku :local-repo "~/playground/evil-miryoku/")
   :init
-  (setq evil-colemak-basics-layout-mod `mod-dh)
-  (global-evil-colemak-basics-mode))
+  (global-evil-miryoku-mode))
 
 (use-package evil-snipe
   :straight t
