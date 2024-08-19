@@ -55,9 +55,11 @@
   :straight t
   :after camp-loaded)
 
-(use-package all-the-icons-completion
+(use-package nerd-icons-completion
   :straight t
-  :after camp-loaded)
+  :after marginalia
+  :config
+  (nerd-icons-completion-mode))
 
 (use-package marginalia
   :straight t
@@ -66,7 +68,7 @@
   (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
 
   ;; Icons integration
-  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
   (marginalia-mode 1))
 
 (use-package orderless
