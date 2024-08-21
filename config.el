@@ -6,7 +6,7 @@
 
 (setq user-full-name "azzamsa"
       ;; prevent search engines from indexing the user's email address
-      user-mail-address (concat "vcs" "@" "azzamsa" "." "com"))
+      user-mail-address (concat "noreply" "@" "azzamsa" "." "com"))
 
 ;;
 ;; UI
