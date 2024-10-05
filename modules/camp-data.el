@@ -41,8 +41,12 @@
   :straight t
   :defer t)
 
-(use-package hledger-mode
+(use-package ledger-mode
   :straight t
   :defer t)
+
+(use-package flycheck-hledger
+  :after (flycheck ledger-mode)
+  :demand t)
 
 (provide 'camp-data)
