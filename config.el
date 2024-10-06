@@ -13,9 +13,9 @@
 ;;
 
 (setq camp-fonts '(:font-family "JetBrainsMono Nerd Font"
-                                    :font-size 18
+                                    :font-size 19
                                     :variable-pitch-font-family "JetBrainsMono Nerd Font"
-                                    :variable-pitch-font-size 18
+                                    :variable-pitch-font-size 19
                                     :unicode-font-family "Twemoji"))
 
 ;;
@@ -27,6 +27,16 @@
 
 (with-eval-after-load 'eldoc
   (setq eldoc-idle-delay 3))
+
+
+;;
+;; Custom Keybindings
+;;
+
+(keymap-global-set "C-s" (lambda ()
+                           (interactive)
+                           (basic-save-buffer)
+                           (delete-trailing-whitespace)))
 
 
 ;;
