@@ -153,25 +153,4 @@
 
   (recentf-mode 1))
 
-(use-package desktop
-  :after camp-loaded
-  :config
-  (setopt
-   desktop-dirname (+ensure-directory camp-var-dir "desktop/")
-   desktop-path (list desktop-dirname)
-   ;; File name to use when saving desktop
-   desktop-base-file-name "emacs-session.el"
-   ;; File name to use as a lock
-   desktop-base-lock-name (concat desktop-base-file-name ".lock")
-   ;; Load only 5 buffers immediately, the remaining buffers will be loaded lazily
-   desktop-restore-eager 5
-   ;; Avoid writing contents unchanged between auto-saves
-   desktop-file-checksum t
-   ;; Save buffer status
-   desktop-save-buffer t)
-
-  ;; Save Emacs state from one session to another
-  (desktop-save-mode 1))
-
-
 (provide 'camp-builtin)
