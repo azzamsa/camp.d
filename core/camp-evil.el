@@ -31,6 +31,7 @@
     "wr" '(evil-window-rotate-downwards :wk "Rotate downwards")
     "wR" '(evil-window-rotate-upwards :wk "Rotate upwards")
     "w+" '(evil-window-increase-width :wk "Increase width")
+
     "w-" '(evil-window-decrease-width :wk "Decrease width"))
   :config
   (evil-mode 1))
@@ -41,18 +42,28 @@
   :config
   (evil-collection-init))
 
-(use-package evil-miryoku
-  :straight (evil-miryoku :local-repo "~/playground/evil-miryoku/")
-  :init
-  (global-evil-miryoku-mode))
-
 (use-package evil-snipe
   :straight t
+  :after evil
+  :commands evil-snipe-local-mode evil-snipe-override-local-mode
+  :config
+  (setq evil-snipe-smart-case t
+        evil-snipe-scope 'line
+        evil-snipe-auto-scroll nil
+        evil-snipe-repeat-scope 'visible
+        evil-snipe-char-fold t)
+  :config
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
+
+(use-package evil-miryoku
+  :straight (evil-miryoku :local-repo "~/projects/evil-miryoku")
+  ;; :straight (evil-miryoku :type git :host github :repo "azzamsa/evil-miryoku")
   :after evil camp-loaded
-  :custom
-  (evil-snipe-scope 'buffer)
-  (evil-snipe-smart-case t)
-  (evil-snipe-auto-scroll t))
+  :init
+  (setq evil-colemak-basics-char-jump-commands 'evil-snipe)
+  :init
+  (global-evil-miryoku-mode))
 
 (use-package evil-avy
   :straight t
@@ -76,18 +87,6 @@
     "S" '(evil-Surround-edit :wk "Surround edit"))
   :config
   (global-evil-surround-mode 1))
-
-(use-package evil-snipe
-  :straight t
-  :commands evil-snipe-local-mode evil-snipe-override-local-mode
-  :init
-  (setq evil-snipe-smart-case t
-        evil-snipe-scope 'line
-        evil-snipe-repeat-scope 'visible
-        evil-snipe-char-fold t)
-  :config
-  (evil-snipe-mode +1)
-  (evil-snipe-override-mode +1))
 
 (use-package evil-nerd-commenter
   :straight t
