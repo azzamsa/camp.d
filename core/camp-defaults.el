@@ -261,8 +261,6 @@
   ;; Better handling for files with so long lines
   (global-so-long-mode 1)
   ;; Global SubWord mode
-  (global-subword-mode 1)
-  ;; Highlingt current line
-  (global-hl-line-mode 1))
+  (global-subword-mode 1))
 
 (provide 'camp-defaults)
