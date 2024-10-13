@@ -12,22 +12,18 @@
 
 ;; Themes
 
-(use-package catppuccin-theme
-  :straight (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
+(use-package modus-themes
+  :straight t
   :config
-  (setq catppuccin-flavor 'mocha)
-  ;; Mocha colors with macchiato background make it more readable
-  (catppuccin-set-color 'base "#24273a" 'mocha)
-  (catppuccin-set-color 'surface0 "#363a4f" 'mocha) ;  macchiato: surface0
-  (catppuccin-reload)
-  (load-theme 'catppuccin :no-confirm))
+  (load-theme 'modus-vivendi t))
 
 ;; Modeline
 (use-package doom-modeline
   :straight t
   :config
   (setq doom-modeline-bar-width 5
-        doom-modeline-height 37)
+        doom-modeline-height 37
+        doom-modeline-buffer-encoding nil)
   (doom-modeline-mode 1))
 
 (use-package visual-fill-column
