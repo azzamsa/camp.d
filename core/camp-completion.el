@@ -1,13 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package cape
-  :straight t
-  :after camp-loaded
-  :config
-  (add-to-list 'completion-at-point-functions #'cape-file) ;; complete file names
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+;;
+;; In-Buffer completion
 
 (use-package corfu
+  ;; Enchanre built-in In-Buffer completion.
+  ;; Company -> Corfu.
   :straight t
   :after camp-loaded
   :config
@@ -31,7 +29,17 @@
   (add-hook 'minibuffer-setup-hook #'+corfu-enable-in-minibuffer)
   (global-corfu-mode 1))
 
+(use-package cape
+  ;; Completion at point extensions
+  ;; Complete filename, dabbrev, emojis, etc.
+  :straight t
+  :after corfu
+  :config
+  (add-to-list 'completion-at-point-functions #'cape-file) ;; complete file names
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+
 (use-package kind-icon
+  ;; Adds icons to In-Buffer completion.
   :straight t
   :after corfu
   :custom
@@ -42,7 +50,18 @@
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)) ; Enable `kind-icon'
 
+;;
+;; Minibuffer completion.
+
+(use-package nerd-icons-completion
+  ;; Adds icons to Minifuffer completion.
+  :straight t
+  :after marginalia
+  :config
+  (nerd-icons-completion-mode))
+
 (use-package embark
+  ;; Actions during a Minibuffer completion session.
   :straight t
   :after camp-loaded
   :config
@@ -55,13 +74,8 @@
   :straight t
   :after camp-loaded)
 
-(use-package nerd-icons-completion
-  :straight t
-  :after marginalia
-  :config
-  (nerd-icons-completion-mode))
-
 (use-package marginalia
+  ;; Informative minibuffer annotations
   :straight t
   :after camp-loaded
   :config
@@ -72,6 +86,7 @@
   (marginalia-mode 1))
 
 (use-package orderless
+  ;; Filter `completion-at-point` and `completing-read` using regex, etc.
   :straight t
   :after camp-loaded
   :custom
@@ -79,6 +94,8 @@
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package vertico
+  ;; Better `completing-read` in minibuffer.
+  ;; Helm/Ivy/Ido -> Selectrum -> Vertico.
   :straight t
   :after camp-loaded
   :config
@@ -106,6 +123,7 @@
     (consult-ripgrep dir)))
 
 (use-package consult
+  ;; Enhance `Vertico (completing-read)` with live-priview, grouping, narrowing/filtering, etc.
   :straight t
   :after camp-loaded
   :custom
@@ -116,13 +134,11 @@
   :init
   (keymap-set minibuffer-local-map "C-r"   'consult-history)
   (keymap-set minibuffer-local-map "C-S-v" 'consult-yank-pop)
-  (keymap-global-set "C-s" 'consult-line)
-  (keymap-global-set "C-s" 'consult-line)
   (+map!
     [remap bookmark-jump]                 '(consult-bookmark        :wk "Jump to bookmark")
     [remap evil-show-marks]               '(consult-mark            :wk "Show marks")
     [remap evil-show-registers]           '(consult-register        :wk "Show registers")
-    [remap goto-line]                     '(consult-goto-line       :wk "Go to line")
+    [remap goto-line]                     '(consult-line            :wk "Go to line")
     [remap imenu]                         '(consult-imenu           :wk "Imenu")
     [remap Info-search]                   '(consult-info            :wk "Search in Info")
     [remap locate]                        '(consult-locate          :wk "Locate")
