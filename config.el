@@ -30,14 +30,10 @@
 
 
 ;;
-;; Custom Keybindings
+;; Custom Global Keybindings
 ;;
 
-(keymap-global-set "C-s" (lambda ()
-                           (interactive)
-                           (basic-save-buffer)
-                           (delete-trailing-whitespace)))
-
+(keymap-global-set "C-/" 'eat-toggle)
 
 ;;
 ;; Camp
