@@ -15,6 +15,12 @@
 (defun save-all-buffers-silently ()
   (save-some-buffers t))
 
+(defun save-buffers-and-clean ()
+  "Save buffers and delete trailing whitespaces"
+  (interactive)
+  (basic-save-buffer)
+  (delete-trailing-whitespace))
+
 ;;;###autoload
 (defun aza-kill-other-buffers ()
   "Kill all buffers but current buffer and special buffers.
