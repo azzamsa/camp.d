@@ -12,10 +12,11 @@
 
 ;; Themes
 
-(use-package modus-themes
-  :straight t
+(use-package catppuccin-theme
+  :straight (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
   :config
-  (load-theme 'modus-vivendi t))
+  (setq catppuccin-flavor 'mocha)
+  (load-theme 'catppuccin :no-confirm))
 
 ;; Modeline
 (use-package doom-modeline
