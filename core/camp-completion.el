@@ -122,8 +122,14 @@
   (let ((dir (file-truename default-directory)))
     (consult-ripgrep dir)))
 
+(use-package vertico-posframe
+  :straight t
+  :after vertico
+  :config
+  (vertico-posframe-mode 1))
+
 (use-package consult
-  ;; Enhance `Vertico (completing-read)` with live-priview, grouping, narrowing/filtering, etc.
+  ;; Enhance `Vertico (completing-read)` with live-preview, grouping, narrowing/filtering, etc.
   :straight t
   :after camp-loaded
   :custom
@@ -134,6 +140,7 @@
   :init
   (keymap-set minibuffer-local-map "C-r"   'consult-history)
   (keymap-set minibuffer-local-map "C-S-v" 'consult-yank-pop)
+  (keymap-global-set "C-s" 'consult-line)
   (+map!
     [remap bookmark-jump]                 '(consult-bookmark        :wk "Jump to bookmark")
     [remap evil-show-marks]               '(consult-mark            :wk "Show marks")
@@ -154,6 +161,8 @@
     "fr"   '(consult-recent-file          :wk "Recent files"))
   :config
   (setq-default completion-in-region-function #'consult-completion-in-region)
-  (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
+  (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode)
+  ;; Hide all special buffers
+  (setq consult-buffer-filter '("\\*.")))
 
 (provide 'camp-completion)
