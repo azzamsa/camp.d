@@ -14,6 +14,8 @@
   (setq super-save-all-buffers t)
   ;; Save silently
   (setq super-save-silent t)
+  ;; Enable deleting trailing white spaces before saving
+  (setq super-save-delete-trailing-whitespace t)
   ;; Need to explicitly load the mode
   (super-save-mode +1))
 
