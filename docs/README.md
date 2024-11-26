@@ -2,7 +2,7 @@
 
 ## Setting up other theme
 
-```emacs-lisp
+```lisp
 (use-package doom-themes
   :straight t
   :config
