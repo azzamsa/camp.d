@@ -1,3 +1,6 @@
 [files]
 extend-exclude = ["CHANGELOG.md"]
 
+[default.extend-words]
+# don't correct these false positives
+ot = "ot" # open-terminal
