@@ -12,9 +12,9 @@
 ;; UI
 ;;
 
-(setq camp-fonts '(:font-family "JetBrainsMono Nerd Font"
+(setq camp-fonts '(:font-family "0xProto Nerd Font"
                                     :font-size 19
-                                    :variable-pitch-font-family "JetBrainsMono Nerd Font"
+                                    :variable-pitch-font-family "0xProto Nerd Font"
                                     :variable-pitch-font-size 19
                                     :unicode-font-family "Twemoji"))
 
