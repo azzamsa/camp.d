@@ -95,7 +95,10 @@
 (use-package apheleia
   :straight t)
 
-(use-package lua-mode :straight t)
+(use-package lua-mode
+  :straight t
+  :mode ("\\.lua\\'"))
+
 (use-package fish-mode :straight t)
 
 (provide 'camp-prog)
