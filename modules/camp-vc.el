@@ -27,9 +27,6 @@
   (evil-set-initial-state 'git-commit-mode 'insert)
   (evil-set-initial-state 'git-rebase-mode 'insert)
 
-  ;; I love to have my backticks highlighted
-  (setq git-commit-major-mode 'markdown-mode)
-
   ;; Enable granular diff-highlights for all hunks
   ;; By default, changes are highlighted linewise for all but the selected hunk. This has performance reasons.
   ;; https://magit.vc/manual/magit/Performance.html
