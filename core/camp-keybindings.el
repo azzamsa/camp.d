@@ -115,6 +115,7 @@
 
    ;;; <leader> i --- insert
     "i"   '(nil :wk "insert")
+    "id"  '(today   :wk "Insert date")
 
     ;;; <leader> n --- notes
     "n"   '(nil :wk "notes")
