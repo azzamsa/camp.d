@@ -1,53 +1,53 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package dirvish
-  :straight t
-  :after dired camp-loaded
+  :straight (:host github :repo "hlissner/dirvish")
+  :after dired
   :init
-  (dirvish-override-dired-mode)
-  :custom
-  (dirvish-quick-access-entries
-   '(("h" "~/"            "Home")
-     ("l" "~/playground/" "Playgound")
-     ("p" "~/projects/"   "Projects")
-     ("o" "~/office/"     "Office")
-     ("t" "/tmp"          "/tmp")))
-  (dirvish-attributes '(subtree-state nerd-icons file-size vc-state git-msg))
-  (dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir))
-  (dirvish-mode-line-format '(:left (sort file-time symlink) :right (omit yank index)))
-  (dirvish-fd-default-dir "~/")
-  (dirvish-use-header-line t) ; 'global make header line span all panes
-  (dirvish-use-mode-line t)
-  :init
-  (+map!
-    ;; Open
-    "o-" '(dirvish :wk "Dired"))
+  (setq dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir))
   :config
   (+nvmap! :keymaps 'dirvish-mode-map
-    "?"          '(dirvish-dispatch                   :wk "Dispatch")
-    "f"          '(dirvish-file-info-menu             :wk "File info menu")
-    "q"          '(dirvish-quit                       :wk "Quit")
-    "s"          '(dirvish-subtree-toggle             :wk "Toggle subtree")
-    "TAB"        '(dirvish-subtree-toggle             :wk "Toggle subtree")
-    "X"          '(dired-do-flagged-delete            :wk "Flagged delete")
-    "x"          '(dired-do-delete                    :wk "Delete")
-    "y"          '(dirvish-yank-menu                  :wk "Yank menu")
+    "?"  '(dirvish-dispatch        :wk "Dispatch")
+    "q"  '(dirvish-quit            :wk "Quit")
+    "b"  '(dirvish-quick-access    :wk "Quick Access")
+    "f"  '(dirvish-file-info-menu  :wk "File info menu")
+    "p"  '(dirvish-yank  :wk "File info menu")
+    "z"  '(dirvish-history-jump  :wk "File info menu")
+    "h"  '(dired-up-directory  :wk "File info menu")
+    "s"  '(dirvish-subtree-toggle  :wk "Toggle subtree")
+    "TAB"'(dirvish-subtree-toggle  :wk "Toggle subtree")
+    "X"  '(dired-do-flagged-delete :wk "Flagged delete")
+    "x"  '(dired-do-delete         :wk "Delete")
+    "yl"  '(dirvish-copy-file-true-path     :wk "Yank menu")
+    "yn"  '(dirvish-copy-file-name       :wk "Yank menu")
+    "yp"  '(dirvish-copy-file-path       :wk "Yank menu")
+    "yy"  '(dired-do-copy       :wk "Yank menu"))
+  :config
+  ;; (evil-set-initial-state 'dirvish 'emacs)
+  (dirvish-override-dired-mode)
 
-    ;; I need to simple copy file in place with different name
-    ;; [remap dired-do-copy]               '(dirvish-yank-menu         :wk "Copy menu")
+  (setq dirvish-attributes '(nerd-icons subtree-state file-size vc-state git-msg))
+  (setq dirvish-quick-access-entries
+        '(("h" "~/"            "Home")
+          ("l" "~/playground/" "Playgound")
+          ("p" "~/projects/"   "Projects")
+          ("o" "~/office/"     "Office")
+          ("t" "/tmp"          "/tmp")))
+  (setq
+   dirvish-use-header-line 'global
+   dirvish-mode-line-format '(:left (evil-state sort file-time symlink) :right (omit yank index))
+   dirvish-use-mode-line t)
 
-    [remap dired-do-redisplay]          '(dirvish-ls-switches-menu  :wk "LS switches menu"))
-
-  (+map-local! :keymaps 'dirvish-mode-map
-    "g" '(dirvish-quick-access    :wk "Quick Access")
-    "d" '(+dired-copy-dirpath-as-kill  :wk "Yank dir path")
-    "f" '(dirvish-copy-file-name  :wk "Yank filename")
-    "F" '(dirvish-copy-file-path  :wk "Yank file path")
-    "h" '(dired-omit-mode         :wk "Omit uninteresting files")
-    "o" '(dirvish-quicksort       :wk "Toggle or edit sort order")))
+  (dirvish-define-mode-line evil-state ()
+    (cond
+     ((evil-normal-state-p) (propertize "🅝" 'face 'font-lock-string-face))
+     ((evil-emacs-state-p) (propertize "🅔" 'face 'font-lock-builtin-face))
+     ((evil-insert-state-p) (propertize "🅘" 'face 'font-lock-keyword-face))
+     ((evil-visual-state-p) (propertize "🅥" 'face 'font-lock-warning-face))
+     (t "🅤"))))
 
 (use-package dirvish-extras
-  :ensure nil
+  :straight (:host github :repo "hlissner/dirvish")
   :after dirvish)
 
 (provide 'camp-files)

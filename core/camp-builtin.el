@@ -26,28 +26,42 @@
 
 (use-package dired
   :straight (:type built-in)
-  :after dirvish evil evil-collection camp-loaded
   :hook (dired-mode . dired-omit-mode)
-  :init
-  (+nvmap! :keymaps 'dired-mode-map
-    ;; Can't rebind `dired-up-directory` to anything but `a` and `o`. Even if using `evil-collection-define-key`
-    ;; to set the default dired key or the key defined by evil-collection to `nil`.
-    ;; I browse mostly using one (right) hand. So `o` is more comfortable to press.
-    ;; [remap dired-sort-toggle-or-edit]   '(dirvish-quicksort         :wk "Toggle or edit sort order")
-    "a"          '(dired-up-directory                 :wk "Up directory")
-    "o"          '(dired-up-directory                 :wk "Up directory"))
+  :after camp-loaded
   :config
-  (setopt
-   ;; always delete and copy recursively
-   dired-recursive-deletes 'always
-   dired-recursive-copies 'always
-   ;; if there is a dired buffer displayed in the next window, use its
-   ;; current subdir, instead of the current subdir of this dired buffer
-   dired-dwim-target t
-   ;; Keep up to 5 versions when cleaning a directory
-   dired-kept-versions 5
-   ;; Sort by modified time
-   dired-listing-switches "-lt --almost-all --human-readable --group-directories-first --no-group --ignore=. --ignore=.."))
+  (evil-set-initial-state 'dired 'emacs)
+
+  (setq dired-dwim-target t  ; suggest a target for moving/copying intelligently
+        ;; don't prompt to revert, just do it
+        dired-auto-revert-buffer #'dired-buffer-stale-p
+        ;; Always copy/delete recursively
+        dired-recursive-copies  'always
+        dired-recursive-deletes 'top
+        ;; Ask whether destination dirs should get created when copying/removing files.
+        dired-create-destination-dirs 'ask))
+
+(defun ora-dired-up-directory ()
+  (interactive)
+  (let ((buffer (current-buffer)))
+    (dired-up-directory)
+    (unless (equal buffer (current-buffer))
+      (kill-buffer buffer))))
+
+(defun xah-dired-sort ()
+  "Sort dired dir listing in different ways.
+Prompt for a choice.
+URL `http://ergoemacs.org/emacs/dired_sort.html'
+Modified for my needs."
+  (interactive)
+  (let (sort-by arg)
+    (setq sort-by (completing-read "Sort by:" '( "date" "size" "name" "dir")))
+    (cond
+     ((equal sort-by "name") (setq arg "-Al"))
+     ((equal sort-by "date") (setq arg "-Al -t"))
+     ((equal sort-by "size") (setq arg "-Al -S"))
+     ((equal sort-by "dir") (setq arg "-Al --group-directories-first"))
+     (t (error "logic error 09535" )))
+    (dired-sort-other arg)))
 
 (use-package dired-x
   :straight (:type built-in)
@@ -98,9 +112,11 @@
   :straight (:type built-in)
   :after camp-loaded
   :demand t
-  :custom
-  (project-list-file (concat camp-var-dir "project-list.el"))
-  (project-vc-extra-root-markers '(".projectile.el" ".project.el" ".project")))
+  :config
+  (setq
+   project-list-file (concat camp-var-dir "project-list.el")
+   project-vc-extra-root-markers '(".projectile.el" ".project.el" ".project" ".jj")
+   project-ignores '("/run/")))
 
 (defun +project-from-dir (&optional dir)
   "Helper method to return project instance if DIR is a valid project."
@@ -144,6 +160,7 @@
                 "/\\.emacs\\.d/var/"
                 "eln-cache"
                 "/cache/"
+                "/run/"
                 ".cache/")
                (* any)
                (? (or "html" "pdf" "tex" "epub" "gz")))
