@@ -13,10 +13,10 @@
 ;;
 
 (setq camp-fonts '(:font-family "0xProto Nerd Font"
-                                    :font-size 19
-                                    :variable-pitch-font-family "0xProto Nerd Font"
-                                    :variable-pitch-font-size 19
-                                    :unicode-font-family "Twemoji"))
+                                :font-size 20
+                                :variable-pitch-font-family "0xProto Nerd Font"
+                                :variable-pitch-font-size 20
+                                :unicode-font-family "Twemoji"))
 
 ;;
 ;; Built-in
