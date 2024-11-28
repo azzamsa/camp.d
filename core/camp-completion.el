@@ -29,6 +29,12 @@
   (add-hook 'minibuffer-setup-hook #'+corfu-enable-in-minibuffer)
   (global-corfu-mode 1))
 
+(use-package nerd-icons-corfu
+  :straight t
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
 (use-package cape
   ;; Completion at point extensions
   ;; Complete filename, dabbrev, emojis, etc.
@@ -58,6 +64,7 @@
   :straight t
   :after marginalia
   :config
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
   (nerd-icons-completion-mode))
 
 (use-package embark

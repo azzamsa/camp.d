@@ -1,7 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
+;;
 ;; Icons
-(use-package all-the-icons
+
+(use-package nerd-icons
   :straight t)
 
 (use-package svg-lib
@@ -10,6 +12,7 @@
   :custom
   (svg-lib-icons-dir (expand-file-name "svg-lib" camp-cache-dir))) ; Change cache dir
 
+;;
 ;; Themes
 
 (use-package catppuccin-theme
@@ -92,7 +95,7 @@ Invoke again to revert to the window configuration before it was activated."
   :init
   (defun aza/dashboard-insert-quote (list-size)
     "Inserts a random non-comment quote from the 'quotes' file into the dashboard."
-    (dashboard-insert-heading "Quote of the Day:" nil (all-the-icons-faicon "commenting-o" :face 'dashboard-heading))
+    (dashboard-insert-heading "Quote of the Day:" nil (nerd-icons-faicon "nf-fa-commenting_o" :face 'dashboard-heading))
     (insert "\n")
     (let* ((lines (with-temp-buffer
                     (insert-file-contents (concat camp-etc-dir "quotes"))
@@ -120,6 +123,8 @@ Invoke again to revert to the window configuration before it was activated."
                                (projects . dashboard-insert-projects)
                                (bookmarks . dashboard-insert-bookmarks)))
   :config
+  (setq dashboard-icon-type 'nerd-icons)
+
   ;; Ensure setting the keybindings before opening the dashboard
   (evil-collection-dashboard-setup)
 
