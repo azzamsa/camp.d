@@ -16,6 +16,13 @@
   :straight (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
   :config
   (setq catppuccin-flavor 'mocha)
+
+  ;; `Overlay0` is too dim AA (3.35:1). `Overlay2` on base is (5.81:1).
+  ;; but `Overlay2` is too bright for a comment.
+  ;; Using `Subtext0` will get AAA, but it too similar to `Text`.
+  (catppuccin-set-color 'overlay0 "#7f849c" 'mocha)
+
+  (catppuccin-reload)
   (load-theme 'catppuccin :no-confirm))
 
 ;; Modeline
