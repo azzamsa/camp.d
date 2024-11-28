@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (defvar camp-lisp-modules
-  '(camp aza ui files project))
+  '(camp aza ui files project extra))
 
 (defvar camp-core-modules
   '(defaults bootstrap builtin keybindings evil completion os utils vars))

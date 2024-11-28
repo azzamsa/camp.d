@@ -93,17 +93,13 @@ Invoke again to revert to the window configuration before it was activated."
   :after evil evil-collection
   :demand t
   :init
-  (defun aza/dashboard-insert-quote (list-size)
-    "Inserts a random non-comment quote from the 'quotes' file into the dashboard."
+  (defun camp-dashboard-insert-quote (list-size)
+    "Insert a random quote into the dashboard."
     (dashboard-insert-heading "Quote of the Day:" nil (nerd-icons-faicon "nf-fa-commenting_o" :face 'dashboard-heading))
     (insert "\n")
-    (let* ((lines (with-temp-buffer
-                    (insert-file-contents (concat camp-etc-dir "quotes"))
-                    (split-string (buffer-string) "\n" t)))
-           (filtered-lines (cl-remove-if (lambda (line) (string-match-p "^\\s-*#" line)) lines))
-           (random-line (when filtered-lines
-                          (string-join (split-string (nth (random (length filtered-lines)) filtered-lines)) " "))))
-      (insert "    " random-line)))
+    (when camp-quotes
+      (let ((random-quote (nth (random (length camp-quotes)) camp-quotes)))
+        (insert "    " (propertize random-quote 'face 'bold) "\n"))))
   :custom
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
@@ -118,7 +114,7 @@ Invoke again to revert to the window configuration before it was activated."
                      (recents . 5)
                      (projects . 5)
                      (bookmarks . 5)))
-  (dashboard-item-generators '((daily-quote . aza/dashboard-insert-quote)
+  (dashboard-item-generators '((daily-quote . camp-dashboard-insert-quote)
                                (recents . dashboard-insert-recents)
                                (projects . dashboard-insert-projects)
                                (bookmarks . dashboard-insert-bookmarks)))
