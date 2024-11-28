@@ -6,6 +6,9 @@
   :after camp-loaded
   :config
   (setq super-save-auto-save-when-idle t)
+  ;; disable built-in auto-save.
+  ;; There is no point of keeping the backups.
+  (setq auto-save-default nil)
 
   (add-to-list 'super-save-triggers 'magit-status)
   (add-to-list 'super-save-triggers 'consult-buffer)
