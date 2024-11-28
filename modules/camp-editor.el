@@ -110,11 +110,30 @@
     "<M-up>"   '(drag-stuff-up   :wk "Drag up")
     "<M-down>" '(drag-stuff-down :wk "Drag down")))
 
-(use-package highlight-indent-guides
+(use-package indent-bars
   :straight t
-  :hook ((prog-mode text-mode conf-mode) . highlight-indent-guides-mode)
+  :hook ((prog-mode text-mode conf-mode) . indent-bars-mode)
   :config
-  (setq highlight-indent-guides-method 'character))
+  (setq indent-bars-prefer-character
+        (or
+         ;; Bitmaps are far slower on MacOS, inexplicably, but this needs more
+         ;; testing to see if it's specific to ns or emacs-mac builds, or is
+         ;; just a general MacOS issue.
+         (featurep :system 'macos)
+         ;; FIX: A bitmap init bug in emacs-pgtk (before v30) could cause
+         ;; crashes (see jdtsmith/indent-bars#3).
+         (and (featurep 'pgtk)
+              (< emacs-major-version 30)))
+
+        ;; Show indent guides starting from the first column.
+        indent-bars-starting-column 0
+        ;; Make indent guides subtle; the default is too distractingly colorful.
+        indent-bars-width-frac 0.1  ; make bitmaps thinner
+        indent-bars-color-by-depth nil
+        indent-bars-color '(font-lock-comment-face :face-bg nil :blend 0.250)
+        ;; Don't highlight current level indentation; it's distracting and is
+        ;; unnecessary overhead for little benefit.
+        indent-bars-highlight-current-depth nil))
 
 (use-package expand-region
   :straight t
