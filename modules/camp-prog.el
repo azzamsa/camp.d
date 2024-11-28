@@ -93,7 +93,9 @@
   :after web-mode)
 
 (use-package apheleia
-  :straight t)
+  :straight t
+  :config
+  (apheleia-global-mode +1))
 
 (use-package lua-mode
   :straight t
