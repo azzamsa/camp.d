@@ -122,12 +122,6 @@
   (let ((dir (file-truename default-directory)))
     (consult-ripgrep dir)))
 
-(use-package vertico-posframe
-  :straight t
-  :after vertico
-  :config
-  (vertico-posframe-mode 1))
-
 (use-package consult
   ;; Enhance `Vertico (completing-read)` with live-preview, grouping, narrowing/filtering, etc.
   :straight t
