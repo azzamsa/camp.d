@@ -5,40 +5,20 @@
   :after transient camp-loaded
   :init
   (+map! :infix "g"
-    "g" #'magit-status
-    "l" #'magit-log-current)
-
-  (+map-local! :keymaps 'magit-mode-map
-    "l" '(magit-log-current :wk "Show log")
-    ;; `evil-insert` can'b be invoked with `u` in `magit-status` buffer.
-    ;; `M-x evil-insert` is uncompfortable to type.
-    "u" '(evil-insert-state :wk "Evil insert"))
-
-  (+map-local! :keymaps 'git-rebase-mode-map
-    "u" '(evil-insert-state :wk "Evil insert"))
-
-  (+nvmap! :keymaps 'git-rebase-mode-map
-    "M-e"  #'git-rebase-move-line-up
-    "M-n"  #'git-rebase-move-line-down
-    "u" '(evil-insert-state :wk "Evil insert"))
+    "g" #'magit-status)
   :config
-  ;; Avoid invoking `evil-insert` everytime.
-  (evil-set-initial-state 'magit-status-mode 'insert)
-  (evil-set-initial-state 'git-commit-mode 'insert)
-  (evil-set-initial-state 'git-rebase-mode 'insert)
-
   ;; Enable granular diff-highlights for all hunks
   ;; By default, changes are highlighted linewise for all but the selected hunk. This has performance reasons.
   ;; https://magit.vc/manual/magit/Performance.html
   (setq magit-diff-refine-hunk 'all)
 
+  ;; Only enable this to debug your productivity calendar.
   ;; Relative time is hard to pin point.
-  (setq magit-log-margin '(t "%Y-%b-%d %I:%M %p " magit-log-margin-width t 18))
+  ;; (setq magit-log-margin '(t "%Y-%b-%d %I:%M %p " magit-log-margin-width t 18))
 
   ;; Default args
   (setq transient-values '((magit-rebase "--autosquash" "--autostash" "--committer-date-is-author-date")))
   :custom
-  (magit-diff-refine-hunk t)
   (magit-revision-show-gravatars t)
   (magit-save-repository-buffers nil)
   ;; Show in new window
@@ -66,9 +46,9 @@
   :straight t
   :after camp-loaded
   :init
+  (evil-set-initial-state 'git-timemachine-mode 'emacs)
+
   (+nvmap! :keymaps 'git-timemachine-mode-map
-    "C-n" #'git-timemachine-show-previous-revision
-    "C-e" #'git-timemachine-show-next-revision
     "gb"  #'git-timemachine-blame
     "gtc" #'git-timemachine-show-commit)
   :config
