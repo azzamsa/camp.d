@@ -170,4 +170,9 @@ Modified for my needs."
 
   (recentf-mode 1))
 
+(use-package delsel
+  :straight (:type built-in)
+  :hook (camp-loaded . delete-selection-mode))
+
+
 (provide 'camp-builtin)
