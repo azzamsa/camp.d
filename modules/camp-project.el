@@ -9,21 +9,14 @@
   (setq neo-smart-open t)
   ;; (setq neo-autorefresh t)
   (setq neo-hidden-regexp-list
-        '(;; vcs folders
-          "^\\.\\(?:git\\|hg\\|svn\\)$"
-          ;; compiled files
-          "\\.\\(?:pyc\\|o\\|elc\\|lock\\|css.map\\|class\\)$"
-          ;; generated files, caches or local pkgs
-          ;; `cdata': container data
-          ;; `target': rust generated directory
-          "^\\(?:eln-cache\\|vendor\\|.\\(project\\|projectile\\|env\\|example.env\\|sqlx\\|netlify\\|parcel-cache\\)\\)$"
-          "^\\(?:target\\|dist\\|cdata\\|pnpm-lock.yaml\\|.\\(gitignore\\|gitattributes\\|gitmodules\\|github\\|dockerignore\\)\\)$"
-          "^\\(?:node_modules\\|target\\|_\\(build\\|cache\\)\\)$"
-          ;; org-mode folders
-          "^\\.\\(?:sync\\|export\\|attach\\)$"
+        '(
+          ;; hidden files
+          "^\\."
           ;; temp files
-          "~$"
-          "^#.*#$")))
+          "~$" "^#.*#$"
+          ;; generated files
+          "^__"
+          )))
 
 (defun neotree-project-dir ()
   "Always open NeoTree in project root."
