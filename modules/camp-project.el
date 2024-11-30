@@ -5,7 +5,7 @@
 (use-package neotree
   :straight t
   :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-theme (if (display-graphic-p) 'nerd-icons 'arrow))
   (setq neo-smart-open t)
   ;; (setq neo-autorefresh t)
   (setq neo-hidden-regexp-list
