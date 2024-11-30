@@ -25,6 +25,11 @@
   ;; Using `Subtext0` will get AAA, but it too similar to `Text`.
   (catppuccin-set-color 'overlay0 "#7f849c" 'mocha)
 
+  ;; Catppuccin black.
+  (catppuccin-set-color 'base "#000000" 'mocha)
+  (catppuccin-set-color 'mantle "#000000" 'mocha)
+  (catppuccin-set-color 'crust "#000000" 'mocha)
+
   (catppuccin-reload)
   (load-theme 'catppuccin :no-confirm))
 
