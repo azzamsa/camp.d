@@ -71,11 +71,17 @@
   ;; Actions during a Minibuffer completion session.
   :straight t
   :after camp-loaded
+  :bind
+  ;; using `map!` doesn't work
+  (("C-." . embark-act)
+   ("C-," . embark-dwim)
+   ("C-h B" . embark-bindings)
+   (:map embark-file-map
+         ("v" . +vsplit-file-open)))
   :config
-  (keymap-global-set "<remap> <describe-bindings>" #'embark-bindings)
-  ;; Use Embark to show bindings in a key prefix with `C-h`
-  (setq prefix-help-command #'embark-prefix-help-command)
-  (+map! "a" #'embark-act))
+  ;; Embark bug, the cursor doesn't follow the new buffer.
+  (defun +vsplit-file-open (f)
+    (+find-file-other-window-vertically f)))
 
 (use-package embark-consult
   :straight t
