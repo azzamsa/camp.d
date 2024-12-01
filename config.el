@@ -66,6 +66,4 @@
 (use-package pest-mode :straight t :defer t)
 
 (use-package hurl-mode
-  :straight (hurl-mode
-             :pin "b5e7256"
-             :host github :repo "Orange-OpenSource/hurl" :files ("contrib/emacs/*.el")))
+  :straight (hurl-mode :type git :host github :repo "jaszhe/hurl-mode"))
