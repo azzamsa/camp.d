@@ -2,8 +2,7 @@
 
 ;; It is the 21st century, should I save file manually?
 (use-package super-save
-  :straight t
-  :after camp-loaded
+  :ensure t
   :config
   (setq super-save-auto-save-when-idle t)
   ;; disable built-in auto-save.
@@ -24,7 +23,7 @@
 
 ;; Visual Undo
 (use-package vundo
-  :straight t
+  :ensure t
   :defer t
   :init
   (+map! "ov" #'vundo)
@@ -40,13 +39,13 @@
           (horizontal-stem . ?─))))
 
 (use-package undo-fu
-  :straight t
+  :ensure t
   :config
   (with-eval-after-load 'evil
     (evil-set-undo-system 'undo-fu)))
 
 (use-package undo-fu-session
-  :straight t
+  :ensure t
   :after undo-fu
   :config
   (setq undo-fu-session-compression 'zst
@@ -54,8 +53,7 @@
   (global-undo-fu-session-mode 1))
 
 (use-package unicode-fonts
-  :straight t
-  :after camp-loaded
+  :ensure t
   :config
   (defun +unicode-fonts-setup ()
     "Prefer the `:unicode-font-family' from `camp-fonts'."
@@ -68,8 +66,7 @@
           (unicode-fonts-setup))))))
 
 (use-package ligature
-  :straight t
-  :after camp-loaded
+  :ensure t
   :hook (prog-mode . ligature-mode)
   :when (and (>= emacs-major-version 28)
              (string-search "HARFBUZZ" system-configuration-features)
@@ -98,12 +95,12 @@
 
 ;; highlight yanked line
 (use-package evil-goggles
-  :straight t
+  :ensure t
   :init
   (evil-goggles-mode))
 
 (use-package drag-stuff
-  :straight t
+  :ensure t
   :defer t
   :init
   (+nvmap!
@@ -111,7 +108,7 @@
     "<M-down>" '(drag-stuff-down :wk "Drag down")))
 
 (use-package indent-bars
-  :straight t
+  :ensure t
   :hook ((prog-mode text-mode conf-mode) . indent-bars-mode)
   :config
   (setq indent-bars-prefer-character
@@ -136,13 +133,13 @@
         indent-bars-highlight-current-depth nil))
 
 (use-package expand-region
-  :straight t
+  :ensure t
   :init
   (+vmap! "v" #'er/expand-region))
 
 (use-package helpful
   ;; a better *help* buffer
-  :straight t
+  :ensure t
   :commands helpful--read-symbol
   :hook (helpful-mode . visual-line-mode)
   :init
@@ -156,7 +153,7 @@
   (global-set-key [remap describe-symbol]   #'helpful-symbol))
 
 (use-package yasnippet
-  :straight t
+  :ensure t
   :defer t
   :commands (yas-minor-mode-on
              yas-expand
@@ -184,7 +181,7 @@
   (yas-global-mode +1))
 
 (use-package yasnippet-snippets
-  :straight t
+  :ensure t
   :after yasnippet)
 
 (provide 'cam-editor)

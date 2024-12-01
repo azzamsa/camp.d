@@ -2,7 +2,7 @@
 
 ;; Without this package, several Emacs packages fail to locate the necessary binary files.
 (use-package exec-path-from-shell
-  :straight t
+  :ensure t
   :demand t
   :config
   (when (memq window-system '(mac ns x))

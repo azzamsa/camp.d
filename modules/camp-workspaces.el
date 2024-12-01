@@ -1,8 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package tabspaces
-  :straight t
-  :after camp-loaded
+  :ensure t
   :hook (tabspaces-mode . +consult-tabspaces-setup)
   :custom
   (tabspaces-use-filtered-buffers-as-default t)

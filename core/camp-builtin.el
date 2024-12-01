@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package transient
-  :straight t
+  :ensure t
   :config
   ;; Map ESC and q to quit transient
   (keymap-set transient-map "<escape>" 'transient-quit-one)
@@ -12,22 +12,21 @@
         transient-values-file (expand-file-name "transient/values.el" camp-var-dir)))
 
 (use-package password-cache
-  :straight (:type built-in)
+  :ensure nil
   :custom
   (password-cache t) ; Enable password caching
   (password-cache-expiry 60)) ; One minute, default is 16
 
 (use-package auth-source
-  :straight (:type built-in)
+  :ensure nil
   :custom
   (auth-sources '("~/.local/share/.authinfo.gpg")) ; Default auth-sources to GPG
   (auth-source-do-cache t) ; Enable caching, do not keep asking about GPG key
   (auth-source-cache-expiry 86400)) ; All day, default is 2h (7200)
 
 (use-package dired
-  :straight (:type built-in)
+  :ensure nil
   :hook (dired-mode . dired-omit-mode)
-  :after camp-loaded
   :config
   (evil-set-initial-state 'dired 'emacs)
 
@@ -64,7 +63,7 @@ Modified for my needs."
     (dired-sort-other arg)))
 
 (use-package dired-x
-  :straight (:type built-in)
+  :ensure nil
   :after dired
   :config
   ;; Putting `dired-omit-files` inside `use-package dired`, `use-package dirvish`,
@@ -78,7 +77,7 @@ Modified for my needs."
   (message "Copied: %s" default-directory))
 
 (use-package tramp
-  :straight (:type built-in)
+  :ensure nil
   :init
   (setq tramp-default-method "ssh")
   :config
@@ -89,7 +88,7 @@ Modified for my needs."
   (tramp-default-remote-shell "/bin/bash"))
 
 (use-package abbrev
-  :straight (:type built-in)
+  :ensure nil
   :init
   (setq-default abbrev-mode t)
   :config
@@ -98,19 +97,15 @@ Modified for my needs."
 
 ;; Use built-in `treesit' when available
 (use-package treesit
-  :straight (:type built-in)
+  :ensure nil
   :config
   ;; Tree-Sitter grammars
   (add-to-list 'treesit-extra-load-path (expand-file-name "tree-sitter" camp-var-dir))
   :custom
   (treesit-font-lock-level 4))
 
-;; To avoid installing `tree-sitter' as this fork uses the built-in `treesit'
-(push 'tree-sitter straight-built-in-pseudo-packages)
-
 (use-package project
-  :straight (:type built-in)
-  :after camp-loaded
+  :ensure nil
   :demand t
   :config
   (setq
@@ -123,7 +118,7 @@ Modified for my needs."
   (project--find-in-directory dir))
 
 (use-package tab-bar
-  :straight (:type built-in)
+  :ensure nil
   :custom
   ;; Do not show tabs (`tab-bar' is configured in `camp-workspaces')
   (tab-bar-show nil))
@@ -132,20 +127,20 @@ Modified for my needs."
   ;; defined in lisp/progmodes/elisp-mode.el
   ;; using `use-package emacs-lisp-mode' produces
   ;; so many oddities
-  :straight (:type built-in)
-  :after evil evil-collection camp-loaded
+  :ensure nil
+  :after evil evil-collection
   :hook (prog-mode-defaults . emacs-lisp-mode)
   :config
   (evil-collection-define-key 'normal 'emacs-lisp-mode-map
     "gz" 'nil))
 
 (use-package winner
-  :straight (:type built-in)
+  :ensure nil
   :config
   (winner-mode 1))
 
 (use-package recentf
-  :straight (:type built-in)
+  :ensure nil
   :hook (kill-emacs . recentf-cleanup)
   :config
   (setq recentf-save-file (concat camp-var-dir "recentf-save.el")
@@ -171,8 +166,9 @@ Modified for my needs."
   (recentf-mode 1))
 
 (use-package delsel
-  :straight (:type built-in)
-  :hook (camp-loaded . delete-selection-mode))
+  :ensure nil
+  :hook (after-init . delete-selection-mode))
 
+(use-package flymake :ensure nil)
 
 (provide 'camp-builtin)

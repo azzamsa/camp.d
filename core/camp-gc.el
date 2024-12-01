@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package gcmh
-  :straight t
+  :ensure t
   :config
   (gcmh-mode 1))
 

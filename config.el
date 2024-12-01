@@ -45,6 +45,10 @@
 (setq camp-abbrev-file "~/.local/share/meta/abbrevs.el")
 (setq abbrev-file-name (+ensure-directory camp-abbrev-file))
 
+(defun +elpaca-write-lockfile ()
+  (interactive)
+  (elpaca-write-lockfile (expand-file-name "package-lock" camp-etc-dir)))
+
 ;;
 ;; Modules
 ;;
@@ -59,11 +63,11 @@
   (+spell-fu-register-dictionaries! "en" "id"))
 
 (use-package ron-mode
-  :straight t
+  :ensure t
   :defer t
   :mode "\\.ron\\'")
 
-(use-package pest-mode :straight t :defer t)
+(use-package pest-mode :ensure t :defer t)
 
 (use-package hurl-mode
-  :straight (hurl-mode :type git :host github :repo "jaszhe/hurl-mode"))
+  :ensure (hurl-mode :type git :host github :repo "jaszhe/hurl-mode"))

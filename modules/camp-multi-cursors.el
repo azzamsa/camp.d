@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package evil-multiedit
-  :straight t
+  :ensure t
   :after evil
   :demand t
   :init
@@ -16,8 +16,8 @@
   (evil-multiedit-default-keybinds))
 
 (use-package evil-mc
-  :straight t
-  :after evil camp-loaded
+  :ensure t
+  :after evil
   :config
   (+nvmap!
     "gzd"  '(evil-mc-make-and-goto-next-match       :wk "Make and goto next match")

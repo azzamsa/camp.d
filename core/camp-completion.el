@@ -6,8 +6,7 @@
 (use-package corfu
   ;; Enchanre built-in In-Buffer completion.
   ;; Company -> Corfu.
-  :straight t
-  :after camp-loaded
+  :ensure t
   :config
   ;; Setup corfu for popup like completion
   (setq corfu-cycle t ; Allows cycling through candidates
@@ -30,7 +29,7 @@
   (global-corfu-mode 1))
 
 (use-package nerd-icons-corfu
-  :straight t
+  :ensure t
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
@@ -38,7 +37,7 @@
 (use-package cape
   ;; Completion at point extensions
   ;; Complete filename, dabbrev, emojis, etc.
-  :straight t
+  :ensure t
   :after corfu
   :config
   (add-to-list 'completion-at-point-functions #'cape-file) ;; complete file names
@@ -46,7 +45,7 @@
 
 (use-package kind-icon
   ;; Adds icons to In-Buffer completion.
-  :straight t
+  :ensure t
   :after corfu
   :custom
   (kind-icon-use-icons t)
@@ -61,7 +60,7 @@
 
 (use-package nerd-icons-completion
   ;; Adds icons to Minifuffer completion.
-  :straight t
+  :ensure t
   :after marginalia
   :config
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
@@ -69,8 +68,8 @@
 
 (use-package embark
   ;; Actions during a Minibuffer completion session.
-  :straight t
-  :after camp-loaded
+  :ensure t
+  
   :bind
   ;; using `map!` doesn't work
   (("C-." . embark-act)
@@ -84,13 +83,13 @@
     (+find-file-other-window-vertically f)))
 
 (use-package embark-consult
-  :straight t
-  :after camp-loaded)
+  :ensure t
+  )
 
 (use-package marginalia
   ;; Informative minibuffer annotations
-  :straight t
-  :after camp-loaded
+  :ensure t
+  
   :config
   (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
 
@@ -100,8 +99,8 @@
 
 (use-package orderless
   ;; Filter `completion-at-point` and `completing-read` using regex, etc.
-  :straight t
-  :after camp-loaded
+  :ensure t
+  
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
@@ -109,15 +108,9 @@
 (use-package vertico
   ;; Better `completing-read` in minibuffer.
   ;; Helm/Ivy/Ido -> Selectrum -> Vertico.
-  :straight t
-  :after camp-loaded
+  :ensure t
+  ; 
   :config
-  (add-to-list
-   'load-path
-   (expand-file-name
-    (format "straight/%s/vertico/extensions" straight-build-dir)
-    straight-base-dir))
-
   (setq vertico-cycle t
         vertico-count 12)
 
@@ -137,8 +130,8 @@
 
 (use-package consult
   ;; Enhance `Vertico (completing-read)` with live-preview, grouping, narrowing/filtering, etc.
-  :straight t
-  :after camp-loaded
+  :ensure t
+  
   :custom
   ;; Use `consult-xref' for `xref-find-references'
   (xref-show-xrefs-function #'consult-xref)

@@ -1,8 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package treesit-auto
-  :straight (:host github :repo "renzmann/treesit-auto")
-  :after treesit camp-loaded
+  :ensure t
+  :after treesit
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -11,11 +11,10 @@
   ;; (treesit-auto-install-all)
   (global-treesit-auto-mode))
 
-(use-package consult-lsp :straight t)
+(use-package consult-lsp :ensure t)
 
 (use-package lsp-mode
-  :straight t
-  :after camp-loaded
+  :ensure t
   :commands (lsp lsp-deferred)
   :hook ((before-save . lsp-format-buffer)
          (before-save . lsp-organize-imports))
@@ -37,7 +36,7 @@
         lsp-completion-provider :none))
 
 (use-package lsp-ui
-  :straight t
+  :ensure t
   :after lsp-mode
   :commands lsp-ui-mode
   :config
@@ -46,61 +45,59 @@
         lsp-ui-doc-enable nil))
 
 (use-package lsp-bridge
-  :straight '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
-            :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
-            :build (:not compile))
+  :ensure '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
+                       :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
+                       :build (:not compile))
   :init
   (global-lsp-bridge-mode))
 
-(use-package editorconfig :straight t)
+(use-package editorconfig :ensure t)
 
 (use-package rainbow-mode
-  :straight t
+  :ensure t
   :hook (prog-mode . rainbow-mode))
 
 (use-package rainbow-delimiters
-  :straight t
+  :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package highlight-numbers
-  :straight t
+  :ensure t
   :hook (prog-mode . highlight-numbers-mode))
 
 (use-package smartparens
-  :straight t
+  :ensure t
   :config
   (sp-local-pair 'markdown-mode "```" "```")
   (smartparens-global-mode))
 
-(use-package flymake :straight t)
-
 (use-package rust-ts-mode
-  :straight (:type built-in)
+  :ensure nil
   :mode "\\.rs\\'")
 
 (use-package typescript-ts-mode
-  :straight (:type built-in)
+  :ensure nil
   :mode "\\.ts\\'")
 
 (use-package web-mode
-  :straight t
+  :ensure t
   :mode ("\\.njk\\'" "\\.svelte\\'" "\\.html\\'"
          "\\.vue\\'"))
 
 (use-package emmet-mode
-  :straight t
+  :ensure t
   :hook (web-mode . emmet-mode)
   :after web-mode)
 
 (use-package apheleia
-  :straight t
+  :ensure t
   :config
   (apheleia-global-mode +1))
 
 (use-package lua-mode
-  :straight t
+  :ensure t
   :mode ("\\.lua\\'"))
 
-(use-package fish-mode :straight t)
+(use-package fish-mode :ensure t)
 
 (provide 'camp-prog)

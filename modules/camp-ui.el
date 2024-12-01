@@ -4,10 +4,10 @@
 ;; Icons
 
 (use-package nerd-icons
-  :straight t)
+  :ensure t)
 
 (use-package svg-lib
-  :straight t
+  :ensure t
   :defer t
   :custom
   (svg-lib-icons-dir (expand-file-name "svg-lib" camp-cache-dir))) ; Change cache dir
@@ -16,7 +16,7 @@
 ;; Themes
 
 (use-package catppuccin-theme
-  :straight (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
+  :ensure (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
   :config
   (setq catppuccin-flavor 'mocha)
 
@@ -35,7 +35,7 @@
 
 ;; Modeline
 (use-package doom-modeline
-  :straight t
+  :ensure t
   :config
   (setq doom-modeline-bar-width 5
         doom-modeline-height 37
@@ -43,14 +43,13 @@
   (doom-modeline-mode 1))
 
 (use-package visual-fill-column
-  :straight t
+  :ensure t
   :custom
   (visual-fill-column-width nil)
   (visual-fill-column-center-text t))
 
 (use-package minimap
-  :straight t
-  :after camp-loaded
+  :ensure t
   :defer t
   :config
   (setq minimap-window-location 'right
@@ -59,9 +58,8 @@
         minimap-minimum-width 15))
 
 (use-package writeroom-mode
-  :straight t
+  :ensure t
   :defer t
-  :after camp-loaded
   :config
   (setq writeroom-width 90))
 
@@ -94,7 +92,7 @@ Invoke again to revert to the window configuration before it was activated."
       (call-interactively #'+zen/toggle))))
 
 (use-package dashboard
-  :straight t
+  :ensure t
   :after evil evil-collection
   :demand t
   :init

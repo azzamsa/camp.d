@@ -1,17 +1,17 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package rg
-  :straight t
+  :ensure t
   :defer t)
 
 (use-package crux
-  :straight t)
+  :ensure t)
 
 (use-package dockerfile-mode
-  :straight t)
+  :ensure t)
 
 (use-package eat
-  :straight t)
+  :ensure t)
 
 (defun eat-toggle ()
   (interactive)

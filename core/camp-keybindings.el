@@ -2,7 +2,7 @@
 
 ;; Which key
 (use-package which-key
-  :straight t
+  :ensure t
   :init
   (setq which-key-sort-order #'which-key-key-order-alpha
         which-key-sort-uppercase-first nil
@@ -15,16 +15,16 @@
   (which-key-setup-minibuffer))
 
 (use-package hydra
-  :straight t
+  :ensure t
   :defer t)
 
 (use-package use-package-hydra
   :after hydra
-  :straight t)
+  :ensure t)
 
 ;;; General.el
 (use-package general
-  :straight t
+  :ensure t
   ;; PERF: Loading `general' early make Emacs very slow on startup.
   :after evil
   :config

@@ -9,10 +9,6 @@
 (defvar camp-after-startup nil
   "This hook will be run after loading Emacs.")
 
-;; This will be set by the virtual package `camp-loaded'
-(defvar camp-loaded nil
-  "camp has been loaded.")
-
 (defcustom camp-leader-key "SPC"
   "camp leader key."
   :group 'camp-keybinding

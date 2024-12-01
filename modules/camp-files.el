@@ -1,11 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package dirvish
-  :straight (:host github :repo "hlissner/dirvish")
+  :ensure (dirvish :type git :host github :repo "hlissner/dirvish")
   :after dired
-  :init
-  (setq dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir))
   :config
+  (setq dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir))
+
   (+nvmap! :keymaps 'dirvish-mode-map
     "?"  '(dirvish-dispatch        :wk "Dispatch")
     "q"  '(dirvish-quit            :wk "Quit")
@@ -50,9 +50,5 @@
      ((evil-insert-state-p) (propertize "🅘" 'face 'font-lock-keyword-face))
      ((evil-visual-state-p) (propertize "🅥" 'face 'font-lock-warning-face))
      (t "🅤"))))
-
-(use-package dirvish-extras
-  :straight (:host github :repo "hlissner/dirvish")
-  :after dirvish)
 
 (provide 'camp-files)

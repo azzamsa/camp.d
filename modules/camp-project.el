@@ -1,9 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package consult-project-extra :straight t)
+(use-package consult-project-extra :ensure t)
 
 (use-package neotree
-  :straight t
+  :ensure t
   :config
   (setq neo-theme (if (display-graphic-p) 'nerd-icons 'arrow))
   (setq neo-smart-open t)

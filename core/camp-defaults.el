@@ -234,7 +234,6 @@
 (add-hook 'conf-mode-hook  #'+show-trailing-whitespace-h)
 (add-hook 'text-mode-hook  #'+show-trailing-whitespace-h)
 
-(with-eval-after-load 'camp-loaded
   ;; === Modes enabled globally ===
   ;; Display divider between windows
   (window-divider-mode 1)
@@ -261,6 +260,6 @@
   ;; Better handling for files with so long lines
   (global-so-long-mode 1)
   ;; Global SubWord mode
-  (global-subword-mode 1))
+  (global-subword-mode 1)
 
 (provide 'camp-defaults)

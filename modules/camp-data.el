@@ -1,15 +1,15 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package yaml-mode
-  :straight t
+  :ensure t
   :mode "Procfile\\'")
 
 (use-package toml-mode
-  :straight t
+  :ensure t
   :mode "\\.toml\\'")
 
 (use-package json-mode
-  :straight t
+  :ensure t
   :mode "\\.js\\(?:on\\|[hl]int\\(?:rc\\)?\\)\\'"
   :config
   (+map-local! :keymaps 'json-mode-map
@@ -22,27 +22,27 @@
     "f" #'json-mode-beautify))
 
 (use-package just-mode
-  :straight t
+  :ensure t
   :defer t)
 
 (use-package markdown-mode
-  :straight t
+  :ensure t
   :mode ("README\\.md\\'" . gfm-mode))
 
 (use-package graphql-mode
-  :straight t
+  :ensure t
   :defer t)
 
 (use-package vimrc-mode
-  :straight t
+  :ensure t
   :defer t)
 
 (use-package nushell-mode
-  :straight t
+  :ensure t
   :defer t)
 
 (use-package ledger-mode
-  :straight t
+  :ensure t
   :defer t)
 
 (use-package flycheck-hledger
@@ -50,7 +50,6 @@
   :demand t)
 
 (use-package typst-ts-mode
-  :straight '(:type git :host codeberg :repo "meow_king/typst-ts-mode"
-                 :files (:defaults "*.el")))
+  :ensure (:host codeberg :repo "meow_king/typst-ts-mode"))
 
 (provide 'camp-data)

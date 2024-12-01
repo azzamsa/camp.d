@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package evil
-  :straight t
+  :ensure t
   :preface
   ;; Needed by `evil-collection'
   (setq evil-want-keybinding nil
@@ -38,12 +38,12 @@
 
 (use-package evil-collection
   :after evil
-  :straight t
+  :ensure t
   :config
   (evil-collection-init))
 
 (use-package evil-snipe
-  :straight t
+  :ensure t
   :after evil
   :commands evil-snipe-local-mode evil-snipe-override-local-mode
   :config
@@ -57,24 +57,24 @@
   (evil-snipe-override-mode +1))
 
 (use-package evil-miryoku
-  :straight (evil-miryoku :local-repo "~/projects/evil-miryoku")
-  ;; :straight (evil-miryoku :type git :host github :repo "azzamsa/evil-miryoku")
-  :after evil camp-loaded
+  :ensure (evil-miryoku :repo "~/projects/evil-miryoku")
+  ;; :ensure (evil-miryoku :type git :host github :repo "azzamsa/evil-miryoku")
+  :after evil
   :init
   (setq evil-colemak-basics-char-jump-commands 'evil-snipe)
   :init
   (global-evil-miryoku-mode))
 
 (use-package evil-avy
-  :straight t
-  :after evil camp-loaded
+  :ensure t
+  :after evil
   :config
   (+nvmap!
     "gss" '(evil-avy-goto-char-2 :wk "Avy go to char")
     "gs/" '(evil-avy-goto-char-timer :wk "Avy go to char")))
 
 (use-package evil-surround
-  :straight t
+  :ensure t
   :commands (global-evil-surround-mode
              evil-surround-edit
              evil-Surround-edit
@@ -89,8 +89,8 @@
   (global-evil-surround-mode 1))
 
 (use-package evil-nerd-commenter
-  :straight t
-  :after evil camp-loaded
+  :ensure t
+  :after evil
   :init
   (+nvmap!
     "gc" '(evilnc-comment-operator :wk "Comment")

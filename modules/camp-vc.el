@@ -1,8 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package magit
-  :straight t
-  :after transient camp-loaded
+  :ensure t
+  :after transient
   :init
   (+map! :infix "g"
     "g" #'magit-status)
@@ -25,14 +25,14 @@
   (magit-display-buffer-function #'magit-display-buffer-fullcolumn-most-v1))
 
 (use-package magit-todos
-  :straight t
+  :ensure t
   :after magit
   :demand t
   :config
   (magit-todos-mode 1))
 
 (use-package diff-hl
-  :straight t
+  :ensure t
   :hook (find-file    . diff-hl-mode)
   :hook (dired-mode   . diff-hl-dired-mode)
   :hook (vc-dir-mode  . diff-hl-dir-mode)
@@ -43,15 +43,9 @@
   (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh))
 
 (use-package git-timemachine
-  :straight t
-  :after camp-loaded
-  :init
-  (evil-set-initial-state 'git-timemachine-mode 'emacs)
-
-  (+nvmap! :keymaps 'git-timemachine-mode-map
-    "gb"  #'git-timemachine-blame
-    "gtc" #'git-timemachine-show-commit)
+  :ensure t
   :config
+  (evil-set-initial-state 'git-timemachine-mode 'emacs)
   ;; Sometimes I forget `git-timemachine' is enabled in a buffer, so instead of
   ;; showing revision details in the minibuffer, show them in
   ;; `header-line-format', which has better visibility.
