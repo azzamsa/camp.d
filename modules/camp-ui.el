@@ -16,7 +16,8 @@
 ;; Themes
 
 (use-package catppuccin-theme
-  :ensure (catppuccin-theme :type git :flavor melpa :host github :repo "catppuccin/emacs")
+  ;; Credit to @nullchilly for coming up with this black variant.
+  :ensure t
   :config
   (setq catppuccin-flavor 'mocha)
 
@@ -31,7 +32,15 @@
   (catppuccin-set-color 'crust "#000000" 'mocha)
 
   (catppuccin-reload)
-  (load-theme 'catppuccin :no-confirm))
+  (load-theme 'catppuccin t))
+
+(with-eval-after-load 'catppuccin-theme
+  ;; Must be used *after* the theme is loaded
+  (custom-set-faces
+   ;; The default `region` color for Mocha looks unpleasant on a black background.
+   `(region ((t (:background "#313244"))))
+   ;; The default `highlight` color for Mocha is invisible on a black background.
+   `(highlight ((t (:background "#313244"))))))
 
 ;; Modeline
 (use-package doom-modeline
