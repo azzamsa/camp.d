@@ -59,7 +59,7 @@
     "/"   '(consult-ripgrep          :wk "Search project")
     "SPC" '(project-find-file        :wk "Find file in project")
     "RET" '(consult-bookmark         :wk "Jump to bookmark")
-    "x"   '(camp-scratch-buffer      :wk "Pop up scratch buffer")
+    "x"   '(+scratch-buffer          :wk "Pop up scratch buffer")
     "'"   '(vertico-repeat           :wk "Resume last search")
     "w"   '(evil-window-map          :wk "window")
     "u"   '(universal-argument       :wk "Universal argument")
@@ -95,8 +95,8 @@
     "fd"   '(dired                        :wk "Find directory")
     "fD"   '(crux-delete-file-and-buffer  :wk "Delete this file")
     "ff"   '(find-file                    :wk "Find file")
-    "fe"   '(camp/find-file-in-emacsd     :wk "Find file in emacs.d")
-    "fE"   '(camp/browse-in-emacsd        :wk "Browse emacs.d")
+    "fe"   '(+find-file-in-emacsd         :wk "Find file in emacs.d")
+    "fE"   '(+browse-in-emacsd            :wk "Browse emacs.d")
     "fs"   '(save-buffers-and-clean       :wk "Save file")
     "fu"   '(crux-sudo-edit               :wk "Find file as sudo")
     "fU"   '(crux-sudo-edit               :wk "Edit file as sudo")
@@ -184,7 +184,6 @@
     ;; `w o` is definitely easier than `w C-o`. I keep this for Doom compatibility.
     "w C-o" '(delete-other-windows    :wk "Delete other windows")
     "wo"    '(delete-other-windows    :wk "Delete other windows")
-    ;; "wo"    '(doom/window-enlargen    :wk "Enlarge window")
 
     ;; ===  Mode specific a.k.a. "local leader" ===
     "m"   '(nil :wk "mode-specific"))

@@ -1,23 +1,15 @@
 ;; -*- lexical-binding: t; -*-
 
-(defvar camp-lisp-modules
-  '(camp aza ui files project extra))
-
 (defvar camp-core-modules
-  '(defaults bootstrap builtin keybindings evil completion os utils vars))
+  '(core defaults bootstrap builtin keybindings evil completion os utils vars))
 
 (defvar camp-modules
-  '(data editor prog project spell tools ui vc workspaces multi-cursors files))
+  '(snacks data editor prog project spell tools ui vc workspaces multi-cursors files))
 
 (defun camp-reload (&optional without-core)
   "Reload all configuration, including user's config.el."
   (interactive)
-  ;; Lisp modeles
-  (dolist (module (mapcar #'symbol-name camp-lisp-modules))
-    (+log "Loading lisp module \"%s\"" module)
-    (load (expand-file-name (format "lisp/+%s.el" module) user-emacs-directory) nil (not init-file-debug)))
-
-  ;; Core modules
+  ;; Core
   (dolist (module (mapcar #'symbol-name camp-core-modules))
     (+log "Loading core module \"%s\"" module)
     (load (expand-file-name (format "core/camp-%s.el" module) user-emacs-directory) nil (not init-file-debug)))
