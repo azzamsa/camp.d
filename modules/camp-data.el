@@ -52,4 +52,7 @@
 (use-package typst-ts-mode
   :ensure (:host codeberg :repo "meow_king/typst-ts-mode"))
 
+(use-package scad-mode
+  :ensure t)
+
 (provide 'camp-data)
