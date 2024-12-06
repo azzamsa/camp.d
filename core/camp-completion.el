@@ -69,7 +69,6 @@
 (use-package embark
   ;; Actions during a Minibuffer completion session.
   :ensure t
-  
   :bind
   ;; using `map!` doesn't work
   (("C-." . embark-act)
@@ -83,13 +82,11 @@
     (+find-file-other-window-vertically f)))
 
 (use-package embark-consult
-  :ensure t
-  )
+  :ensure t)
 
 (use-package marginalia
   ;; Informative minibuffer annotations
   :ensure t
-  
   :config
   (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
 
@@ -100,7 +97,6 @@
 (use-package orderless
   ;; Filter `completion-at-point` and `completing-read` using regex, etc.
   :ensure t
-  
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
@@ -109,7 +105,6 @@
   ;; Better `completing-read` in minibuffer.
   ;; Helm/Ivy/Ido -> Selectrum -> Vertico.
   :ensure t
-  ; 
   :config
   (setq vertico-cycle t
         vertico-count 12)
@@ -117,7 +112,9 @@
   (with-eval-after-load 'evil
     (define-key vertico-map (kbd "C-j") 'vertico-next)
     (define-key vertico-map (kbd "C-k") 'vertico-previous)
-    (define-key vertico-map (kbd "M-h") 'vertico-directory-up))
+    (define-key vertico-map (kbd "M-h") 'vertico-directory-up)
+    (define-key vertico-map '[C-left]  'vertico-previous-group)
+    (define-key vertico-map '[C-right] 'vertico-next-group))
 
   (require 'vertico-directory)
   (vertico-mode 1))
@@ -131,7 +128,6 @@
 (use-package consult
   ;; Enhance `Vertico (completing-read)` with live-preview, grouping, narrowing/filtering, etc.
   :ensure t
-  
   :custom
   ;; Use `consult-xref' for `xref-find-references'
   (xref-show-xrefs-function #'consult-xref)
