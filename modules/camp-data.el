@@ -43,7 +43,10 @@
 
 (use-package ledger-mode
   :ensure t
-  :defer t)
+  :defer t
+  :config
+  (setq ledger-highlight-xact-under-point nil)
+  (setq ledger-default-date-format ledger-iso-date-format))
 
 (use-package flycheck-hledger
   :after (flycheck ledger-mode)
