@@ -4,7 +4,7 @@
   '(defaults bootstrap builtin keybindings evil completion os utils vars))
 
 (defvar camp-modules
-  '(snacks data editor prog project spell tools ui vc workspaces multi-cursors files))
+  '(snacks data editor prog project spell tools ui theme vc workspaces multi-cursors files))
 
 (defun camp-reload (&optional without-core)
   "Reload all configuration, including user's config.el."
