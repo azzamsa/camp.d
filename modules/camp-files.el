@@ -21,9 +21,9 @@
     "TAB"  '(dirvish-subtree-toggle       :wk "Toggle subtree")
     "X"  '(dired-do-flagged-delete      :wk "Flagged delete")
     "x"  '(dired-do-delete              :wk "Delete")
-    "yl" '(dirvish-copy-file-true-path  :wk "Yank menu")
-    "yn" '(dirvish-copy-file-name       :wk "Yank menu")
-    "yp" '(dirvish-copy-file-path       :wk "Yank menu")
+    "yl" '(dirvish-copy-file-true-path  :wk "Copy file true path")
+    "yn" '(dirvish-copy-file-name       :wk "Copy file name")
+    "yp" '(dirvish-copy-file-path       :wk "Copy file path")
     "yy" '(dired-do-copy                :wk "Yank menu"))
 
   (+map-local! :keymaps 'dirvish-mode-map
