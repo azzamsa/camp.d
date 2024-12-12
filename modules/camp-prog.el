@@ -55,7 +55,12 @@
 
 (use-package rainbow-mode
   :ensure t
-  :hook (prog-mode . rainbow-mode))
+  :hook (prog-mode text-mode))
+
+(use-package colorful-mode
+  :disabled
+  :ensure t
+  :hook (prog-mode text-mode))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -96,7 +101,8 @@
 
 (use-package lua-mode
   :ensure t
-  :mode ("\\.lua\\'"))
+  :mode "\\.lua$"
+  :interpreter "lua")
 
 (use-package fish-mode :ensure t)
 
