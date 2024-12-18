@@ -28,7 +28,6 @@
   :ensure nil
   :hook (dired-mode . dired-omit-mode)
   :config
-  (evil-set-initial-state 'dired 'emacs)
 
   (setq dired-dwim-target t  ; suggest a target for moving/copying intelligently
         ;; don't prompt to revert, just do it
@@ -169,6 +168,7 @@ Modified for my needs."
   :ensure nil
   :hook (after-init . delete-selection-mode))
 
-(use-package flymake :ensure nil)
+(use-package flymake
+  :ensure nil)
 
 (provide 'camp-builtin)
