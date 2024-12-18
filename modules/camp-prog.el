@@ -18,8 +18,7 @@
   :commands (lsp lsp-deferred)
   :hook ((before-save . lsp-format-buffer)
          (before-save . lsp-organize-imports))
-  :hook ((rust-ts-mode . lsp-deferred)
-         (web-mode . lsp-deferred))
+  :hook ((web-mode . lsp-deferred))
   :config
   ;; Disable invasive lsp-mode features
   (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
@@ -77,8 +76,13 @@
   (smartparens-global-mode))
 
 (use-package rust-ts-mode
+  :disabled
   :ensure nil
   :mode "\\.rs\\'")
+
+(use-package rustic
+  :ensure t
+  :mode ("\\.rs$" . rustic-mode))
 
 (use-package typescript-ts-mode
   :ensure nil
