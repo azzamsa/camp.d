@@ -72,4 +72,16 @@ that directory."
         (+error! "Cannot create directory %s" parent-dir)))
     path))
 
+;;;###autoload
+(defun +elpaca-write-lockfile ()
+  (interactive)
+  (elpaca-write-lockfile (expand-file-name "package-lock" camp-etc-dir)))
+
+;;;###autoload
+(defun +emacs-version ()
+  (interactive)
+  (with-temp-file (expand-file-name "emacs-version" user-emacs-directory)
+    ;; remove `\n `
+    (insert (s-replace "\n " " " (emacs-version)))))
+
 (provide 'camp-utils)

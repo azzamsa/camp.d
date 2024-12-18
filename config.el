@@ -12,9 +12,9 @@
 ;; UI
 ;;
 
-(setq camp-fonts '(:font-family "0xProto Nerd Font"
+(setq camp-fonts '(:font-family "Maple Mono NF"
                                 :font-size 20
-                                :variable-pitch-font-family "0xProto Nerd Font"
+                                :variable-pitch-font-family "Maple Mono NF"
                                 :variable-pitch-font-size 20
                                 :unicode-font-family "Twemoji"))
 
@@ -33,8 +33,6 @@
 ;; Custom Global Keybindings
 ;;
 
-(keymap-global-set "C-/" 'eat-toggle)
-
 ;;
 ;; Camp
 ;;
@@ -45,29 +43,15 @@
 (setq camp-abbrev-file "~/.local/share/meta/abbrevs.el")
 (setq abbrev-file-name (+ensure-directory camp-abbrev-file))
 
-(defun +elpaca-write-lockfile ()
-  (interactive)
-  (elpaca-write-lockfile (expand-file-name "package-lock" camp-etc-dir)))
-
 ;;
 ;; Modules
 ;;
 
-;; Emacs doesn't play well with fish
-(setq shell-file-name "/bin/bash")
+;; ;; Emacs doesn't play well with fish
+;; (setq shell-file-name "/bin/bash")
 
 ;; Module: `natural-langs' -- Package: `spell-fu'
 (with-eval-after-load 'spell-fu
   ;; We can use Camp' helper macro `+spell-fu-register-dictionaries!'
   ;; to enable multi-language spell checking.
   (+spell-fu-register-dictionaries! "en" "id"))
-
-(use-package ron-mode
-  :ensure t
-  :defer t
-  :mode "\\.ron\\'")
-
-(use-package pest-mode :ensure t :defer t)
-
-(use-package hurl-mode
-  :ensure (hurl-mode :type git :host github :repo "jaszhe/hurl-mode"))

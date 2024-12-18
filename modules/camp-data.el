@@ -58,4 +58,16 @@
 (use-package scad-mode
   :ensure t)
 
+(use-package ron-mode
+  :ensure t
+  :defer t
+  :mode "\\.ron\\'")
+
+(use-package pest-mode
+  :ensure t
+  :defer t)
+
+(use-package hurl-mode
+  :ensure (hurl-mode :type git :host github :repo "jaszhe/hurl-mode"))
+
 (provide 'camp-data)

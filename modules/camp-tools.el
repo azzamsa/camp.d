@@ -11,7 +11,9 @@
   :ensure t)
 
 (use-package eat
-  :ensure t)
+  :ensure t
+  :config
+  (keymap-global-set "C-/" 'eat-toggle))
 
 (defun eat-toggle ()
   (interactive)
