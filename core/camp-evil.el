@@ -96,4 +96,10 @@
     "gc" '(evilnc-comment-operator :wk "Comment")
     "gC" '(evilnc-copy-and-comment-operator :wk "Copy and comment")))
 
+(use-package evil-matchit
+  :ensure t
+  :after evil
+  :config
+  (global-evil-matchit-mode 1))
+
 (provide 'camp-evil)
