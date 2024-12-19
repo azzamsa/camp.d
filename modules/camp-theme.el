@@ -1,19 +1,13 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package doom-themes
-  :ensure t
+  :ensure (doom-themes :repo "https://github.com/azzamsa/doom-themes" :branch "my-tokyo-night")
+  ;; for debuging purpose
+  ;; :ensure (doom-themes :repo "~/playground/forks/doom-themes/" :branch "my-tokyo-night")
   :config
   (setq doom-tokyo-night-brighter-comments t)
   (setq doom-tokyo-night-comment-bg nil)
-  (load-theme 'doom-tokyo-night t)
-
-  (with-eval-after-load 'doom-themes
-    (custom-set-faces
-     `(default ((t (:foreground "#eceff4" :background "#000000"))))
-     `(region ((t (:background "#2d3f76"))))
-     `(selection ((t (:background "#2d3f76"))))
-     `(neo-file-link-face ((t (:foreground "#eceff4"))))
-     `(magit-diff-file-heading ((t (:foreground "#eceff4")))))))
+  (load-theme 'doom-tokyo-night t))
 
 (use-package catppuccin-theme
   :disabled
