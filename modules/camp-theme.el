@@ -3,11 +3,17 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-dracula t)
+  (setq doom-tokyo-night-brighter-comments t)
+  (setq doom-tokyo-night-comment-bg nil)
+  (load-theme 'doom-tokyo-night t)
 
   (with-eval-after-load 'doom-themes
     (custom-set-faces
-     `(default ((t (:background "#000000" )))))))
+     `(default ((t (:foreground "#eceff4" :background "#000000"))))
+     `(region ((t (:background "#2d3f76"))))
+     `(selection ((t (:background "#2d3f76"))))
+     `(neo-file-link-face ((t (:foreground "#eceff4"))))
+     `(magit-diff-file-heading ((t (:foreground "#eceff4")))))))
 
 (use-package catppuccin-theme
   :disabled
