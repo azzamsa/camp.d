@@ -234,32 +234,32 @@
 (add-hook 'conf-mode-hook  #'+show-trailing-whitespace-h)
 (add-hook 'text-mode-hook  #'+show-trailing-whitespace-h)
 
-  ;; === Modes enabled globally ===
-  ;; Display divider between windows
-  (window-divider-mode 1)
+;; === Modes enabled globally ===
+;; Display divider between windows
+(window-divider-mode 1)
 
-  ;; Scroll pixel by pixel, in Emacs29+ there is a more pricise mode way to scroll
-  (if (>= emacs-major-version 29)
-      (pixel-scroll-precision-mode 1)
-    (pixel-scroll-mode 1))
+;; Scroll pixel by pixel, in Emacs29+ there is a more pricise mode way to scroll
+(if (>= emacs-major-version 29)
+    (pixel-scroll-precision-mode 1)
+  (pixel-scroll-mode 1))
 
-  ;; Replace selection after start typing
-  (delete-selection-mode 1)
-  ;; Show recursion depth in minibuffer (see `enable-recursive-minibuffers')
-  (minibuffer-depth-indicate-mode 1)
-  ;; Save place in files
-  (save-place-mode 1)
-  ;; Enable saving minibuffer history
-  (savehist-mode 1)
-  ;; Auto load files changed on disk
-  (global-auto-revert-mode 1)
-  ;; Show line number in mode-line
-  (line-number-mode 1)
-  ;; Show column numbers (a.k.a. cursor position) in the mode-line
-  (column-number-mode 1)
-  ;; Better handling for files with so long lines
-  (global-so-long-mode 1)
-  ;; Global SubWord mode
-  (global-subword-mode 1)
+;; Replace selection after start typing
+(delete-selection-mode 1)
+;; Show recursion depth in minibuffer (see `enable-recursive-minibuffers')
+(minibuffer-depth-indicate-mode 1)
+;; Save place in files
+(save-place-mode 1)
+;; Enable saving minibuffer history
+(savehist-mode 1)
+;; Auto load files changed on disk
+(global-auto-revert-mode 1)
+;; Show line number in mode-line
+(line-number-mode 1)
+;; Show column numbers (a.k.a. cursor position) in the mode-line
+(column-number-mode 1)
+;; Better handling for files with so long lines
+(global-so-long-mode 1)
+;; Global SubWord mode
+(global-subword-mode 1)
 
 (provide 'camp-defaults)
