@@ -2,12 +2,13 @@
 
 (use-package doom-themes
   :ensure (doom-themes :repo "https://github.com/azzamsa/doom-themes" :branch "my-tokyo-night")
-  ;; for debuging purpose
+  ;; for debugging purpose
   ;; :ensure (doom-themes :repo "~/playground/forks/doom-themes/" :branch "my-tokyo-night")
   :config
   (setq doom-tokyo-night-brighter-comments t)
   (setq doom-tokyo-night-comment-bg nil)
-  (load-theme 'doom-tokyo-night t))
+  ;; (load-theme 'doom-tokyo-night t))
+  (load-theme 'doom-tokyo-night-moon t))
 
 (use-package catppuccin-theme
   :disabled
