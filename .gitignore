@@ -6,5 +6,7 @@ eshell/
 elpa/
 elpaca/
 tree-sitter/
+custom.el
+etc/themes/
 
 personal.el

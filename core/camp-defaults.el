@@ -14,6 +14,7 @@
 
 (setopt
  ;; === Default directories for builtin packages ===
+ custom-theme-directory (+ensure-directory camp-etc-dir "themes/")
  auto-insert-directory (+ensure-directory camp-var-dir "auto-insert/")
  auto-save-list-file-prefix (+ensure-directory camp-var-dir "auto-save/")
  backup-directory-alist (list (cons "." (+ensure-directory camp-var-dir "backup/")))
