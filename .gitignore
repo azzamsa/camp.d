@@ -6,3 +6,5 @@ eshell/
 elpa/
 elpaca/
 tree-sitter/
+
+personal.el

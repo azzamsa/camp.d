@@ -20,10 +20,16 @@
     (load (expand-file-name (format "modules/camp-%s.el" module) user-emacs-directory) nil (not init-file-debug)))
 
   ;; Load user config when available
-  (let ((user-config (expand-file-name "config.el" user-emacs-directory)))
-    (when (file-exists-p user-config)
-      (+log "Loading user config file from \"%s\"" user-config)
-      (load user-config nil (not init-file-debug)))))
+  (let ((config (expand-file-name "config.el" user-emacs-directory)))
+    (when (file-exists-p config)
+      (+log "Loading user config file from \"%s\"" config)
+      (load config nil (not init-file-debug))))
+
+  ;; Load personal config when available
+  (let ((config (expand-file-name "personal.el" user-emacs-directory)))
+    (when (file-exists-p config)
+      (+log "Loading personal config file from \"%s\"" config)
+      (load config nil (not init-file-debug)))))
 
 ;; Load for the first time
 (camp-reload)
