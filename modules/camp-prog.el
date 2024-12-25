@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package treesit-auto
+  :disabled
   :ensure t
   :after treesit
   :custom
@@ -101,6 +102,10 @@
   :ensure t
   :config
   (apheleia-global-mode +1))
+
+(use-package lua-ts-mode
+  :disabled
+  :ensure nil)
 
 (use-package lua-mode
   :ensure t
