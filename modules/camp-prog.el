@@ -16,8 +16,7 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
-  :hook ((before-save . lsp-format-buffer)
-         (before-save . lsp-organize-imports))
+  :hook ((before-save . lsp-organize-imports))
   :hook ((web-mode . lsp-deferred))
   :config
   ;; Disable invasive lsp-mode features

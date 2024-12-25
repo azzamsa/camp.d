@@ -228,13 +228,6 @@
 (add-hook 'conf-mode-hook  #'visual-line-mode)
 (add-hook 'text-mode-hook  #'visual-line-mode)
 
-;; Show trailing whitespace in `prog-mode' and `conf-mode'
-(defun +show-trailing-whitespace-h ()
-  (setq-local show-trailing-whitespace t))
-(add-hook 'prog-mode-hook  #'+show-trailing-whitespace-h)
-(add-hook 'conf-mode-hook  #'+show-trailing-whitespace-h)
-(add-hook 'text-mode-hook  #'+show-trailing-whitespace-h)
-
 ;; === Modes enabled globally ===
 ;; Display divider between windows
 (window-divider-mode 1)

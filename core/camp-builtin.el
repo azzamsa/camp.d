@@ -171,4 +171,21 @@ Modified for my needs."
 (use-package flymake
   :ensure nil)
 
+(use-package whitespace
+  :ensure nil
+  :config
+  ;; Show trailing whitespace in `prog-mode' and `conf-mode'
+  (defun +show-trailing-whitespace-h ()
+    (setq-local show-trailing-whitespace t))
+  (add-hook 'prog-mode-hook  #'+show-trailing-whitespace-h)
+  (add-hook 'conf-mode-hook  #'+show-trailing-whitespace-h)
+  (add-hook 'text-mode-hook  #'+show-trailing-whitespace-h)
+
+  ;; Cleanup is handled by ws-butler
+  ;; (add-hook 'before-save-hook #'whitespace-cleanup)
+
+  ;; limit line length
+  (setq whitespace-line-column 80)
+  (setq whitespace-style '(face trailing lines-tail space-before-tab)))
+
 (provide 'camp-builtin)

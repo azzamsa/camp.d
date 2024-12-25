@@ -77,7 +77,7 @@
     "bO"   '(aza-kill-other-buffers :wk "Kill other buffers")
     "br"   '(revert-buffer          :wk "Revert buffer")
     "bR"   '(rename-buffer          :wk "Rename buffer")
-    "bs"   '(save-buffers-and-clean :wk "Save buffer")
+    "bs"   '(basic-save-buffer      :wk "Save buffer")
     "bS"   '(evil-write-all         :wk "Save all buffers")
 
     ;;; <leader> c --- code
@@ -97,7 +97,7 @@
     "ff"   '(find-file                    :wk "Find file")
     "fe"   '(+find-file-in-emacsd         :wk "Find file in emacs.d")
     "fE"   '(+browse-in-emacsd            :wk "Browse emacs.d")
-    "fs"   '(save-buffers-and-clean       :wk "Save file")
+    "fs"   '(basic-save-buffer            :wk "Save buffer")
     "fu"   '(crux-sudo-edit               :wk "Find file as sudo")
     "fU"   '(crux-sudo-edit               :wk "Edit file as sudo")
     "fy"   '(dirvish-copy-file-name       :wk "Yank filename")

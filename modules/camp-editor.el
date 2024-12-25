@@ -16,8 +16,11 @@
   (setq super-save-all-buffers t)
   ;; Save silently
   (setq super-save-silent t)
+
+  ;; Cleanup is handled by ws-butler
   ;; Enable deleting trailing white spaces before saving
-  (setq super-save-delete-trailing-whitespace t)
+  ;; (setq super-save-delete-trailing-whitespace t)
+
   ;; Need to explicitly load the mode
   (super-save-mode +1))
 
@@ -183,5 +186,11 @@
 (use-package yasnippet-snippets
   :ensure t
   :after yasnippet)
+
+;; Clean only edited lines
+(use-package ws-butler
+  :ensure t
+  :config
+  (ws-butler-global-mode t))
 
 (provide 'cam-editor)
