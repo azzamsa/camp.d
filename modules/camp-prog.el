@@ -54,7 +54,7 @@
 
 (use-package rainbow-mode
   :ensure t
-  :hook (prog-mode text-mode))
+  :hook (prog-mode text-mode conf-mode))
 
 (use-package colorful-mode
   :disabled
