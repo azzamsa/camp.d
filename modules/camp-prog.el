@@ -101,6 +101,7 @@
 (use-package apheleia
   :ensure t
   :config
+  (setq apheleia-formatters-respect-indent-level nil)
   (apheleia-global-mode +1))
 
 (use-package lua-ts-mode
