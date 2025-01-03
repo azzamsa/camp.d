@@ -164,6 +164,29 @@ Modified for my needs."
 
   (recentf-mode 1))
 
+(use-package savehist
+  :ensure nil
+  :config
+  (setq savehist-autosave-interval 60     ; save on kill only
+        savehist-save-minibuffer-history t
+        savehist-additional-variables
+        '(kill-ring                        ; persist clipboard
+          register-alist                   ; persist macros
+          mark-ring global-mark-ring       ; persist marks
+          search-ring regexp-search-ring vertico-repeat-history) ; persist searches
+        savehist-file (expand-file-name "savehist" camp-var-dir))
+
+  (savehist-mode +1))
+
+
+;; Remember last cursor position in a file
+(use-package saveplace
+  :ensure nil
+  :config
+  (setq save-place-file (expand-file-name "saveplace" camp-var-dir))
+  ;; activate it for all buffers
+  (setq-default save-place t))
+
 (use-package delsel
   :ensure nil
   :hook (after-init . delete-selection-mode))
