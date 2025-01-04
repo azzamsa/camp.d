@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package doom-themes
-  :disabled
+  ;; :disabled
   ;; I need a fork because many `custom-set-faces` needed if I change the background color.
   ;; This is because many of the colors are inherited from the `bg` color.
   ;;
@@ -9,7 +9,9 @@
   ;; for debugging purpose
   :ensure (doom-themes :repo "~/playground/forks/doom-themes/" :branch "mine")
   :config
-  (load-theme 'doom-snazzy t))
+  (setq doom-tokyo-night-brighter-comments t)
+  (setq doom-tokyo-night-comment-bg nil)
+  (load-theme 'doom-tokyo-night-moon t))
 
 (use-package catppuccin-theme
   :disabled
@@ -20,7 +22,7 @@
 
 (use-package modus-themes
   ;; Moved to `personal` config as I change theme frequently.
-  ;; :disabled
+  :disabled
   :ensure t
   :config
   (setq modus-themes-italic-constructs t
@@ -41,8 +43,9 @@
 
           ;; All the colors below are kept across theme.
           ;; Mostly taken from https://catppuccin.com/palette mocha.
-          (bg-main   black)
-          (comment overlay0)
+          ;; (bg-main   black)
+          ;; (comment overlay0)
+          (comment "#989898") ;; red faint is too bright
           (bg-region surface0)
 
           ;; Modeline
@@ -60,39 +63,7 @@
           (bg-line-number-inactive crust)
 
           ;; Fringe
-          (fringe crust)
-
-          ;; Dracula palette
-          (red        "#ff5555")
-          (orange     "#ffb86c")
-          (green      "#50fa7b")
-          (teal       "#0189cc")
-          (yellow     "#f1fa8c")
-          (blue       "#61bfff")
-          (dark-blue  "#0189cc")
-          (magenta    "#ff79c6")
-          (violet     "#bd93f9")
-          (cyan       "#8be9fd")
-
-          (accent-1 magenta)
-          (fg-prompt accent-1)
-
-          ;; Code
-          (builtin orange)
-          (constant cyan)
-          (fnname green)
-          (keyword magenta)
-          (string yellow)
-          (variable violet)
-          (type violet)
-
-          ;; Heading mappings
-          (fg-heading-0 accent-1)
-          (fg-heading-1 accent-1)
-          (fg-heading-2 orange)
-          (fg-heading-3 green)
-          (fg-heading-4 green)))
+          (fringe crust)))
 
 
   (load-theme 'modus-vivendi-tinted t))
-
