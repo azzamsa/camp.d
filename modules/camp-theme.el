@@ -19,6 +19,8 @@
   (load-theme 'catppuccin t))
 
 (use-package modus-themes
+  ;; Moved to `personal` config as I change theme frequently.
+  ;; :disabled
   :ensure t
   :config
   (setq modus-themes-italic-constructs t
@@ -28,6 +30,7 @@
   ;; Other faces will be leave as is.
   (setq modus-themes-common-palette-overrides
         '(
+          (black      "#000000")
           ;; Catppuccin Mocha palette
           (crust      "#11111b")
           (base       "#1e1e2e")
@@ -38,42 +41,58 @@
 
           ;; All the colors below are kept across theme.
           ;; Mostly taken from https://catppuccin.com/palette mocha.
+          (bg-main   black)
           (comment overlay0)
           (bg-region surface0)
-          (bg-main   "black")
 
-          ;; modeline
-          (fg-mode-line-active text)
+          ;; Modeline
+          ;; (fg-mode-line-active text)
           (bg-mode-line-active base)
           (border-mode-line-active bg-mode-line-active)
-          (fg-mode-line-inactive overlay2)
+          ;; (fg-mode-line-inactive overlay2)
           (bg-mode-line-inactive crust)
           (border-mode-line-inactive bg-mode-line-inactive)
 
-          ;; line numbers
-          (fg-line-number-active text)
+          ;; Line numbers
+          ;; (fg-line-number-active text)
           (bg-line-number-active surface0)
-          (fg-line-number-inactive overlay2)
+          ;; (fg-line-number-inactive overlay2)
           (bg-line-number-inactive crust)
 
-          ;; Snazzy palette
-          (green      "#5af78e")
-          (yellow     "#f3f99d")
-          (blue       "#57c7ff")
-          (magenta    "#ff6ac1")
-          (cyan       "#9aedfe")
+          ;; Fringe
+          (fringe crust)
+
+          ;; Dracula palette
+          (red        "#ff5555")
           (orange     "#ffb86c")
+          (green      "#50fa7b")
+          (teal       "#0189cc")
+          (yellow     "#f1fa8c")
+          (blue       "#61bfff")
+          (dark-blue  "#0189cc")
+          (magenta    "#ff79c6")
+          (violet     "#bd93f9")
+          (cyan       "#8be9fd")
 
           (accent-1 magenta)
-          (fg-prompt magenta)
+          (fg-prompt accent-1)
 
-          ;; code
-          (keyword orange)
-          (builtin magenta)
+          ;; Code
+          (builtin orange)
+          (constant cyan)
+          (fnname green)
+          (keyword magenta)
           (string yellow)
-          (constant green)
-          (fnname blue)
-          (type cyan)))
+          (variable violet)
+          (type violet)
+
+          ;; Heading mappings
+          (fg-heading-0 accent-1)
+          (fg-heading-1 accent-1)
+          (fg-heading-2 orange)
+          (fg-heading-3 green)
+          (fg-heading-4 green)))
+
 
   (load-theme 'modus-vivendi-tinted t))
 

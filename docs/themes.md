@@ -1,55 +1,6 @@
 # Themes
 
-## Snazzy
-
-```lisp
-;; Snazzy palette
-(green      "#5af78e")
-(yellow     "#f3f99d")
-(blue       "#57c7ff")
-(magenta    "#ff6ac1")
-(cyan       "#9aedfe")
-(orange     "#ffb86c")
-
-(accent-1 magenta)
-(fg-prompt accent-1)
-
-;; code
-(keyword orange)
-(builtin magenta)
-(string yellow)
-(constant green)
-(fnname blue)
-(type cyan)
-```
-
-## Dracula
-
-```lisp
-;; dracula palette
-(red        "#ff5555")
-(orange     "#ffb86c")
-(green      "#50fa7b")
-(teal       "#0189cc")
-(yellow     "#f1fa8c")
-(blue       "#61bfff")
-(dark-blue  "#0189cc")
-(magenta    "#ff79c6")
-(violet     "#bd93f9")
-(cyan       "#8be9fd")
-
-(accent-1 magenta)
-(fg-prompt accent-1)
-
-;; code
-(builtin orange)
-(constant cyan)
-(fnname green)
-(keyword magenta)
-(string yellow)
-(type violet)
-(variable violet)
-```
+## Modus Theme
 
 ## Material Palenight
 
@@ -76,6 +27,84 @@
 (fnname blue)
 (keyword cyan)
 (string green)
-(type magenta)
 (variable yellow)
+(type magenta)
+
+(fg-heading-0 accent-1)
+(fg-heading-1 accent-1)
+(fg-heading-2 magenta)
+(fg-heading-3 violet)
+(fg-heading-4 dark-blue)))
+```
+
+## Snazzy
+
+```lisp
+;; Snazzy palette
+(red        "#ff5c57")
+(orange     "#ff9f43")
+(yellow     "#f3f99d")
+(green      "#5af78e")
+(magenta    "#ff6ac1")
+(cyan       "#9aedfe")
+(blue       "#57c7ff")
+
+(accent-0 blue) ;; magit files
+(accent-1 magenta) ;; cursor
+(accent-2 orange)
+(accent-3 yellow)
+
+;; Prompt mappings
+(fg-prompt accent-1)
+
+;; Code mappings (order inspired by doom-dracula)
+(builtin orange)
+(constant cyan)
+(fnname green)
+(keyword magenta)
+(string yellow)
+(variable violet)
+(type violet)
+
+;; Heading mappings
+(fg-heading-0 accent-1)
+(fg-heading-1 accent-1)
+(fg-heading-2 orange)
+(fg-heading-3 green)
+(fg-heading-4 green)))
+```
+
+## Dracula
+
+```lisp
+;; dracula palette
+(red        "#ff5555")
+(orange     "#ffb86c")
+(green      "#50fa7b")
+(teal       "#0189cc")
+(yellow     "#f1fa8c")
+(blue       "#61bfff")
+(dark-blue  "#0189cc")
+(magenta    "#ff79c6")
+(violet     "#bd93f9")
+(cyan       "#8be9fd")
+
+(accent-1 magenta)
+(fg-prompt accent-1)
+
+;; Code
+(builtin orange)
+(constant cyan)
+(fnname green)
+(keyword magenta)
+(string yellow)
+(type violet)
+(variable violet)
+
+;; Heading mappings
+(fg-heading-0 accent-1)
+(fg-heading-1 accent-1)
+(fg-heading-2 orange)
+(fg-heading-3 green)
+(fg-heading-4 green)))
 ```
