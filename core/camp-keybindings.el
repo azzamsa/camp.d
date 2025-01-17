@@ -132,7 +132,7 @@
     "pb"  '(consult-project-buffer       :wk "Switch to project buffer")
     "pf"  '(project-find-file            :wk "Find file in project")
     "pk"  '(project-kill-buffers         :wk "Kill project buffers")
-    "pp"  '(consult-project-extra-find   :wk "Switch project")
+    "pp"  '(project-switch-project       :wk "Switch project")
 
     ;;; <leader> q --- quit/session
     "q"   '(nil                        :wk "quit/session")

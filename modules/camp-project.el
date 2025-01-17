@@ -1,7 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package consult-project-extra :ensure t)
-
 (use-package neotree
   :ensure t
   :config

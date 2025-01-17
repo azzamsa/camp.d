@@ -105,6 +105,10 @@
         (project-find-file-in nil dirs pr nil)
       (call-interactively #'find-file))))
 
+(defun +project-from-dir (&optional dir)
+  "Helper method to return project instance if DIR is a valid project."
+  (project--find-in-directory dir))
+
 (defun camp-project-browse (dir)
   "Traverse a file structure starting linearly from DIR."
   (let ((default-directory (file-truename (expand-file-name dir))))
