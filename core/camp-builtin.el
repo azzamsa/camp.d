@@ -110,11 +110,13 @@ Modified for my needs."
   (setq
    project-list-file (concat camp-var-dir "project-list.el")
    project-vc-extra-root-markers '(".projectile.el" ".project.el" ".project" ".jj")
-   project-ignores '("/run/")))
+   project-ignores '("/run/")
 
-(defun +project-from-dir (&optional dir)
-  "Helper method to return project instance if DIR is a valid project."
-  (project--find-in-directory dir))
+   project-switch-commands
+   '((?f "Find file" project-find-file)
+     (?/ "grep" consult-ripgrep)
+     (?d "Dired" project-dired)
+     (?g "Magit" magit-project-status))))
 
 (use-package tab-bar
   :ensure nil
