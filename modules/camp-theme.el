@@ -9,8 +9,8 @@
   ;; for debugging purpose
   :ensure (doom-themes :repo "~/playground/forks/doom-themes/" :branch "mine")
   :config
-  (setq doom-tokyo-night-brighter-comments t)
-  (setq doom-tokyo-night-comment-bg nil)
+  (setq doom-tokyo-night-moon-brighter-comments t)
+  (setq doom-tokyo-night-moon-comment-bg nil)
   (load-theme 'doom-tokyo-night-moon t))
 
 (use-package catppuccin-theme
