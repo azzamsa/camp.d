@@ -51,5 +51,12 @@
   ;; `header-line-format', which has better visibility.
   (setq git-timemachine-show-minibuffer-details t))
 
+;; File icons for Magit based on `nerd-icons'
+(use-package magit-file-icons
+  :ensure t
+  :after magit
+  :init
+  (magit-file-icons-mode 1))
+
 
 (provide 'camp-vc)
