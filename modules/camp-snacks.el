@@ -113,3 +113,9 @@
   "Traverse a file structure starting linearly from DIR."
   (let ((default-directory (file-truename (expand-file-name dir))))
     (call-interactively #'find-file)))
+
+(defun +vertico/project-search-from-cwd ()
+  "Search files from the current working directory using Vertico and Consult."
+  (interactive)
+  (let ((dir (file-truename default-directory)))
+    (consult-ripgrep dir)))

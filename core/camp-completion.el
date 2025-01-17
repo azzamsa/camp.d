@@ -116,14 +116,8 @@
     (define-key vertico-map '[C-left]  'vertico-previous-group)
     (define-key vertico-map '[C-right] 'vertico-next-group))
 
-  (require 'vertico-directory)
+  (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
   (vertico-mode 1))
-
-(defun +vertico/project-search-from-cwd ()
-  "Search files from the current working directory using Vertico and Consult."
-  (interactive)
-  (let ((dir (file-truename default-directory)))
-    (consult-ripgrep dir)))
 
 (use-package consult
   ;; Enhance `Vertico (completing-read)` with live-preview, grouping, narrowing/filtering, etc.
