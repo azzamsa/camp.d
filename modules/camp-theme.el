@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package doom-themes
-  ;; :disabled
   ;; I need a fork because many `custom-set-faces` needed if I change the background color.
   ;; This is because many of the colors are inherited from the `bg` color.
   ;;

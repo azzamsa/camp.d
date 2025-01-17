@@ -4,20 +4,15 @@
 ;; In-Buffer completion
 
 (use-package corfu
-  ;; Enchanre built-in In-Buffer completion.
+  ;; Enhance built-in In-Buffer completion.
   ;; Company -> Corfu.
   :ensure t
   :config
-  ;; Setup corfu for popup like completion
   (setq corfu-cycle t ; Allows cycling through candidates
         corfu-auto t ; Enable auto completion
         corfu-auto-prefix 2 ; Complete with less prefix keys
-        corfu-auto-delay 0.0 ; No delay for completion
-        corfu-min-width 25
-        corfu-count 10
-        corfu-scroll-margin 4
-        corfu-preselect-first t
-        corfu-echo-documentation 0.25) ; Echo docs for current completion option
+        corfu-auto-delay 0.24
+        corfu-preselect 'prompt)
 
   (defun +corfu-enable-in-minibuffer ()
     "Enable Corfu in the minibuffer if `completion-at-point' is bound."
@@ -40,8 +35,11 @@
   :ensure t
   :after corfu
   :config
+  (setq cape-dabbrev-check-other-buffers nil) ;; only check current buffer for completion
+
   (add-to-list 'completion-at-point-functions #'cape-file) ;; complete file names
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-emoji))
 
 (use-package kind-icon
   ;; Adds icons to In-Buffer completion.
@@ -106,6 +104,8 @@
   ;; Helm/Ivy/Ido -> Selectrum -> Vertico.
   :ensure t
   :config
+  (require 'vertico-directory)
+
   (setq vertico-cycle t
         vertico-count 12)
 
