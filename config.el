@@ -47,11 +47,3 @@
 ;; Modules
 ;;
 
-;; ;; Emacs doesn't play well with fish
-;; (setq shell-file-name "/bin/bash")
-
-;; Module: `natural-langs' -- Package: `spell-fu'
-(with-eval-after-load 'spell-fu
-  ;; We can use Camp' helper macro `+spell-fu-register-dictionaries!'
-  ;; to enable multi-language spell checking.
-  (+spell-fu-register-dictionaries! "en" "id"))

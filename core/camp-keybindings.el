@@ -155,7 +155,6 @@
     "t"   '(nil                           :wk "toggle")
     "ti"  '(highlight-indent-guides-mode  :wk "Indent guides")
     "tr"  '(read-only-mode                :wk "Read-only mode")
-    "ts"  '(spell-fu-mode                 :wk "Spell checker")
     "tw"  '(visual-line-mode              :wk "Soft line wrapping")
     "tm"  '(minimap-mode                  :wk "Minimap mode")
     "tz"  '(+zen/toggle                   :wk "Zen mode")
