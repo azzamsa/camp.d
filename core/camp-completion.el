@@ -12,7 +12,7 @@
         corfu-auto t ; Enable auto completion
         corfu-auto-prefix 2 ; Complete with less prefix keys
         corfu-auto-delay 0.24
-        corfu-preselect 'prompt)
+        corfu-preselect 'first)
 
   (defun +corfu-enable-in-minibuffer ()
     "Enable Corfu in the minibuffer if `completion-at-point' is bound."
