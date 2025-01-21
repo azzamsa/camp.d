@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package doom-themes
+  :disabled
   ;; I need a fork because many `custom-set-faces` needed if I change the background color.
   ;; This is because many of the colors are inherited from the `bg` color.
   ;;
@@ -21,7 +22,6 @@
 
 (use-package modus-themes
   ;; Moved to `personal` config as I change theme frequently.
-  :disabled
   :ensure t
   :config
   (setq modus-themes-italic-constructs t
@@ -42,9 +42,8 @@
 
           ;; All the colors below are kept across theme.
           ;; Mostly taken from https://catppuccin.com/palette mocha.
-          ;; (bg-main   black)
-          ;; (comment overlay0)
-          (comment "#989898") ;; red faint is too bright
+          (bg-main   black)
+          (comment overlay0)
           (bg-region surface0)
 
           ;; Modeline
