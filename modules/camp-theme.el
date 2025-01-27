@@ -43,7 +43,8 @@
           ;; All the colors below are kept across theme.
           ;; Mostly taken from https://catppuccin.com/palette mocha.
           (bg-main   black)
-          (comment overlay0)
+          ;; Modus Vivendi Tinted uses `red-faint` instead of `fg-dim` as a comment.
+          (comment fg-dim)
           (bg-region surface0)
 
           ;; Modeline
