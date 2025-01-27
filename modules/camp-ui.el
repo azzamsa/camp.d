@@ -3,14 +3,9 @@
 ;;
 ;; Icons
 
+;; Nerd Font icons for Emacs
 (use-package nerd-icons
   :ensure t)
-
-(use-package svg-lib
-  :ensure t
-  :defer t
-  :custom
-  (svg-lib-icons-dir (expand-file-name "svg-lib" camp-cache-dir))) ; Change cache dir
 
 ;; Modeline
 (use-package doom-modeline
@@ -34,7 +29,7 @@
   (setq minimap-window-location 'right
         minimap-update-delay 0
         minimap-width-fraction 0.09
-        minimap-minimum-width 15))
+        minimap-minimum-width 5))
 
 (use-package writeroom-mode
   :ensure t
@@ -72,7 +67,6 @@ Invoke again to revert to the window configuration before it was activated."
 
 (use-package dashboard
   :ensure t
-  :after evil evil-collection
   :demand t
   :init
   (defun camp-dashboard-insert-quote (list-size)

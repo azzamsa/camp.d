@@ -193,26 +193,6 @@
  ;; Small tab is enough!
  tab-width 2)
 
-;; === Misc hooks and advice ===
-;; Advice `emacs-session-filename' to ensure creating "session.ID" files in
-;; a sub-directory
-(with-eval-after-load 'x-win
-  (advice-add
-   #'emacs-session-filename :filter-return
-   (defun +emacs-session-filename--in-subdir-a (session-filename)
-     "Put the SESSION-FILENAME in the \"x-win/\" sub-directory."
-     (concat (+ensure-directory camp-var-dir "x-win/")
-             (file-name-nondirectory session-filename)))))
-
-;; Kill the minibuffer when switching by mouse to another window.
-;; Adapted from: trey-jackson.blogspot.com/2010/04/emacs-tip-36-abort-minibuffer-when.html
-(add-hook
- 'mouse-leave-buffer-hook
- (defun +minibuffer--kill-on-mouse-h ()
-   "Kill the minibuffer when switching to window with mouse."
-   (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
-     (abort-recursive-edit))))
-
 ;; === Tweaks on file save ===
 ;; Make scripts (files starting with shebang "#!") executable when saved
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)

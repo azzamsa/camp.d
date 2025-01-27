@@ -41,18 +41,6 @@
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-emoji))
 
-(use-package kind-icon
-  ;; Adds icons to In-Buffer completion.
-  :ensure t
-  :after corfu
-  :custom
-  (kind-icon-use-icons t)
-  (kind-icon-default-face 'corfu-default) ; Have background color be the same as `corfu' face background
-  (kind-icon-blend-background nil)  ; Use midpoint color between foreground and background colors ("blended")?
-  (kind-icon-blend-frac 0.08)
-  :config
-  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)) ; Enable `kind-icon'
-
 ;;
 ;; Minibuffer completion.
 

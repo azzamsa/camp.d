@@ -136,12 +136,8 @@
 
     ;;; <leader> q --- quit/session
     "q"   '(nil                        :wk "quit/session")
-    "qd"  '(desktop-read               :wk "Read desktop")
-    "qD"  '(desktop-lazy-complete      :wk "Lazy complete desktop")
     "qq"  '(save-buffers-kill-terminal :wk "Quit Emacs")
     "qQ"  '(kill-emacs                 :wk "Kill Emacs")
-    "qR"  '(recover-session            :wk "Recover session")
-    "qs"  '(desktop-save               :wk "Save desktop")
 
     ;;; <leader> s --- search
     "s"    '(nil   :wk "search")
