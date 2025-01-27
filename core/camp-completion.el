@@ -11,7 +11,7 @@
   (setq corfu-cycle t ; Allows cycling through candidates
         corfu-auto t ; Enable auto completion
         corfu-auto-prefix 2 ; Complete with less prefix keys
-        corfu-auto-delay 0.24
+        corfu-auto-delay 0.5
         corfu-preselect 'first)
 
   (defun +corfu-enable-in-minibuffer ()
@@ -23,6 +23,7 @@
   (add-hook 'minibuffer-setup-hook #'+corfu-enable-in-minibuffer)
   (global-corfu-mode 1))
 
+;; Icons for Corfu using `nerd-icons'
 (use-package nerd-icons-corfu
   :ensure t
   :after corfu
