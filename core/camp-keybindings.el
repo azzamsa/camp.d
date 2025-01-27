@@ -145,6 +145,7 @@
     "sB"   `(,(+cmd!! (consult-line-multi 'all-buffers)) :wk "Search all open buffers")
     "sd"    '(+vertico/project-search-from-cwd :wk "Search current directory")
     "si"   '(imenu :wk "Jump to symbol")
+    "sr"   '(dogears-go :wk "Jump to mark")
     "su"   '(vundo :wk "Undo history")
 
     ;;; <leader> t --- toggle

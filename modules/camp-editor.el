@@ -182,4 +182,7 @@
   :config
   (ws-butler-global-mode t))
 
+(use-package dogears
+  :ensure t)
+
 (provide 'cam-editor)
