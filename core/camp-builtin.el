@@ -116,7 +116,8 @@ Modified for my needs."
    '((?f "Find file" project-find-file)
      (?/ "grep" consult-ripgrep)
      (?d "Dired" project-dired)
-     (?g "Magit" magit-project-status))))
+     (?g "Magit" magit-project-status)
+     (?\e "Escape" keyboard-escape-quit))))
 
 (use-package tab-bar
   :ensure nil
@@ -152,12 +153,8 @@ Modified for my needs."
         ;; Exclude some files from being remembered by recentf
         recentf-exclude
         `(,(rx (* any)
-               (or
-                "/\\.emacs\\.d/var/"
-                "eln-cache"
-                "/cache/"
-                "/run/"
-                ".cache/")
+               (or "/\\.emacs\\.d/var/" "eln-cache" "/cache/"
+                   "/run/" "/var/" ".cache/")
                (* any)
                (? (or "html" "pdf" "tex" "epub" "gz")))
           ,(rx "/"
