@@ -75,7 +75,7 @@ that directory."
 ;;;###autoload
 (defun +elpaca-write-lockfile ()
   (interactive)
-  (elpaca-write-lockfile (expand-file-name "package-lock" camp-etc-dir)))
+  (elpaca-write-lock-file (expand-file-name "package-lock" camp-etc-dir)))
 
 ;;;###autoload
 (defun +emacs-version ()
