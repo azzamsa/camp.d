@@ -2,7 +2,7 @@
 
 (use-package magit
   :ensure t
-  :after transient
+  :after nerd-icons
   :init
   (+map! :infix "g"
     "g" #'magit-status)
@@ -18,11 +18,13 @@
 
   ;; Default args
   (setq transient-values '((magit-rebase "--autosquash" "--autostash" "--committer-date-is-author-date")))
-  :custom
-  (magit-revision-show-gravatars t)
-  (magit-save-repository-buffers nil)
-  ;; Show in new window
-  (magit-display-buffer-function #'magit-display-buffer-fullcolumn-most-v1))
+
+  (setq magit-format-file-function #'magit-format-file-nerd-icons)
+
+  (setq magit-revision-show-gravatars t
+        magit-save-repository-buffers nil
+        ;; Show in new window
+        magit-display-buffer-function #'magit-display-buffer-fullcolumn-most-v1))
 
 (use-package magit-todos
   :ensure t
@@ -50,13 +52,5 @@
   ;; showing revision details in the minibuffer, show them in
   ;; `header-line-format', which has better visibility.
   (setq git-timemachine-show-minibuffer-details t))
-
-;; File icons for Magit based on `nerd-icons'
-(use-package magit-file-icons
-  :ensure t
-  :after magit
-  :init
-  (magit-file-icons-mode 1))
-
 
 (provide 'camp-vc)
