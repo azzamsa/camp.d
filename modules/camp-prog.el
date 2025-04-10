@@ -84,6 +84,12 @@
   :ensure t
   :mode ("\\.rs$" . rustic-mode))
 
+(use-package go-mode
+  :ensure t
+  :mode ("\\.go$" . go-mode)
+  :config
+  (add-hook 'go-mode-hook 'lsp-deferred))
+
 (use-package typescript-ts-mode
   :ensure nil
   :mode "\\.ts\\'")
