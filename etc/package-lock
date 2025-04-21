@@ -8,18 +8,6 @@
                              "*-tests.el" "LICENSE" "README*" "*-pkg.el"))
                   :source "MELPA" :protocol https :inherit t :depth treeless
                   :ref "27c61866b1b9b8d77629ac702e5f48e67dfe0d3b"))
- (el-patch :source #1# :recipe
-           (:package "el-patch" :fetcher github :repo "radian-software/el-patch"
-                     :files
-                     ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo"
-                      "doc/dir" "doc/*.info" "doc/*.texi" "doc/*.texinfo"
-                      "lisp/*.el" "docs/dir" "docs/*.info" "docs/*.texi"
-                      "docs/*.texinfo"
-                      (:exclude ".dir-locals.el" "test.el" "tests.el"
-                                "*-test.el" "*-tests.el" "LICENSE" "README*"
-                                "*-pkg.el"))
-                     :source "MELPA" :protocol https :inherit t :depth treeless
-                     :ref "92803e7ea6e07cd56667ed7ea0dfacfc1f37f6d9"))
  (pcre2el :source #1# :recipe
           (:package "pcre2el" :fetcher github :repo "joddie/pcre2el" :files
                     ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo"
@@ -67,7 +55,7 @@
                            "magit-section-pkg.el")
                           :source "MELPA" :protocol https :inherit t :depth
                           treeless :ref
-                          "e4ea6f97be8c58698183ba63b2364e7e8214717b"))
+                          "9351171c37935a0e84c2f79bfe8e75c8fab50150"))
  (llama :source #1# :recipe
         (:package "llama" :fetcher github :repo "tarsius/llama" :files
                   ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo"
@@ -324,19 +312,6 @@
                                  "*-pkg.el"))
                       :source "MELPA" :protocol https :inherit t :depth treeless
                       :ref "f552823f51f11d66492f754deb51abd709c08ed9"))
- (magit-file-icons :source #1# :recipe
-                   (:package "magit-file-icons" :fetcher github :repo
-                             "gekoke/magit-file-icons" :files
-                             ("*.el" "*.el.in" "dir" "*.info" "*.texi"
-                              "*.texinfo" "doc/dir" "doc/*.info" "doc/*.texi"
-                              "doc/*.texinfo" "lisp/*.el" "docs/dir"
-                              "docs/*.info" "docs/*.texi" "docs/*.texinfo"
-                              (:exclude ".dir-locals.el" "test.el" "tests.el"
-                                        "*-test.el" "*-tests.el" "LICENSE"
-                                        "README*" "*-pkg.el"))
-                             :source "MELPA" :protocol https :inherit t :depth
-                             treeless :ref
-                             "6cd2e6a80109fdde35b6cabd7392e79ebefa4a29"))
  (git-timemachine :source #1# :recipe
                   (:package "git-timemachine" :fetcher codeberg :repo
                             "pidu/git-timemachine" :files
@@ -359,7 +334,7 @@
                      (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el"
                                "*-tests.el" "LICENSE" "README*" "*-pkg.el"))
                     :source "MELPA" :protocol https :inherit t :depth treeless
-                    :ref "7da881a957b8c15ddcc754dd73543c95b128d716"))
+                    :ref "7440baa9b16b1661e41dac8d7be0ffb426524e21"))
  (magit-todos :source #1# :recipe
               (:package "magit-todos" :fetcher github :repo
                         "alphapapa/magit-todos" :files
@@ -378,7 +353,7 @@
                    "docs/AUTHORS.md" "LICENSE" "magit-pkg.el"
                    (:exclude "lisp/magit-section.el"))
                   :source "MELPA" :protocol https :inherit t :depth treeless
-                  :ref "e4ea6f97be8c58698183ba63b2364e7e8214717b"))
+                  :ref "9351171c37935a0e84c2f79bfe8e75c8fab50150"))
  (doom-themes :source #1# :recipe
               (:package "doom-themes" :fetcher github :repo
                         "~/playground/forks/doom-themes/" :files
@@ -386,13 +361,13 @@
                                    "extensions/*.el")
                         :source "MELPA" :protocol https :inherit t :depth
                         treeless :branch "mine" :ref
-                        "8e8aa645211bb5a8ba075ea7c1b9e5cd782b78a3"))
+                        "f7767e360bf2cd9adda77050aec786b7fddd31ae"))
  (dashboard :source #1# :recipe
             (:package "dashboard" :fetcher github :repo
                       "emacs-dashboard/emacs-dashboard" :files
                       (:defaults "banners") :source "MELPA" :protocol https
                       :inherit t :depth treeless :ref
-                      "9616e5b5e793c3d8228a8fccf7b9ef7ace365005"))
+                      "4b7a4f1151e899ae90ec54c733686f765ab87a00"))
  (writeroom-mode :source #1# :recipe
                  (:package "writeroom-mode" :fetcher github :repo
                            "joostkremers/writeroom-mode" :files
@@ -437,7 +412,7 @@
                                      "README*" "*-pkg.el"))
                           :source "MELPA" :protocol https :inherit t :depth
                           treeless :ref
-                          "1708db2d354922888be264b7719c74c25a35a253"))
+                          "75dc662c5c2183bf25e47c6c5268ddbb819e1b40"))
  (nerd-icons :source #1# :recipe
              (:package "nerd-icons" :repo "rainstormstudio/nerd-icons.el"
                        :fetcher github :files (:defaults "data") :source "MELPA"
@@ -483,7 +458,7 @@
        (:package "jinx" :repo "minad/jinx" :files
                  (:defaults "jinx-mod.c" "emacs-module.h") :fetcher github
                  :source "MELPA" :protocol https :inherit t :depth treeless :ref
-                 "bd0b4673eb2b3bbddd7814e7b61128acb644615b"))
+                 "07e26f8f3f14c30e069f412c245170958b62cdbb"))
  (neotree :source #1# :recipe
           (:package "neotree" :repo "jaypei/emacs-neotree" :fetcher github
                     :files (:defaults "icons") :source "MELPA" :protocol https
@@ -615,7 +590,7 @@
                       (:defaults "*.el" "*.py" "acm" "core" "langserver"
                                  "multiserver" "resources")
                       :build (:not compile) :package "lsp-bridge" :ref
-                      "fdc6ab6726d5b959b60d7e5bcb9b78e32614d46b"))
+                      "e0ef4fbcca623ad76374d2d07faf50eafd821877"))
  (lsp-ui :source #1# :recipe
          (:package "lsp-ui" :repo "emacs-lsp/lsp-ui" :fetcher github :files
                    (:defaults "lsp-ui-doc.html" "resources") :source "MELPA"
@@ -625,7 +600,7 @@
            (:package "lsp-mode" :repo "emacs-lsp/lsp-mode" :fetcher github
                      :files (:defaults "clients/*.el") :source "MELPA" :protocol
                      https :inherit t :depth treeless :ref
-                     "7c0df125c19536646634dca9e27ecb3705db7521"))
+                     "d35aa757a3afde7a62efd67e2b84a9d8324951c0"))
  (consult-lsp :source #1# :recipe
               (:package "consult-lsp" :fetcher github :repo "gagbo/consult-lsp"
                         :files
@@ -666,7 +641,7 @@
             (:package "yasnippet" :repo "joaotavora/yasnippet" :fetcher github
                       :files ("yasnippet.el" "snippets") :source "MELPA"
                       :protocol https :inherit t :depth treeless :ref
-                      "5b315f1753480ebe669b157b8242448b5eafcfea"))
+                      "2384fe1655c60e803521ba59a34c0a7e48a25d06"))
  (helpful :source #1# :recipe
           (:package "helpful" :repo "Wilfred/helpful" :fetcher github :files
                     ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo"
@@ -676,7 +651,7 @@
                      (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el"
                                "*-tests.el" "LICENSE" "README*" "*-pkg.el"))
                     :source "MELPA" :protocol https :inherit t :depth treeless
-                    :ref "6a4d5e0760ba96a24cd13052233c6edfb34d022c"))
+                    :ref "03756fa6ad4dcca5e0920622b1ee3f70abfc4e39"))
  (expand-region :source #1# :recipe
                 (:package "expand-region" :repo "magnars/expand-region.el"
                           :fetcher github :files
@@ -696,7 +671,7 @@
                          . "indent-bars")
                         :files ("*" (:exclude ".git" "LICENSE")) :source
                         "GNU ELPA" :protocol https :inherit t :depth treeless
-                        :ref "fa293f98abe353599353c94177fe0bb77cdbd0b8"))
+                        :ref "ea74161b460114afeeaeb849a10fdde651b48718"))
  (drag-stuff :source #1# :recipe
              (:package "drag-stuff" :repo "rejeep/drag-stuff.el" :fetcher github
                        :files
@@ -775,7 +750,7 @@
         (:package "vundo" :repo ("https://github.com/casouri/vundo" . "vundo")
                   :files ("*" (:exclude ".git" "test")) :source "GNU ELPA"
                   :protocol https :inherit t :depth treeless :ref
-                  "b89f719824fe5da0f6a7590fad3ece798fd59909"))
+                  "d09448aa537a63e35a4bc6b38ceb2c168e891342"))
  (super-save :source #1# :recipe
              (:package "super-save" :fetcher github :repo "bbatsov/super-save"
                        :files
@@ -882,7 +857,7 @@
                                      "README*" "*-pkg.el"))
                           :source "MELPA" :protocol https :inherit t :depth
                           treeless :ref
-                          "d2d960bec164e91e1a3315b176e2bcc324e63c95"))
+                          "258313ef2b492c3c504efb37fefd0e6085deb2e6"))
  (just-mode :source #1# :recipe
             (:package "just-mode" :repo "leon-barrett/just-mode.el" :fetcher
                       github :files
@@ -954,12 +929,12 @@
                      (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el"
                                "*-tests.el" "LICENSE" "README*" "*-pkg.el"))
                     :source "MELPA" :protocol https :inherit t :depth treeless
-                    :ref "f94d557807451a733b71a2c41d43175ec6ed3248"))
+                    :ref "48d09c200c683ffb09ad5863d5496e230b9fe3f9"))
  (vertico :source #1# :recipe
           (:package "vertico" :repo "minad/vertico" :files
                     (:defaults "extensions/vertico-*.el") :fetcher github
                     :source "MELPA" :protocol https :inherit t :depth treeless
-                    :ref "c3b788b6bea10e3493ebc05a96bbde294824cff6"))
+                    :ref "3e1e55319fb377a59954ebce4acf772dbb5c9b10"))
  (orderless :source #1# :recipe
             (:package "orderless" :repo "oantolin/orderless" :fetcher github
                       :files
@@ -1035,7 +1010,7 @@
         (:package "corfu" :repo "minad/corfu" :files
                   (:defaults "extensions/corfu-*.el") :fetcher github :source
                   "MELPA" :protocol https :inherit t :depth treeless :ref
-                  "061d926d0f0eb2633416deeddc403a1a67b062ae"))
+                  "50a3fbf1d4e6a39c618a86d931bee9584306a8dd"))
  (evil-matchit :source #1# :recipe
                (:package "evil-matchit" :fetcher github :repo
                          "redguardtoo/evil-matchit" :files
@@ -1164,7 +1139,7 @@
                                  "*-test.el" "*-tests.el" "LICENSE" "README*"
                                  "*-pkg.el"))
                       :source "MELPA" :protocol https :inherit t :depth treeless
-                      :ref "00112c11e5d94e018cb33aae2d15b5543be1cad8"))
+                      :ref "16e47e5773540bfc2493a8bee91ac77a0f89e931"))
  (elpaca-use-package :source #1# :recipe
                      (:package "elpaca-use-package" :wait t :repo
                                "https://github.com/progfolio/elpaca.git" :files
@@ -1173,11 +1148,11 @@
                                (:not elpaca--compile-info) :source
                                "Elpaca extensions" :protocol https :inherit t
                                :depth treeless :ref
-                               "ab62a34254570b430dc5bd1d03f16dfe74bd279e"))
+                               "7746b9a66181351ddff3148538ec5a15d8bb4e3e"))
  (elpaca :source
    #1# :recipe
    (:source nil :protocol https :inherit ignore :depth 1 :repo
             "https://github.com/progfolio/elpaca.git" :ref
-            "ab62a34254570b430dc5bd1d03f16dfe74bd279e" :files
+            "7746b9a66181351ddff3148538ec5a15d8bb4e3e" :files
             (:defaults "elpaca-test.el" (:exclude "extensions")) :build
             (:not elpaca--activate-package) :package "elpaca")))

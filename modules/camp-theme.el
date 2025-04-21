@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package doom-themes
-  :disabled
   ;; I need a fork because many `custom-set-faces` needed if I change the background color.
   ;; This is because many of the colors are inherited from the `bg` color.
   ;;
@@ -9,9 +8,11 @@
   ;; for debugging purpose
   :ensure (doom-themes :repo "~/playground/forks/doom-themes/" :branch "mine")
   :config
-  (setq doom-tokyo-night-moon-brighter-comments t)
-  (setq doom-tokyo-night-moon-comment-bg nil)
-  (load-theme 'doom-tokyo-night-moon t))
+  (setq doom-dracula-brighter-comments t)
+  (setq doom-dracula-comment-bg nil)
+  ;; (load-theme 'doom-tokyo-night-moon t))
+  ;; (load-theme 'doom-laserwave-high-contrast t))
+  (load-theme 'doom-dracula t))
 
 (use-package catppuccin-theme
   :disabled
@@ -21,6 +22,7 @@
   (load-theme 'catppuccin t))
 
 (use-package modus-themes
+  :disabled
   ;; Moved to `personal` config as I change theme frequently.
   :ensure t
   :config
@@ -62,7 +64,37 @@
           (bg-line-number-inactive crust)
 
           ;; Fringe
-          (fringe crust)))
+          (fringe crust)
 
+          ;; palenight palette
+          (red         "#ff5370")
+          (orange      "#f78c6c")
+          (green       "#c3e88d")
+          (teal        "#44b9b1")
+          (yellow      "#ffcb6b")
+          (blue        "#82aaff")
+          (dark-blue   "#7986E7")
+          (magenta     "#c792ea")
+          (violet      "#bb80b3")
+          (cyan        "#89DDFF")
+          (dark-cyan   "#80cbc4")
+
+          (accent-1 blue)
+          (fg-prompt accent-1)
+
+          ;; code
+          (builtin blue)
+          (constant orange)
+          (fnname blue)
+          (keyword cyan)
+          (string green)
+          (variable yellow)
+          (type magenta)
+
+          (fg-heading-0 accent-1)
+          (fg-heading-1 accent-1)
+          (fg-heading-2 magenta)
+          (fg-heading-3 violet)
+          (fg-heading-4 dark-blue)))
 
   (load-theme 'modus-vivendi-tinted t))
