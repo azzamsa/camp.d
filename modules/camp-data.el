@@ -52,6 +52,12 @@
   :after (flycheck ledger-mode)
   :demand t)
 
+(use-package beancount-mode
+  :mode "\\.beancount\\'"
+  :ensure (beancount-mode :type git :host github :repo "beancount/beancount-mode"
+                          :files ("beancount.el")
+                          :main "beancount.el"))
+
 (use-package typst-ts-mode
   :ensure (:host codeberg :repo "meow_king/typst-ts-mode"))
 
