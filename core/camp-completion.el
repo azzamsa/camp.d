@@ -119,7 +119,6 @@
   :init
   (keymap-set minibuffer-local-map "C-r"   'consult-history)
   (keymap-set minibuffer-local-map "C-S-v" 'consult-yank-pop)
-  (keymap-global-set "C-s" 'consult-line)
   (+map!
     [remap bookmark-jump]                 '(consult-bookmark        :wk "Jump to bookmark")
     [remap evil-show-marks]               '(consult-mark            :wk "Show marks")

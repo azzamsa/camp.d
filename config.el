@@ -33,6 +33,9 @@
 ;; Custom Global Keybindings
 ;;
 
+(keymap-global-set "C-s" (lambda ()
+                           (interactive)
+                           (basic-save-buffer)))
 ;;
 ;; Camp
 ;;
@@ -47,3 +50,5 @@
 ;; Modules
 ;;
 
+;; Emacs doesn't play well with fish
+(setq shell-file-name "/bin/bash")
