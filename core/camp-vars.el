@@ -75,7 +75,9 @@
     "💯 Do your best"
     "💥 Action cures fear"
     "⏳ It's too early to tell"
-    "🤝 Make customer, not sale"
-    "🎯 A goal without plan is a wish"))
+    "🎯 A goal without plan is a wish"
+    "🎢 Mood follows action"
+    "🚫 Don’t break the chain"
+    "🕒 Discipline equals freedom"))
 
 (provide 'camp-vars)
