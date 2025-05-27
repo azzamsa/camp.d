@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package doom-themes
+  :disabled
   ;; I need a fork because many `custom-set-faces` needed if I change the background color.
   ;; This is because many of the colors are inherited from the `bg` color.
   ;;
@@ -16,13 +17,34 @@
 
 (use-package catppuccin-theme
   :disabled
-  :ensure (catppuccin-theme :repo "~/playground/forks/catppuccin-emacs/" :branch "mine")
+  :ensure t
   :config
   (setq catppuccin-flavor 'mocha)
-  (load-theme 'catppuccin t))
+
+  ;; `Overlay0` is too dim AA (3.35:1). `Overlay2` on base is (5.81:1).
+  ;; but `Overlay2` is too bright for a comment.
+  ;; Using `Subtext0` will get AAA (9.43:1), but it too similar to `Text`.
+  ;; (catppuccin-set-color 'overlay0 "#7f849c" 'mocha)
+  ;; I think I will try Latte's overlay0 (8.06:1)
+  ;; Modus Vivendi uses `#989898` (7.27:1)
+  (catppuccin-set-color 'overlay0 "#9CA0B0" 'mocha)
+
+  ;; Catppuccin black.
+  (catppuccin-set-color 'base "#000000" 'mocha)
+  (catppuccin-set-color 'mantle "#000000" 'mocha)
+  (catppuccin-set-color 'crust "#000000" 'mocha)
+  (catppuccin-set-color 'text "#ffffff" 'mocha)
+
+  (load-theme 'catppuccin t)
+
+  (with-eval-after-load 'catppuccin-theme
+    ;; Must be used *after* the theme is loaded
+    (custom-set-faces
+     ;; The default `region` and `highlight` colors in Mocha don't look good against a black background.
+     `(region ((t (:background "#313244"))))
+     `(highlight ((t (:background "#313244")))))))
 
 (use-package modus-themes
-  :disabled
   ;; Moved to `personal` config as I change theme frequently.
   :ensure t
   :config
@@ -64,37 +86,6 @@
           (bg-line-number-inactive crust)
 
           ;; Fringe
-          (fringe crust)
-
-          ;; palenight palette
-          (red         "#ff5370")
-          (orange      "#f78c6c")
-          (green       "#c3e88d")
-          (teal        "#44b9b1")
-          (yellow      "#ffcb6b")
-          (blue        "#82aaff")
-          (dark-blue   "#7986E7")
-          (magenta     "#c792ea")
-          (violet      "#bb80b3")
-          (cyan        "#89DDFF")
-          (dark-cyan   "#80cbc4")
-
-          (accent-1 blue)
-          (fg-prompt accent-1)
-
-          ;; code
-          (builtin blue)
-          (constant orange)
-          (fnname blue)
-          (keyword cyan)
-          (string green)
-          (variable yellow)
-          (type magenta)
-
-          (fg-heading-0 accent-1)
-          (fg-heading-1 accent-1)
-          (fg-heading-2 magenta)
-          (fg-heading-3 violet)
-          (fg-heading-4 dark-blue)))
+          (fringe crust)))
 
   (load-theme 'modus-vivendi-tinted t))
