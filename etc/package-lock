@@ -354,14 +354,19 @@
                    (:exclude "lisp/magit-section.el"))
                   :source "MELPA" :protocol https :inherit t :depth treeless
                   :ref "9351171c37935a0e84c2f79bfe8e75c8fab50150"))
- (doom-themes :source #1# :recipe
-              (:package "doom-themes" :fetcher github :repo
-                        "~/playground/forks/doom-themes/" :files
-                        (:defaults "themes/*.el" "themes/*/*.el"
-                                   "extensions/*.el")
-                        :source "MELPA" :protocol https :inherit t :depth
-                        treeless :branch "mine" :ref
-                        "f7767e360bf2cd9adda77050aec786b7fddd31ae"))
+ (catppuccin-theme :source #1# :recipe
+                   (:package "catppuccin-theme" :fetcher github :repo
+                             "catppuccin/emacs" :files
+                             ("*.el" "*.el.in" "dir" "*.info" "*.texi"
+                              "*.texinfo" "doc/dir" "doc/*.info" "doc/*.texi"
+                              "doc/*.texinfo" "lisp/*.el" "docs/dir"
+                              "docs/*.info" "docs/*.texi" "docs/*.texinfo"
+                              (:exclude ".dir-locals.el" "test.el" "tests.el"
+                                        "*-test.el" "*-tests.el" "LICENSE"
+                                        "README*" "*-pkg.el"))
+                             :source "MELPA" :protocol https :inherit t :depth
+                             treeless :ref
+                             "206f823ce870c41c2d2306fce260a643c5985832"))
  (dashboard :source #1# :recipe
             (:package "dashboard" :fetcher github :repo
                       "emacs-dashboard/emacs-dashboard" :files
@@ -444,7 +449,7 @@
                   (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el"
                             "*-tests.el" "LICENSE" "README*" "*-pkg.el"))
                  :source "MELPA" :protocol https :inherit t :depth treeless :ref
-                 "c83c54d3d746e83861bcb22b0309c66a2d4db17f"))
+                 "e42f5558199576628e827a6e3db29eae56f4126a"))
  (rg :source #1# :recipe
      (:package "rg" :fetcher github :repo "dajva/rg.el" :files
                ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir"
@@ -1010,7 +1015,7 @@
         (:package "corfu" :repo "minad/corfu" :files
                   (:defaults "extensions/corfu-*.el") :fetcher github :source
                   "MELPA" :protocol https :inherit t :depth treeless :ref
-                  "50a3fbf1d4e6a39c618a86d931bee9584306a8dd"))
+                  "6db826974963f8fb5d8b9832e7c09da2fea3296a"))
  (evil-matchit :source #1# :recipe
                (:package "evil-matchit" :fetcher github :repo
                          "redguardtoo/evil-matchit" :files
@@ -1148,11 +1153,11 @@
                                (:not elpaca--compile-info) :source
                                "Elpaca extensions" :protocol https :inherit t
                                :depth treeless :ref
-                               "7746b9a66181351ddff3148538ec5a15d8bb4e3e"))
+                               "1d299d7e3dde8a59b9f199d435ac92c16b7719e1"))
  (elpaca :source
    #1# :recipe
    (:source nil :protocol https :inherit ignore :depth 1 :repo
             "https://github.com/progfolio/elpaca.git" :ref
-            "7746b9a66181351ddff3148538ec5a15d8bb4e3e" :files
+            "1d299d7e3dde8a59b9f199d435ac92c16b7719e1" :files
             (:defaults "elpaca-test.el" (:exclude "extensions")) :build
             (:not elpaca--activate-package) :package "elpaca")))
