@@ -100,7 +100,8 @@
     "fs"   '(basic-save-buffer            :wk "Save buffer")
     "fu"   '(crux-sudo-edit               :wk "Find file as sudo")
     "fU"   '(crux-sudo-edit               :wk "Edit file as sudo")
-    "fy"   '(dirvish-copy-file-name       :wk "Yank filename")
+    "fy"   '(+doom/yank-buffer-path       :wk "Yank filepath")
+    "fY"   '(+doom/yank-buffer-path-relative-to-project  :wk "Yank filepath from project")
 
     ;;; <leader> g --- git/version control
     "g"   '(nil :wk "git/vc")

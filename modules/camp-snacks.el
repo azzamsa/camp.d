@@ -119,3 +119,29 @@
   (interactive)
   (let ((dir (file-truename default-directory)))
     (consult-ripgrep dir)))
+
+;;;###autoload
+(defun +doom/yank-buffer-path (&optional root)
+  "Copy the current buffer's path to the kill ring."
+  (interactive)
+  (if-let* ((filename (or (buffer-file-name (buffer-base-buffer))
+                          (bound-and-true-p list-buffers-directory))))
+      (let ((path (abbreviate-file-name
+                   (if root
+                       (file-relative-name filename root)
+                     filename))))
+        (kill-new path)
+        (if (string= path (car kill-ring))
+            (message "Copied path: %s" path)
+          (user-error "Couldn't copy filename in current buffer")))
+    (error "Couldn't find filename in current buffer")))
+
+;;;###autoload
+(defun +doom/yank-buffer-path-relative-to-project (&optional include-root)
+  "Copy the current buffer's path to the kill ring.
+With non-nil prefix INCLUDE-ROOT, also include the project's root."
+  (interactive "P")
+  (+doom/yank-buffer-path
+   (if include-root
+       (file-name-directory (directory-file-name (doom-project-root)))
+     (project-root (project-current)))))
