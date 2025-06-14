@@ -210,4 +210,13 @@ Modified for my needs."
   (setq whitespace-line-column 80)
   (setq whitespace-style '(face trailing lines-tail space-before-tab)))
 
+(use-package eglot
+  :config
+  (setq eglot-autoshutdown t ; shutdown after closing the last managed buffer
+        eglot-sync-connect 0 ; async, do not block
+        eglot-extend-to-xref t ; can be interesting!
+        eglot-report-progress nil ) ; disable annoying messages in echo area!
+
+  (add-hook 'go-mode-hook 'eglot-ensure))
+
 (provide 'camp-builtin)

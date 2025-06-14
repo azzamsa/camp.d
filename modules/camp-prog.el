@@ -12,13 +12,33 @@
   ;; (treesit-auto-install-all)
   (global-treesit-auto-mode))
 
-(use-package consult-lsp :ensure t)
+;; Extra non-standard functionalities for Eglot
+(use-package eglot-x
+	:after eglot
+  :ensure (:host github :repo "nemethf/eglot-x")
+  :commands (eglot-x-setup))
+
+(use-package eglot-booster
+  :ensure (:host github :repo "jdtsmith/eglot-booster")
+	:after eglot
+	:config	(eglot-booster-mode))
+
+;; Consult integration with Eglot
+(use-package consult-eglot
+  :ensure t
+  :config
+  (consult-customize
+   consult-eglot-symbols
+   :initial (or (thing-at-point 'region t) (thing-at-point 'symbol t))))
 
 (use-package lsp-mode
+  :disabled
   :ensure t
   :commands (lsp lsp-deferred)
-  :hook ((before-save . lsp-organize-imports))
-  :hook ((web-mode . lsp-deferred))
+  :hook ((before-save . lsp-format-buffer)
+         (before-save . lsp-organize-imports))
+  :hook ((web-mode . lsp-deferred)
+         (go-mode . lsp-deferred))
   :config
   ;; Disable invasive lsp-mode features
   (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
@@ -35,6 +55,7 @@
         lsp-completion-provider :none))
 
 (use-package lsp-ui
+  :disabled
   :ensure t
   :after lsp-mode
   :commands lsp-ui-mode
@@ -44,11 +65,16 @@
         lsp-ui-doc-enable nil))
 
 (use-package lsp-bridge
+  :disabled
   :ensure '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
                        :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
                        :build (:not compile))
   :init
   (global-lsp-bridge-mode))
+
+(use-package consult-lsp
+  :disabled
+  :ensure t)
 
 (use-package editorconfig :ensure t)
 
@@ -82,13 +108,13 @@
 
 (use-package rustic
   :ensure t
-  :mode ("\\.rs$" . rustic-mode))
+  :mode ("\\.rs$" . rustic-mode)
+  :config
+  (setq rustic-lsp-client 'eglot))
 
 (use-package go-mode
   :ensure t
-  :mode ("\\.go$" . go-mode)
-  :config
-  (add-hook 'go-mode-hook 'lsp-deferred))
+  :mode ("\\.go$" . go-mode))
 
 (use-package typescript-ts-mode
   :ensure nil
@@ -108,6 +134,7 @@
   :ensure t
   :config
   (setq apheleia-formatters-respect-indent-level nil)
+  (setq apheleia-remote-algorithm 'local) ; format remote files using local formatters
   (apheleia-global-mode +1))
 
 (use-package lua-ts-mode
