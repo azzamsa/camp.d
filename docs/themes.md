@@ -77,7 +77,7 @@
 ## Dracula
 
 ```lisp
-;; dracula palette
+;; Dracula palette
 (red        "#ff5555")
 (orange     "#ffb86c")
 (green      "#50fa7b")
@@ -98,8 +98,8 @@
 (fnname green)
 (keyword magenta)
 (string yellow)
-(type violet)
 (variable violet)
+(type violet)
 
 ;; Heading mappings
 (fg-heading-0 accent-1)
