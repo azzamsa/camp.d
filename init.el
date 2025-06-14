@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (defvar camp-core-modules
-  '(defaults bootstrap builtin keybindings evil completion os utils vars))
+  '(bootstrap builtin keybindings evil completion os utils vars))
 
 (defvar camp-modules
   '(snacks data editor prog project spell tools ui theme vc workspaces multi-cursors files))
