@@ -1,8 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package emacs
-  :hook (after-save . +save--guess-file-mode-h)
-  :hook (minibuffer-setup . cursor-intangible-mode) ; See the `minibuffer-prompt-properties' below
+  :ensure nil
   :config
   (setopt
    ;; === Default directories for builtin packages ===
@@ -450,6 +449,7 @@ Modified for my needs."
   (setq whitespace-style '(face trailing lines-tail space-before-tab)))
 
 (use-package eglot
+  :ensure nil
   :config
   (setq eglot-autoshutdown t ; shutdown after closing the last managed buffer
         eglot-sync-connect 0 ; async, do not block
