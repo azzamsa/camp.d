@@ -113,8 +113,17 @@
   (setq rustic-lsp-client 'eglot))
 
 (use-package go-mode
+  :disabled
   :ensure t
   :mode ("\\.go$" . go-mode))
+
+(use-package go-ts-mode
+  :ensure nil
+  :mode "\\.go\\'"
+  :config
+  ;; default: 8
+  (setq go-ts-mode-indent-offset 4)
+  (add-hook 'go-ts-mode-hook 'eglot-ensure))
 
 (use-package typescript-ts-mode
   :ensure nil
