@@ -110,7 +110,9 @@
   :ensure t
   :mode ("\\.rs$" . rustic-mode)
   :config
-  (setq rustic-lsp-client 'eglot))
+  (setq rustic-lsp-client 'eglot)
+
+  (add-hook 'rustic-mode-hook 'eglot-ensure))
 
 (use-package go-mode
   :disabled
