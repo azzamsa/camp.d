@@ -142,6 +142,7 @@
     "q"   '(nil                        :wk "quit/session")
     "qq"  '(save-buffers-kill-terminal :wk "Quit Emacs")
     "qQ"  '(kill-emacs                 :wk "Kill Emacs")
+    "qr"  '(restart-emacs              :wk "Restart Emacs")
 
     ;;; <leader> s --- search
     "s"    '(nil   :wk "search")
