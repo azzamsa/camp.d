@@ -127,9 +127,25 @@
   (setq go-ts-mode-indent-offset 4)
   (add-hook 'go-ts-mode-hook 'eglot-ensure))
 
+(use-package python-ts-mode
+  :ensure nil
+  :mode "\\.py\\'"
+  :config
+  (add-to-list 'eglot-server-programs
+               '(python-ts-mode . ("pylsp")))
+  (add-hook 'python-ts-mode-hook 'eglot-ensure))
+
+(use-package js-ts-mode
+  :ensure nil
+  :mode ("\\.js\\'" . js-ts-mode)
+  :config
+  (add-hook 'js-ts-mode-hook 'eglot-ensure))
+
 (use-package typescript-ts-mode
   :ensure nil
-  :mode "\\.ts\\'")
+  :mode "\\.ts\\'"
+  :config
+  (add-hook 'typescript-ts-mode-hook 'eglot-ensure))
 
 (use-package web-mode
   :ensure t
@@ -146,6 +162,10 @@
   :config
   (setq apheleia-formatters-respect-indent-level nil)
   (setq apheleia-remote-algorithm 'local) ; format remote files using local formatters
+
+  (dolist (mode '(python-mode python-ts-mode))
+    (setf (alist-get mode apheleia-mode-alist) 'ruff))
+
   (apheleia-global-mode +1))
 
 (use-package lua-ts-mode
