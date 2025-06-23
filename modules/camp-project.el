@@ -14,6 +14,8 @@
           "~$" "^#.*#$"
           ;; generated files
           "^__"
+          ;; docker
+          "cdata"
           )))
 
 (defun neotree-project-dir ()
