@@ -455,8 +455,6 @@ Modified for my needs."
         eglot-sync-connect 0 ; async, do not block
         eglot-extend-to-xref t ; can be interesting!
         ;; disable annoying messages in echo area!
-        eglot-report-progress nil)
-
-  (add-hook 'after-save-hook 'eglot-format))
+        eglot-report-progress nil))
 
 (provide 'camp-builtin)
