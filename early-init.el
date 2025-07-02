@@ -25,7 +25,7 @@
 (push '(mouse-color . "blue") default-frame-alist)
 ;; No hostname in frame title
 ;; Without setting the `icon-title-format`. The window title will revert
-;; back to its original value after loosing its focus.
+;; back to its original value after losing its focus.
 (setq frame-title-format '("" invocation-name " - " "%b"))
 (setq icon-title-format '("" invocation-name " - " "%b"))
 
