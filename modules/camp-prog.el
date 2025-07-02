@@ -122,10 +122,11 @@
 (use-package go-ts-mode
   :ensure nil
   :mode "\\.go\\'"
+  :hook ((go-ts-mode . eglot-ensure))
   :config
   ;; default: 8
-  (setq go-ts-mode-indent-offset 4)
-  (add-hook 'go-ts-mode-hook 'eglot-ensure))
+  (setq go-ts-mode-indent-offset 2)
+  (add-hook 'before-save-hook #'eglot-format-buffer t t))
 
 (use-package python-ts-mode
   :ensure nil
