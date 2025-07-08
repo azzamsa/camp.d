@@ -74,6 +74,7 @@
     "bB"   '(switch-to-buffer       :wk "Switch buffer")
     "bd"   '(kill-current-buffer    :wk "Kill buffer")
     "bk"   '(kill-current-buffer    :wk "Kill buffer")
+    "bK"   '(kill-all-buffers       :wk "Kill all buffers")
     "bO"   '(aza-kill-other-buffers :wk "Kill other buffers")
     "br"   '(revert-buffer          :wk "Revert buffer")
     "bR"   '(rename-buffer          :wk "Rename buffer")

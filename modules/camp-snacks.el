@@ -31,6 +31,16 @@
       (message "Saved & killed %d buffer(s)" killed-bufs))))
 
 ;;;###autoload
+(defun kill-all-buffers ()
+  "Kill all buffers, including the current one."
+  (interactive)
+  (when (y-or-n-p "Kill all buffers? ")
+    (save-all-buffers-silently)
+    (dolist (buf (buffer-list))
+      (unless (string= (buffer-name buf) "*dashboard*")
+        (kill-buffer buf)))))
+
+;;;###autoload
 (defun file-manager-here ()
   "Open current directory with default file manager."
   (interactive)
