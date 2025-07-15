@@ -203,7 +203,7 @@
   ;; Display divider between windows
   (window-divider-mode 1)
 
-  ;; Scroll pixel by pixel, in Emacs29+ there is a more pricise mode way to scroll
+  ;; Scroll pixel by pixel, in Emacs29+ there is a more precise mode way to scroll
   (if (>= emacs-major-version 29)
       (pixel-scroll-precision-mode 1)
     (pixel-scroll-mode 1))
