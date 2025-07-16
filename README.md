@@ -18,8 +18,8 @@ I want to go camping...
 - Evil mode (Doom experience) 👾
 - Colemak-dh 🐲
 - Tree-sitter 🌴
-- Pinned packages
-- Custom emoji font
+- Pinned packages 📌
+- Custom emoji font 🎨
 
 ## Contribution
 
@@ -28,4 +28,7 @@ I don't recommend using this repository directly. Instead, use it as a source of
 
 ## Credit
 
-A config built upon the great [MinEmacs](https://github.com/abougouffa/minemacs/tree/3cb7bdc5cd6297e7cd18bdce7654b03be065fc81) (MIT) that ties closely with holy [Doom](https://github.com/doomemacs/doomemacs/) philosophy (MIT).
+A config built upon the great [MinEmacs][1] that ties closely with holy [Doom][2] philosophy.
+
+[1]: https://github.com/abougouffa/minemacs/tree/3cb7bdc5cd6297e7cd18bdce7654b03be065fc81
+[2]: https://github.com/doomemacs/doomemacs/
