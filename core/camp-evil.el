@@ -102,4 +102,10 @@
   :config
   (global-evil-matchit-mode 1))
 
+;; highlight yanked line
+(use-package evil-goggles
+  :ensure t
+  :init
+  (evil-goggles-mode))
+
 (provide 'camp-evil)

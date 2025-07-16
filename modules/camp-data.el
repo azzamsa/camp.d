@@ -1,25 +1,15 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package yaml-mode
-  :ensure t
+(use-package yaml-ts-mode
+  :ensure nil
   :mode "Procfile\\'")
 
-(use-package toml-mode
-  :ensure t
+(use-package toml-ts-mode
+  :ensure nil
   :mode "\\.toml\\'")
 
-(use-package json-mode
-  :ensure t
-  :mode "\\.js\\(?:on\\|[hl]int\\(?:rc\\)?\\)\\'"
-  :config
-  (+map-local! :keymaps 'json-mode-map
-    "p" #'json-mode-show-path
-    "t" #'json-toggle-boolean
-    "d" #'json-mode-kill-path
-    "x" #'json-nullify-sexp
-    "+" #'json-increment-number-at-point
-    "-" #'json-decrement-number-at-point
-    "f" #'json-mode-beautify))
+(use-package json-ts-mode
+  :ensure nil)
 
 (use-package just-mode
   :ensure t
@@ -51,12 +41,6 @@
 (use-package flycheck-hledger
   :after (flycheck ledger-mode)
   :demand t)
-
-(use-package beancount-mode
-  :mode "\\.beancount\\'"
-  :ensure (beancount-mode :type git :host github :repo "beancount/beancount-mode"
-                          :files ("beancount.el")
-                          :main "beancount.el"))
 
 (use-package typst-ts-mode
   :ensure (:host codeberg :repo "meow_king/typst-ts-mode"))

@@ -18,6 +18,7 @@
   :ensure (:host github :repo "nemethf/eglot-x")
   :commands (eglot-x-setup))
 
+;; Boost `eglot' using `emacs-lsp-booster' (github.com/blahgeek/emacs-lsp-booster)
 (use-package eglot-booster
   :ensure (:host github :repo "jdtsmith/eglot-booster")
 	:after eglot
@@ -87,6 +88,7 @@
   :ensure t
   :hook (prog-mode text-mode))
 
+;; Emacs rainbow delimiters mode
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -158,6 +160,7 @@
   :hook (web-mode . emmet-mode)
   :after web-mode)
 
+;; Run code formatter on buffer contents without moving point
 (use-package apheleia
   :ensure t
   :config
@@ -179,5 +182,19 @@
   :interpreter "lua")
 
 (use-package fish-mode :ensure t)
+
+;; Highlight TODO keywords
+(use-package hl-todo
+  :ensure (:host github :repo "tarsius/hl-todo")
+  :hook (prog-mode . hl-todo-mode)
+  :config
+  (cl-callf append hl-todo-keyword-faces
+    '(("BUG"   . "#ee5555")
+      ("FIX"   . "#0fa050")
+      ("PROJ"  . "#447f44")
+      ("IDEA"  . "#0fa050")
+      ("INFO"  . "#0e9030")
+      ("TWEAK" . "#fe9030")
+      ("PERF"  . "#e09030"))))
 
 (provide 'camp-prog)

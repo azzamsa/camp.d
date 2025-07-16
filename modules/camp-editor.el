@@ -24,7 +24,7 @@
   ;; Need to explicitly load the mode
   (super-save-mode +1))
 
-;; Visual Undo
+;; Visualize and navigate the undo tree
 (use-package vundo
   :ensure t
   :defer t
@@ -68,40 +68,8 @@
               (push unicode-font-family (cadr unicode-block))))
           (unicode-fonts-setup))))))
 
-(use-package ligature
-  :ensure t
-  :hook (prog-mode . ligature-mode)
-  :when (and (>= emacs-major-version 28)
-             (string-search "HARFBUZZ" system-configuration-features)
-             (string-search "CAIRO" system-configuration-features))
-  :config
-  ;; Enable the "www" ligature in every possible major mode
-  (ligature-set-ligatures 't '("www"))
-  ;; Enable traditional ligature support in eww-mode, if the
-  ;; `variable-pitch' face supports it
-  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;; Enable all Cascadia Code ligatures in programming modes
-  (ligature-set-ligatures
-   'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                "\\\\" "://")))
 
-;; highlight yanked line
-(use-package evil-goggles
-  :ensure t
-  :init
-  (evil-goggles-mode))
-
+;; Drag stuff around in Emacs
 (use-package drag-stuff
   :ensure t
   :defer t
@@ -154,27 +122,6 @@
   (global-set-key [remap describe-variable] #'helpful-variable)
   (global-set-key [remap describe-key]      #'helpful-key)
   (global-set-key [remap describe-symbol]   #'helpful-symbol))
-
-(use-package yasnippet
-  :ensure t
-  :init
-  ;; Reduce default verbosity. 3 is too chatty about initializing yasnippet. 2
-  ;; is just right (only shows errors).
-  (defvar yas-verbosity 2)
-  ;; Remove default ~/.emacs.d/snippets
-  (defvar yas-snippet-dirs nil)
-  :config
-  ;; ~/.emacs.d/etc/yasnippet/snippets
-  (setq private-yas-dir (expand-file-name "yasnippet/snippets/" camp-etc-dir))
-  (+ensure-directory private-yas-dir)
-  (push private-yas-dir yas-snippet-dirs)
-
-  (yas-reload-all)
-  (yas-global-mode +1))
-
-(use-package yasnippet-snippets
-  :ensure t
-  :after yasnippet)
 
 ;; Clean only edited lines
 (use-package ws-butler

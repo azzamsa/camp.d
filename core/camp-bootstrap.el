@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
+;; An elisp package manager
 (defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" camp-var-dir))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))

@@ -4,12 +4,14 @@
   :ensure t
   :defer t)
 
+;; Collection of Ridiculously Useful eXtensions for Emacs
 (use-package crux
   :ensure t)
 
 (use-package dockerfile-mode
   :ensure t)
 
+;; Emulate A Terminal, in a region, in a buffer and in Eshell
 (use-package eat
   :ensure t
   :config

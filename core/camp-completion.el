@@ -3,9 +3,9 @@
 ;;
 ;; In-Buffer completion
 
+;; Corfu enhances in-buffer completion with a small completion popup
+;; Company -> Corfu.
 (use-package corfu
-  ;; Enhance built-in In-Buffer completion.
-  ;; Company -> Corfu.
   :ensure t
   :config
   (setq corfu-cycle t ; Allows cycling through candidates
@@ -30,9 +30,9 @@
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
+;; Completion at point extensions which can be used in combination with Corfu, Company or the default completion UI
+;; Complete filename, dabbrev, emojis, etc.
 (use-package cape
-  ;; Completion at point extensions
-  ;; Complete filename, dabbrev, emojis, etc.
   :ensure t
   :after corfu
   :config
@@ -45,16 +45,16 @@
 ;;
 ;; Minibuffer completion.
 
+;; Adds icons to Minifuffer completion.
 (use-package nerd-icons-completion
-  ;; Adds icons to Minifuffer completion.
   :ensure t
   :after marginalia
   :config
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
   (nerd-icons-completion-mode))
 
+;; Choose a command to run based on what is near point, both in minibuffer and in normal buffers
 (use-package embark
-  ;; Actions during a Minibuffer completion session.
   :ensure t
   :bind
   ;; using `map!` doesn't work
@@ -68,11 +68,12 @@
   (defun +vsplit-file-open (f)
     (+find-file-other-window-vertically f)))
 
+;; Consult integration for Embark
 (use-package embark-consult
   :ensure t)
 
+;; Marginalia (i.e., description) in the minibuffer
 (use-package marginalia
-  ;; Informative minibuffer annotations
   :ensure t
   :config
   (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
@@ -81,16 +82,16 @@
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)
   (marginalia-mode 1))
 
+;; Emacs completion style that matches multiple regexps in any order
 (use-package orderless
-  ;; Filter `completion-at-point` and `completing-read` using regex, etc.
   :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
+;; Vertico provides a performant and minimalistic vertical completion UI based on the default completion system
+;; Helm/Ivy/Ido -> Selectrum -> Vertico.
 (use-package vertico
-  ;; Better `completing-read` in minibuffer.
-  ;; Helm/Ivy/Ido -> Selectrum -> Vertico.
   :ensure t
   :config
   (require 'vertico-directory)
@@ -108,8 +109,9 @@
   (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
   (vertico-mode 1))
 
+;; Consult provides search and navigation commands based on the Emacs completion function `completing-read'
+;; Enhance `Vertico (completing-read)` with live-preview, grouping, narrowing/filtering, etc.
 (use-package consult
-  ;; Enhance `Vertico (completing-read)` with live-preview, grouping, narrowing/filtering, etc.
   :ensure t
   :custom
   ;; Use `consult-xref' for `xref-find-references'

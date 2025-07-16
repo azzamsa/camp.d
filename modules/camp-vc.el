@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
+;; It's Magit! A Git Porcelain inside Emacs.
 (use-package magit
   :ensure t
   :after nerd-icons
@@ -26,6 +27,18 @@
         ;; Show in new window
         magit-display-buffer-function #'magit-display-buffer-fullcolumn-most-v1))
 
+;; Edit Git commit messages - part of `magit'
+(use-package git-commit
+  :after magit
+  :commands (global-git-commit-mode)
+  :hook (git-commit-setup . +git-insert-commit-prefix)
+  :custom
+  (git-commit-summary-max-length 72) ; defaults to Github's max commit message length
+  (git-commit-style-convention-checks '(overlong-summary-line non-empty-second-line))
+  :init
+  (global-git-commit-mode 1))
+
+;; Show source files' TODOs (and FIXMEs, etc) in Magit status buffer
 (use-package magit-todos
   :ensure t
   :after magit
@@ -33,6 +46,15 @@
   :config
   (magit-todos-mode 1))
 
+;; Use delta when viewing diffs in `magit'
+(use-package magit-delta
+  :ensure (:host github :repo "dandavison/magit-delta")
+  :when (executable-find "delta")
+  :hook (magit-mode . magit-delta-mode)
+  :custom
+  (magit-delta-hide-plus-minus-markers nil))
+
+;; Emacs package for highlighting uncommitted changes
 (use-package diff-hl
   :ensure t
   :hook (find-file    . diff-hl-mode)
@@ -44,6 +66,7 @@
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh))
 
+;; Walk through Git revisions of a file
 (use-package git-timemachine
   :ensure t
   :config
@@ -52,5 +75,17 @@
   ;; showing revision details in the minibuffer, show them in
   ;; `header-line-format', which has better visibility.
   (setq git-timemachine-show-minibuffer-details t))
+
+;; Emacs major modes for Git configuration files
+(use-package git-modes
+  :ensure t
+  :mode ("/\\.\\(docker\\|fd\\|rg\\|ag\\|hg\\)?ignore\\'" . gitignore-mode))
+
+;; Jujutsu (jj) integration with Emacs `vc' and `project'
+(use-package vc-jj
+  :ensure (:host codeberg :repo "emacs-jj-vc/vc-jj.el")
+  :when (executable-find "jj")
+  :after vc
+  :demand)
 
 (provide 'camp-vc)

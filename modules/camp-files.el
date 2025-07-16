@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Collection of useful dired additions
+(use-package dired-hacks
+  :ensure (:host github :repo "Fuco1/dired-hacks"))
+
 (use-package dirvish
   :ensure (dirvish :type git :host github :repo "hlissner/dirvish")
   :after dired
