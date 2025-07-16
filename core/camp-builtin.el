@@ -360,8 +360,10 @@ Modified for my needs."
 (use-package tab-bar
   :ensure nil
   :custom
-  ;; Do not show tabs (`tab-bar' is configured in `camp-workspaces')
-  (tab-bar-show nil))
+  (tab-bar-format '(tab-bar-format-history tab-bar-format-tabs tab-bar-separator))
+  (tab-bar-auto-width-max '((150) 20))
+  (tab-bar-tab-hints t)
+  (tab-bar-show t))
 
 (use-package elisp-mode
   ;; defined in lisp/progmodes/elisp-mode.el

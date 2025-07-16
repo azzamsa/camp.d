@@ -32,4 +32,17 @@
                   (neotree-find file-name))))
       (message "Could not find project root."))))
 
+;; One tab per project, with unique names - simple implementation of workspaces
+(use-package otpp
+  :ensure (:host github :repo "abougouffa/one-tab-per-project")
+  :after project
+  :bind (("C-x t D" . otpp-detach-buffer-to-tab)
+         ("C-x t C" . otpp-change-tab-root-dir)
+         ("C-x t P" . otpp-prefix))
+  :custom
+  (otpp-project-aware-commands-regexp (rx (seq bol (or "project-" "+project-" "projection-"))))
+  :init
+  (otpp-mode 1)
+  (otpp-override-mode 1))
+
 (provide 'camp-project)
