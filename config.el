@@ -13,9 +13,9 @@
 ;;
 
 (setq camp-fonts '(:font-family "Maple Mono NF"
-                                :font-size 20
+                                :font-size 19
                                 :variable-pitch-font-family "Maple Mono NF"
-                                :variable-pitch-font-size 20
+                                :variable-pitch-font-size 19
                                 :unicode-font-family "Twemoji"))
 
 ;;
