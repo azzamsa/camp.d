@@ -4,7 +4,10 @@
   '(bootstrap builtin keybindings evil completion os utils vars))
 
 (defvar camp-modules
-  '(snacks data editor prog project spell tools ui theme vc multi-cursors files snippets))
+  '(snacks data editor prog lsp project spell tools ui theme vc multi-cursors files snippets checkers))
+
+(defvar camp-langs
+  '(go rust python web lua shell))
 
 (defun camp-reload (&optional without-core)
   "Reload all configuration, including user's config.el."
@@ -18,6 +21,11 @@
   (dolist (module (mapcar #'symbol-name camp-modules))
     (+log "Loading module \"%s\"" module)
     (load (expand-file-name (format "modules/camp-%s.el" module) user-emacs-directory) nil (not init-file-debug)))
+
+  ;; Langs
+  (dolist (module (mapcar #'symbol-name camp-langs))
+    (+log "Loading langs \"%s\"" module)
+    (load (expand-file-name (format "langs/%s.el" module) user-emacs-directory) nil (not init-file-debug)))
 
   ;; Load user config when available
   (let ((config (expand-file-name "config.el" user-emacs-directory)))

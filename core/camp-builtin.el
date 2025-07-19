@@ -431,7 +431,10 @@ Modified for my needs."
   :hook (after-init . delete-selection-mode))
 
 (use-package flymake
-  :ensure nil)
+  :disabled
+  :hook ((prog-mode text-mode) . flymake-mode)
+  :config
+  (setq flymake-fringe-indicator-position 'right-fringe))
 
 (use-package whitespace
   :ensure nil

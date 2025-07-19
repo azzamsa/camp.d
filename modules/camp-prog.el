@@ -12,72 +12,8 @@
   ;; (treesit-auto-install-all)
   (global-treesit-auto-mode))
 
-;; Extra non-standard functionalities for Eglot
-(use-package eglot-x
-	:after eglot
-  :ensure (:host github :repo "nemethf/eglot-x")
-  :commands (eglot-x-setup))
-
-;; Boost `eglot' using `emacs-lsp-booster' (github.com/blahgeek/emacs-lsp-booster)
-(use-package eglot-booster
-  :ensure (:host github :repo "jdtsmith/eglot-booster")
-	:after eglot
-	:config	(eglot-booster-mode))
-
-;; Consult integration with Eglot
-(use-package consult-eglot
-  :ensure t
-  :config
-  (consult-customize
-   consult-eglot-symbols
-   :initial (or (thing-at-point 'region t) (thing-at-point 'symbol t))))
-
-(use-package lsp-mode
-  :disabled
-  :ensure t
-  :commands (lsp lsp-deferred)
-  :hook ((before-save . lsp-format-buffer)
-         (before-save . lsp-organize-imports))
-  :hook ((web-mode . lsp-deferred)
-         (go-mode . lsp-deferred))
-  :config
-  ;; Disable invasive lsp-mode features
-  (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
-        lsp-ui-doc-enable nil        ; slow and redundant with K
-        lsp-enable-symbol-highlighting nil
-        ;; If an LSP server isn't present when I start a prog-mode buffer, you
-        ;; don't need to tell me. I know. On some systems I don't care to have a
-        ;; whole development environment for some ecosystems.
-        +lsp-prompt-to-install-server nil
-        ;; shut down if all buffer killed
-        lsp-keep-workspace-alive nil
-
-        lsp-session-file (expand-file-name "lsp-session" camp-cache-dir)
-        lsp-completion-provider :none))
-
-(use-package lsp-ui
-  :disabled
-  :ensure t
-  :after lsp-mode
-  :commands lsp-ui-mode
-  :config
-  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
-        ;; redundant with K
-        lsp-ui-doc-enable nil))
-
-(use-package lsp-bridge
-  :disabled
-  :ensure '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
-                       :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
-                       :build (:not compile))
-  :init
-  (global-lsp-bridge-mode))
-
-(use-package consult-lsp
-  :disabled
+(use-package editorconfig
   :ensure t)
-
-(use-package editorconfig :ensure t)
 
 (use-package rainbow-mode
   :ensure t
@@ -103,63 +39,6 @@
   (sp-local-pair 'markdown-mode "```" "```")
   (smartparens-global-mode))
 
-(use-package rust-ts-mode
-  :disabled
-  :ensure nil
-  :mode "\\.rs\\'")
-
-(use-package rustic
-  :ensure t
-  :mode ("\\.rs$" . rustic-mode)
-  :config
-  (setq rustic-lsp-client 'eglot)
-
-  (add-hook 'rustic-mode-hook 'eglot-ensure))
-
-(use-package go-mode
-  :disabled
-  :ensure t
-  :mode ("\\.go$" . go-mode))
-
-(use-package go-ts-mode
-  :ensure nil
-  :mode "\\.go\\'"
-  :hook ((go-ts-mode . eglot-ensure))
-  :config
-  ;; default: 8
-  (setq go-ts-mode-indent-offset 2)
-  (add-hook 'before-save-hook #'eglot-format-buffer t t))
-
-(use-package python-ts-mode
-  :ensure nil
-  :mode "\\.py\\'"
-  :config
-  (add-to-list 'eglot-server-programs
-               '(python-ts-mode . ("pylsp")))
-  (add-hook 'python-ts-mode-hook 'eglot-ensure))
-
-(use-package js-ts-mode
-  :ensure nil
-  :mode ("\\.js\\'" . js-ts-mode)
-  :config
-  (add-hook 'js-ts-mode-hook 'eglot-ensure))
-
-(use-package typescript-ts-mode
-  :ensure nil
-  :mode "\\.ts\\'"
-  :config
-  (add-hook 'typescript-ts-mode-hook 'eglot-ensure))
-
-(use-package web-mode
-  :ensure t
-  :mode ("\\.njk\\'" "\\.svelte\\'" "\\.html\\'"
-         "\\.vue\\'"))
-
-(use-package emmet-mode
-  :ensure t
-  :hook (web-mode . emmet-mode)
-  :after web-mode)
-
 ;; Run code formatter on buffer contents without moving point
 (use-package apheleia
   :ensure t
@@ -171,17 +50,6 @@
     (setf (alist-get mode apheleia-mode-alist) 'ruff))
 
   (apheleia-global-mode +1))
-
-(use-package lua-ts-mode
-  :disabled
-  :ensure nil)
-
-(use-package lua-mode
-  :ensure t
-  :mode "\\.lua$"
-  :interpreter "lua")
-
-(use-package fish-mode :ensure t)
 
 ;; Highlight TODO keywords
 (use-package hl-todo

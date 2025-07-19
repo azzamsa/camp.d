@@ -143,6 +143,27 @@
   (setq-default completion-in-region-function #'consult-completion-in-region)
   (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode)
   ;; Hide all special buffers
+
   (setq consult-buffer-filter '("\\*.")))
+
+(use-package consult-flycheck
+  :ensure t
+  :after (consult flycheck))
+
+(use-package consult-yasnippet
+  :ensure t
+  :defer t)
+
+;; Consult integration with Eglot
+(use-package consult-eglot
+  :ensure t
+  :config
+  (consult-customize
+   consult-eglot-symbols
+   :initial (or (thing-at-point 'region t) (thing-at-point 'symbol t))))
+
+(use-package consult-lsp
+  :disabled
+  :ensure t)
 
 (provide 'camp-completion)

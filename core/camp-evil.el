@@ -58,7 +58,7 @@
 
 (use-package evil-miryoku
   :ensure (evil-miryoku :repo "~/projects/evil-miryoku")
-  ;; :ensure (evil-miryoku :type git :host github :repo "azzamsa/evil-miryoku")
+  ;; :ensure (:host github :repo "azzamsa/evil-miryoku")
   :after evil
   :init
   (setq evil-colemak-basics-char-jump-commands 'evil-snipe)

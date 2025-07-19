@@ -24,10 +24,6 @@
   :ensure t
   :after yasnippet)
 
-;; A consulting-read interface for yasnippet
-(use-package consult-yasnippet
-  :ensure t)
-
 ;; The Doom Emacs snippets library
 (use-package doom-snippets
   :ensure (:host github :repo "hlissner/doom-snippets" :files ("*.el" "*")))

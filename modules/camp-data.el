@@ -1,12 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package yaml-ts-mode
-  :ensure nil
-  :mode "Procfile\\'")
+  :hook ((yaml-ts-mode . eglot-ensure))
+  :ensure nil)
 
 (use-package toml-ts-mode
-  :ensure nil
-  :mode "\\.toml\\'")
+  :ensure nil)
 
 (use-package json-ts-mode
   :ensure nil)
@@ -58,6 +57,6 @@
   :defer t)
 
 (use-package hurl-mode
-  :ensure (hurl-mode :type git :host github :repo "jaszhe/hurl-mode"))
+  :ensure (:host github :repo "jaszhe/hurl-mode"))
 
 (provide 'camp-data)
