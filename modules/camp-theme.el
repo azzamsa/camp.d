@@ -1,13 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package doom-themes
-  :disabled
+  ;; :disabled
   ;; I need a fork because many `custom-set-faces` needed if I change the background color.
   ;; This is because many of the colors are inherited from the `bg` color.
-  ;;
-  ;; :ensure (doom-themes :repo "https://github.com/azzamsa/doom-themes" :branch "my-tokyo-night")
-  ;; for debugging purpose
-  :ensure (doom-themes :repo "~/playground/forks/doom-themes/" :branch "mine")
+  :ensure (doom-themes :repo "~/projects/scratchpad/forks/doom-themes/" :branch "mine")
   :config
   (setq doom-dracula-brighter-comments t)
   (setq doom-dracula-comment-bg nil)
@@ -45,7 +42,7 @@
      `(highlight ((t (:background "#313244")))))))
 
 (use-package modus-themes
-  ;; Moved to `personal` config as I change theme frequently.
+  ;; :disabled
   :ensure t
   :config
   (setq modus-themes-italic-constructs t
