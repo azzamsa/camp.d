@@ -36,13 +36,13 @@
 (use-package otpp
   :ensure (:host github :repo "abougouffa/one-tab-per-project")
   :after project
-  :bind (("C-x t D" . otpp-detach-buffer-to-tab)
-         ("C-x t C" . otpp-change-tab-root-dir)
-         ("C-x t P" . otpp-prefix))
   :custom
-  (otpp-project-aware-commands-regexp (rx (seq bol (or "project-" "+project-" "projection-"))))
-  :init
-  (otpp-mode 1)
-  (otpp-override-mode 1))
+  (otpp-project-aware-commands-regexp (rx (seq bol (or "project-" "+project-" "projection-")))))
+
+;; Projectile like project management library built on Emacs' `project'
+(use-package projection
+  :ensure t
+  :hook (after-init . global-projection-hook-mode)
+  :after project)
 
 (provide 'camp-project)
