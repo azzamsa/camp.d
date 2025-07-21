@@ -1,6 +1,5 @@
 (use-package rust-ts-mode
   :disabled
-  :ensure nil
   :mode "\\.rs\\'")
 
 (use-package rustic

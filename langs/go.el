@@ -6,9 +6,8 @@
   :mode ("\\.go$" . go-mode))
 
 (use-package go-ts-mode
-  :ensure nil
   :mode "\\.go\\'"
-  :hook ((go-ts-mode . eglot-ensure))
+  :hook (go-ts-mode . eglot-ensure)
   :config
   ;; default: 8
   (setq go-ts-mode-indent-offset 2)

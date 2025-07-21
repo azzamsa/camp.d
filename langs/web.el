@@ -1,13 +1,11 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package js-ts-mode
-  :ensure nil
   :mode ("\\.js\\'" . js-ts-mode)
   :config
   (add-hook 'js-ts-mode-hook 'eglot-ensure))
 
 (use-package typescript-ts-mode
-  :ensure nil
   :mode "\\.ts\\'"
   :config
   (add-hook 'typescript-ts-mode-hook 'eglot-ensure))

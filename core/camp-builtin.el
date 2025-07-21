@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package emacs
-  :ensure nil
   :config
   (setopt
    ;; === Default directories for builtin packages ===
@@ -250,20 +249,17 @@
         transient-values-file (expand-file-name "transient/values.el" camp-var-dir)))
 
 (use-package password-cache
-  :ensure nil
   :custom
   (password-cache t) ; Enable password caching
   (password-cache-expiry 60)) ; One minute, default is 16
 
 (use-package auth-source
-  :ensure nil
   :custom
   (auth-sources '("~/.local/share/.authinfo.gpg")) ; Default auth-sources to GPG
   (auth-source-do-cache t) ; Enable caching, do not keep asking about GPG key
   (auth-source-cache-expiry 86400)) ; All day, default is 2h (7200)
 
 (use-package dired
-  :ensure nil
   :hook (dired-mode . dired-omit-mode)
   :config
 
@@ -300,7 +296,6 @@ Modified for my needs."
     (dired-sort-other arg)))
 
 (use-package dired-x
-  :ensure nil
   :after dired
   :config
   ;; Putting `dired-omit-files` inside `use-package dired`, `use-package dirvish`,
@@ -314,7 +309,6 @@ Modified for my needs."
   (message "Copied: %s" default-directory))
 
 (use-package tramp
-  :ensure nil
   :init
   (setq tramp-default-method "ssh")
   :config
@@ -325,7 +319,6 @@ Modified for my needs."
   (tramp-default-remote-shell "/bin/bash"))
 
 (use-package abbrev
-  :ensure nil
   :init
   (setq-default abbrev-mode t)
   :config
@@ -334,7 +327,6 @@ Modified for my needs."
 
 ;; Use built-in `treesit' when available
 (use-package treesit
-  :ensure nil
   :config
   ;; Tree-Sitter grammars
   (add-to-list 'treesit-extra-load-path (expand-file-name "tree-sitter" camp-var-dir))
@@ -342,7 +334,6 @@ Modified for my needs."
   (treesit-font-lock-level 4))
 
 (use-package project
-  :ensure nil
   :demand t
   :config
   (setq
@@ -358,7 +349,6 @@ Modified for my needs."
      (?\e "Escape" keyboard-escape-quit))))
 
 (use-package tab-bar
-  :ensure nil
   :custom
   (tab-bar-format '(tab-bar-format-history tab-bar-format-tabs tab-bar-separator))
   (tab-bar-auto-width-max '((150) 20))
@@ -369,7 +359,6 @@ Modified for my needs."
   ;; defined in lisp/progmodes/elisp-mode.el
   ;; using `use-package emacs-lisp-mode' produces
   ;; so many oddities
-  :ensure nil
   :after evil evil-collection
   :hook (prog-mode-defaults . emacs-lisp-mode)
   :config
@@ -377,12 +366,10 @@ Modified for my needs."
     "gz" 'nil))
 
 (use-package winner
-  :ensure nil
   :config
   (winner-mode 1))
 
 (use-package recentf
-  :ensure nil
   :hook (kill-emacs . recentf-cleanup)
   :config
   (setq recentf-save-file (concat camp-var-dir "recentf-save.el")
@@ -404,7 +391,6 @@ Modified for my needs."
   (recentf-mode 1))
 
 (use-package savehist
-  :ensure nil
   :config
   (setq savehist-autosave-interval 60     ; save on kill only
         savehist-save-minibuffer-history t
@@ -420,14 +406,12 @@ Modified for my needs."
 
 ;; Remember last cursor position in a file
 (use-package saveplace
-  :ensure nil
   :config
   (setq save-place-file (expand-file-name "saveplace" camp-var-dir))
   ;; activate it for all buffers
   (setq-default save-place t))
 
 (use-package delsel
-  :ensure nil
   :hook (after-init . delete-selection-mode))
 
 (use-package flymake
@@ -437,7 +421,6 @@ Modified for my needs."
   (setq flymake-fringe-indicator-position 'right-fringe))
 
 (use-package whitespace
-  :ensure nil
   :config
   ;; Show trailing whitespace in `prog-mode' and `conf-mode'
   (defun +show-trailing-whitespace-h ()
@@ -454,7 +437,6 @@ Modified for my needs."
   (setq whitespace-style '(face trailing lines-tail space-before-tab)))
 
 (use-package eglot
-  :ensure nil
   :config
   (setq eglot-autoshutdown t ; shutdown after closing the last managed buffer
         eglot-sync-connect 0 ; async, do not block

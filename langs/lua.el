@@ -2,7 +2,7 @@
 
 (use-package lua-ts-mode
   :disabled
-  :ensure nil)
+  :mode "\\.lua$")
 
 (use-package lua-mode
   :ensure t

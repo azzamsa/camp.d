@@ -1,11 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package python-ts-mode
-  :ensure nil
   :mode "\\.py\\'"
+  :hook (python-ts-mode . eglot-ensure)
   :config
   (add-to-list 'eglot-server-programs
-               '(python-ts-mode . ("pylsp")))
-  (add-hook 'python-ts-mode-hook 'eglot-ensure))
+               '(python-ts-mode . ("pylsp"))))
 
 (provide 'camp-python)

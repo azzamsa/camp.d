@@ -1,12 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package yaml-ts-mode
-  :ensure nil
   :mode "\\.\\(e?ya?\\|ra\\)ml\\'"
   :hook (yaml-ts-mode . eglot-ensure))
 
 (use-package toml-ts-mode
-  :ensure nil
   :mode "\\.toml\\'")
 
 (use-package json-ts-mode
