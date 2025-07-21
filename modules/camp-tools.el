@@ -8,8 +8,8 @@
 (use-package crux
   :ensure t)
 
-(use-package dockerfile-mode
-  :ensure t)
+(use-package dockerfile-ts-mode
+  :mode "\\Dockerfile\\'")
 
 ;; Emulate A Terminal, in a region, in a buffer and in Eshell
 (use-package eat
