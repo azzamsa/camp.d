@@ -48,6 +48,8 @@
 
 ;; Use delta when viewing diffs in `magit'
 (use-package magit-delta
+  ;; [Slowness relative to regular magit](https://github.com/dandavison/magit-delta/issues/9)
+  :disabled
   :ensure (:host github :repo "dandavison/magit-delta")
   :when (executable-find "delta")
   :hook (magit-mode . magit-delta-mode)
