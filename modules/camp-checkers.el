@@ -48,6 +48,8 @@
 
 ;; A beautiful inline overlay for Emacs (Flycheck | Flymake)
 (use-package flyover
+  ;; I don't want the errors to distract me.
+  :disabled
   :ensure (:host github :repo "konrad1977/flyover")
   :hook (flycheck-mode . flyover-mode))
 
