@@ -4,8 +4,8 @@
   :ensure t
   :config
   (setq neo-theme (if (display-graphic-p) 'nerd-icons 'arrow))
+  ;; find current file and jump to node.
   (setq neo-smart-open t)
-  ;; (setq neo-autorefresh t)
   (setq neo-hidden-regexp-list
         '(
           ;; hidden files
@@ -36,8 +36,11 @@
 (use-package otpp
   :ensure (:host github :repo "abougouffa/one-tab-per-project")
   :after project
-  :custom
-  (otpp-project-aware-commands-regexp (rx (seq bol (or "project-" "+project-" "projection-")))))
+  :init
+  (otpp-mode 1)
+  (otpp-override-mode 1)
+  :config
+  (setq otpp-project-aware-commands-regexp (rx (seq bol (or "project-" "+project-" "projection-")))))
 
 ;; Projectile like project management library built on Emacs' `project'
 (use-package projection

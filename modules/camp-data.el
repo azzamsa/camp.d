@@ -39,6 +39,7 @@
   (setq ledger-default-date-format ledger-iso-date-format))
 
 (use-package flycheck-hledger
+  :ensure t
   :after (flycheck ledger-mode)
   :demand t)
 
@@ -58,6 +59,7 @@
   :defer t)
 
 (use-package hurl-mode
+  :mode "\\.hurl\\'"
   :ensure (:host github :repo "jaszhe/hurl-mode"))
 
 (provide 'camp-data)
