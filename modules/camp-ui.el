@@ -20,8 +20,6 @@
 (use-package ligature
   :ensure t
   :hook (prog-mode . ligature-mode)
-  :when (and (featurep 'feat/harfbuzz) (featurep 'feat/cairo) (version<= "1.16.0" cairo-version-string))
-  :config
   :config
   ;; A fine-tuned list of per-language ligatures, constructed from:
   ;; - Iosevka: https://typeof.net/Iosevka/customizer
