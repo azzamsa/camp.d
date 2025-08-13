@@ -12,11 +12,15 @@
 ;; UI
 ;;
 
-(setq camp-fonts '(:font-family "Maple Mono NF"
-                                :font-size 19
-                                :variable-pitch-font-family "Maple Mono NF"
-                                :variable-pitch-font-size 19
-                                :unicode-font-family "Twemoji"))
+(setq +font-family "Maple Mono NF"
+      +font-size 19
+      +emoji-font "Twemoji")
+
+(setq camp-fonts `(:font-family ,+font-family
+                                :font-size ,+font-size
+                                :variable-pitch-font-family ,+font-family
+                                :variable-pitch-font-size ,+font-size
+                                :unicode-font-family ,+emoji-font))
 
 ;;
 ;; Built-in
