@@ -46,16 +46,6 @@
   :config
   (magit-todos-mode 1))
 
-;; Use delta when viewing diffs in `magit'
-(use-package magit-delta
-  ;; [Slowness relative to regular magit](https://github.com/dandavison/magit-delta/issues/9)
-  :disabled
-  :ensure (:host github :repo "dandavison/magit-delta")
-  :when (executable-find "delta")
-  :hook (magit-mode . magit-delta-mode)
-  :custom
-  (magit-delta-hide-plus-minus-markers nil))
-
 ;; Emacs package for highlighting uncommitted changes
 (use-package diff-hl
   :ensure t
@@ -82,12 +72,5 @@
 (use-package git-modes
   :ensure t
   :mode ("/\\.\\(docker\\|fd\\|rg\\|ag\\|hg\\)?ignore\\'" . gitignore-mode))
-
-;; Jujutsu (jj) integration with Emacs `vc' and `project'
-(use-package vc-jj
-  :ensure (:host codeberg :repo "emacs-jj-vc/vc-jj.el")
-  :when (executable-find "jj")
-  :after vc
-  :demand)
 
 (provide 'camp-vc)

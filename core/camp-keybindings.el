@@ -14,14 +14,6 @@
   (which-key-mode)
   (which-key-setup-minibuffer))
 
-(use-package hydra
-  :ensure t
-  :defer t)
-
-(use-package use-package-hydra
-  :after hydra
-  :ensure t)
-
 ;;; General.el
 (use-package general
   :ensure t
