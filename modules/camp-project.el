@@ -36,9 +36,6 @@
 (use-package otpp
   :ensure (:host github :repo "abougouffa/one-tab-per-project")
   :after project
-  :init
-  (otpp-mode 1)
-  (otpp-override-mode 1)
   :config
   (setq otpp-project-aware-commands-regexp (rx (seq bol (or "project-" "+project-" "projection-")))))
 
