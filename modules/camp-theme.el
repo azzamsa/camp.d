@@ -4,7 +4,7 @@
   ;; :disabled
   ;; I need a fork because many `custom-set-faces` needed if I change the background color.
   ;; This is because many of the colors are inherited from the `bg` color.
-  :ensure (doom-themes :repo "~/projects/scratchpad/forks/doom-themes/" :branch "mine")
+  :ensure (doom-themes :repo ("~/projects/scratchpad/forks/doom-themes/" . "doom-themes") :branch "mine")
   :config
   (setq doom-dracula-brighter-comments t)
   (setq doom-dracula-comment-bg nil)

@@ -57,8 +57,7 @@
   (evil-snipe-override-mode +1))
 
 (use-package evil-miryoku
-  :ensure (evil-miryoku :repo "~/projects/evil-miryoku")
-  ;; :ensure (:host github :repo "azzamsa/evil-miryoku")
+  :ensure (evil-miryoku :repo ("~/projects/evil-miryoku" . "evil-miryoku"))
   :after evil
   :init
   (setq evil-colemak-basics-char-jump-commands 'evil-snipe)
