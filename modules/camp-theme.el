@@ -54,18 +54,20 @@
         '(
           (black      "#000000")
           ;; Catppuccin Mocha palette
-          (crust      "#11111b")
-          (base       "#1e1e2e")
-          (surface0   "#313244")
-          (overlay0   "#7f849c")
-          (overlay2   "#9399b2")
           (text       "#cdd6f4")
+          (subtext1   "#bac2de")
+          (subtext0   "#a6adc8")
+          (overlay2   "#9399b2")
+          (overlay0   "#7f849c")
+          (surface0   "#313244")
+          (base       "#1e1e2e")
+          (crust      "#11111b")
 
           ;; All the colors below are kept across theme.
           ;; Mostly taken from https://catppuccin.com/palette mocha.
           (bg-main   black)
           ;; Modus Vivendi Tinted uses `red-faint` instead of `fg-dim` as a comment.
-          (comment fg-dim)
+          (comment subtext0)
           (bg-region surface0)
 
           ;; Modeline
