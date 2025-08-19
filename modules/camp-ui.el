@@ -142,7 +142,7 @@ Invoke again to revert to the window configuration before it was activated."
     "Insert a random quote into the dashboard."
     (dashboard-insert-heading "Quote of the Day:" nil (nerd-icons-faicon "nf-fa-commenting_o" :face 'dashboard-heading))
     (insert "\n")
-    (insert "    " (propertize (string-trim (shell-command-to-string "quotes")) 'face 'bold) "\n"))
+    (insert "    " (propertize (string-trim (shell-command-to-string "quotes -p -q")) 'face 'bold) "\n"))
   :custom
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
