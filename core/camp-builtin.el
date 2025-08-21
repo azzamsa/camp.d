@@ -349,6 +349,7 @@ Modified for my needs."
      (?\e "Escape" keyboard-escape-quit))))
 
 (use-package tab-bar
+  :disabled
   :custom
   (tab-bar-format '(tab-bar-format-history tab-bar-format-tabs tab-bar-separator))
   (tab-bar-auto-width-max '((150) 20))
