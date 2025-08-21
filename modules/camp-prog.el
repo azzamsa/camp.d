@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package treesit-auto
-  :disabled
   :ensure t
   :after treesit
   :custom
