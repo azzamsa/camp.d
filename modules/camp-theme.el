@@ -1,48 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(use-package doom-themes
-  ;; :disabled
-  ;; I need a fork because many `custom-set-faces` needed if I change the background color.
-  ;; This is because many of the colors are inherited from the `bg` color.
-  :ensure (doom-themes :repo ("~/projects/scratchpad/forks/doom-themes/" . "doom-themes") :branch "mine")
-  :config
-  (setq doom-dracula-brighter-comments t)
-  (setq doom-dracula-comment-bg nil)
-  ;; (load-theme 'doom-tokyo-night-moon t))
-  ;; (load-theme 'doom-laserwave-high-contrast t))
-  (load-theme 'doom-dracula t))
-
-(use-package catppuccin-theme
-  :disabled
-  :ensure t
-  :config
-  (setq catppuccin-flavor 'mocha)
-
-  ;; `Overlay0` is too dim AA (3.35:1). `Overlay2` on base is (5.81:1).
-  ;; but `Overlay2` is too bright for a comment.
-  ;; Using `Subtext0` will get AAA (9.43:1), but it too similar to `Text`.
-  ;; (catppuccin-set-color 'overlay0 "#7f849c" 'mocha)
-  ;; I think I will try Latte's overlay0 (8.06:1)
-  ;; Modus Vivendi uses `#989898` (7.27:1)
-  (catppuccin-set-color 'overlay0 "#9CA0B0" 'mocha)
-
-  ;; Catppuccin black.
-  (catppuccin-set-color 'base "#000000" 'mocha)
-  (catppuccin-set-color 'mantle "#000000" 'mocha)
-  (catppuccin-set-color 'crust "#000000" 'mocha)
-  (catppuccin-set-color 'text "#ffffff" 'mocha)
-
-  (load-theme 'catppuccin t)
-
-  (with-eval-after-load 'catppuccin-theme
-    ;; Must be used *after* the theme is loaded
-    (custom-set-faces
-     ;; The default `region` and `highlight` colors in Mocha don't look good against a black background.
-     `(region ((t (:background "#313244"))))
-     `(highlight ((t (:background "#313244")))))))
-
 (use-package modus-themes
-  ;; :disabled
   :ensure t
   :config
   (setq modus-themes-italic-constructs t
