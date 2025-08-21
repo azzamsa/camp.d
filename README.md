@@ -21,6 +21,15 @@ I want to go camping...
 - Pinned packages 📌
 - Custom emoji font 🎨
 
+## Install
+
+```bash
+# emacs, jinx
+sudo apt install --assumeyes aspell-id libenchant-2-dev
+# lsp
+cargo binstall emacs-lsp-booster
+```
+
 ## Contribution
 
 I won't be accepting any functionality or behavior changes. But it is OK for fixes and refinement.
