@@ -48,6 +48,13 @@
   (dolist (mode '(python-mode python-ts-mode))
     (setf (alist-get mode apheleia-mode-alist) 'ruff))
 
+  ;; Define the formatter
+  (dolist
+      (formatter-cmd '((just-fmt . ("just" "--fmt" "--unstable" "--justfile" filepath))))
+    (add-to-list #'apheleia-formatters formatter-cmd))
+
+  (setf (alist-get 'just-mode apheleia-mode-alist) '(just-fmt))
+
   (apheleia-global-mode +1))
 
 ;; Highlight TODO keywords
