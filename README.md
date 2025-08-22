@@ -24,10 +24,10 @@ I want to go camping...
 ## Install
 
 ```bash
-# emacs, jinx
-sudo apt install --assumeyes aspell-id libenchant-2-dev
-# lsp
-cargo binstall emacs-lsp-booster
+$ sudo apt install --assume-yes emacs
+$ git clone git@github.com:azzamsa/camp.d.git ~/.config/emacs
+
+$ just setup
 ```
 
 ## Contribution
