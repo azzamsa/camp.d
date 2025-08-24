@@ -17,8 +17,8 @@
   (setq major-mode-remap-alist
         (treesit-auto--build-major-mode-remap-alist))
 
-  (setq treesit-auto-langs '(rust))
-  (treesit-auto-add-to-auto-mode-alist '(rust))
+  (setq treesit-auto-langs '(rust toml))
+  (treesit-auto-add-to-auto-mode-alist '(rust toml))
   (global-treesit-auto-mode))
 
 (use-package editorconfig
