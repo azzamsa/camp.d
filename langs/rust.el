@@ -1,8 +1,11 @@
 (use-package rust-ts-mode
-  :disabled
-  :mode "\\.rs\\'")
+  :mode "\\.rust\\'"
+  :hook (rust-ts-mode . eglot-ensure)
+  :config
+  (add-hook 'before-save-hook #'eglot-format-buffer t t))
 
 (use-package rustic
+  :disabled
   :ensure t
   :mode ("\\.rs$" . rustic-mode)
   :config

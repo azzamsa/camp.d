@@ -6,9 +6,19 @@
   :custom
   (treesit-auto-install 'prompt)
   :config
-  ;; Install all languages when calling `treesit-auto-install-all'
-  (setq treesit-language-source-alist (treesit-auto--build-treesit-source-alist))
-  ;; (treesit-auto-install-all)
+  (add-to-list 'treesit-auto-recipe-list
+               (make-treesit-auto-recipe
+                :lang 'rust
+                :ts-mode 'rust-ts-mode
+                :remap 'rust-mode
+                :url "https://github.com/tree-sitter/tree-sitter-rust"
+                :revision "v0.23.3"
+                :ext "\\.rs\\'"))
+  (setq major-mode-remap-alist
+        (treesit-auto--build-major-mode-remap-alist))
+
+  (setq treesit-auto-langs '(rust))
+  (treesit-auto-add-to-auto-mode-alist '(rust))
   (global-treesit-auto-mode))
 
 (use-package editorconfig
@@ -42,9 +52,12 @@
 (use-package apheleia
   :ensure t
   :config
+  ;; Don't assume Emacs indentation is correct
   (setq apheleia-formatters-respect-indent-level nil)
-  (setq apheleia-remote-algorithm 'local) ; format remote files using local formatters
+  ;; Format remote files using local formatters
+  (setq apheleia-remote-algorithm 'local)
 
+  ;; Add more formatters
   (dolist (mode '(python-mode python-ts-mode))
     (setf (alist-get mode apheleia-mode-alist) 'ruff))
 
