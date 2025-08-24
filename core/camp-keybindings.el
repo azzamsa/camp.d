@@ -46,7 +46,7 @@
     ;; Leader
     ";"   '(pp-eval-expression       :wk "Eval expression")
     ":"   '(execute-extended-command :wk "M-x")
-    ","   '(switch-to-buffer         :wk "Switch buffer")
+    ","   '(consult-buffer           :wk "Switch buffer")
     "."   '(find-file                :wk "Find file")
     "/"   '(consult-ripgrep          :wk "Search project")
     "SPC" '(project-find-file        :wk "Find file in project")
