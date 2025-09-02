@@ -53,8 +53,11 @@
   (dolist
       (formatter-cmd '((just-fmt . ("just" "--fmt" "--unstable" "--justfile" filepath))))
     (add-to-list #'apheleia-formatters formatter-cmd))
-
   (setf (alist-get 'just-mode apheleia-mode-alist) '(just-fmt))
+
+  (setf (alist-get 'sh-mode apheleia-mode-alist) '(shfmt))
+  (setf (alist-get 'yaml-mode apheleia-mode-alist) '(dprint))
+  (setf (alist-get 'yaml-ts-mode apheleia-mode-alist) '(dprint))
 
   (apheleia-global-mode +1))
 
