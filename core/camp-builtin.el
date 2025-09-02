@@ -339,7 +339,6 @@ Modified for my needs."
   (setq
    project-list-file (concat camp-var-dir "project-list.el")
    project-vc-extra-root-markers '(".projectile.el" ".project.el" ".project" ".jj")
-   project-vc-ignores '("/run/")
 
    project-switch-commands
    '((?f "Find file" project-find-file)
@@ -381,8 +380,7 @@ Modified for my needs."
         ;; Exclude some files from being remembered by recentf
         recentf-exclude
         `(,(rx (* any)
-               (or "/\\.emacs\\.d/var/" "eln-cache" "/cache/"
-                   "/run/" "/var/" ".cache/")
+               (or "/\\.emacs\\.d/var/" "eln-cache" "/cache/" ".cache/")
                (* any)
                (? (or "html" "pdf" "tex" "epub" "gz")))
           ,(rx "/"
