@@ -15,7 +15,7 @@
           ;; generated files
           "^__"
           ;; docker
-          "cdata"
+          "_volumes"
           )))
 
 (defun neotree-project-dir ()
