@@ -1,15 +1,14 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package yaml-ts-mode
-  :mode "\\.\\(e?ya?\\|ra\\)ml\\'"
+  :mode "\\.yaml\\'"
   :hook (yaml-ts-mode . eglot-ensure))
 
 (use-package toml-ts-mode
   :mode "\\.toml\\'")
 
 (use-package json-ts-mode
-  :mode
-  "\\(?:\\(?:\\.json\\|\\.jsonld\\|\\.babelrc\\|\\.bowerrc\\|composer\\.lock\\)\\'\\)")
+  :mode ("\\.json\\|\\.jsonc\\'"))
 
 (use-package just-mode
   :ensure t
