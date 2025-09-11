@@ -6,7 +6,18 @@
   :custom
   (treesit-auto-install 'prompt)
   :config
-  (treesit-auto-add-to-auto-mode-alist '(rust toml json python go yaml))
+  (add-to-list 'treesit-auto-recipe-list
+               (make-treesit-auto-recipe
+                :lang 'rust
+                :ts-mode 'rust-ts-mode
+                :remap 'rust-mode
+                :url "https://github.com/tree-sitter/tree-sitter-rust"
+                :revision "v0.23.3"
+                :ext "\\.rs\\'"))
+  (setq major-mode-remap-alist
+        (treesit-auto--build-major-mode-remap-alist))
+
+  (setq treesit-auto-langs '(rust toml json python go yaml))
   (global-treesit-auto-mode))
 
 (use-package editorconfig
