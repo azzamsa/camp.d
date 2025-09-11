@@ -380,7 +380,7 @@ Modified for my needs."
         ;; Exclude some files from being remembered by recentf
         recentf-exclude
         `(,(rx (* any)
-               (or "/\\.emacs\\.d/var/" "eln-cache" "/cache/" ".cache/")
+               (or "emacs/var/" "eln-cache" "/cache/" ".cache/")
                (* any)
                (? (or "html" "pdf" "tex" "epub" "gz")))
           ,(rx "/"
