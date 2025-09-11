@@ -11,12 +11,11 @@ _default:
 
 [doc('Setup the project')]
 setup:
-    ln -s scripts/pre-commit .git/hooks/pre-commit
+    cp -n _scripts/hooks/pre-commit .git/hooks/
     # emacs, jinx
     sudo apt install --assume-yes libenchant-2-dev markdown
     # lsp
     cargo binstall emacs-lsp-booster
-    eget rust-lang/rust-analyzer --asset "rust-analyzer-x86_64-unknown-linux-gnu.gz"
 
 [doc('Tasks to make the code-base comply with the rules. Mostly used in git hooks')]
 comply: fmt lint
