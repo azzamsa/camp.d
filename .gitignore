@@ -1,12 +1,14 @@
 var/
-.cache/
-eln-cache/
-eshell/
-*.eld
-elpa/
-elpaca/
-tree-sitter/
-custom.el
 etc/themes/
 
-personal.el
+tree-sitter/
+eln-cache/
+
+# .cache/
+# eshell/
+# *.eld
+# elpa/
+# elpaca/
+# custom.el
+
+# personal.el
