@@ -13,7 +13,7 @@
           ;; temp files
           "~$" "^#.*#$"
           ;; generated files
-          "^__"
+          "^__" "\\.egg-info$" "\\.lock$"
           ;; docker
           "_volumes"
           )))
