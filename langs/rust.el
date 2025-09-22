@@ -12,4 +12,13 @@
   (setq rustic-lsp-client 'eglot)
   (add-hook 'rustic-mode-hook 'eglot-ensure))
 
+(use-package rust-mode
+  :ensure t
+  :disabled
+  :init
+  (setq rust-mode-treesitter-derive t)
+  :config
+  (setq rust-format-on-save t)
+  (add-hook 'rustic-mode-hook 'eglot-ensure))
+
 (provide 'camp-rust)
