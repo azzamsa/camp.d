@@ -16,6 +16,7 @@ setup:
     sudo apt install --assume-yes libenchant-2-dev markdown
     # lsp
     cargo binstall emacs-lsp-booster
+    # npm install -g yaml-language-server
 
 [doc('Tasks to make the code-base comply with the rules. Mostly used in git hooks')]
 comply: fmt lint
