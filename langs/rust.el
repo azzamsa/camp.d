@@ -1,5 +1,5 @@
 (use-package rust-ts-mode
-  :mode "\\.rust\\'"
+  :mode "\\.rs$"
   :hook (rust-ts-mode . eglot-ensure)
   :config
   (add-hook 'before-save-hook #'eglot-format-buffer t t))
