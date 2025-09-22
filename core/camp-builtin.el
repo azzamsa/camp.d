@@ -365,6 +365,10 @@ Modified for my needs."
   (evil-collection-define-key 'normal 'emacs-lisp-mode-map
     "gz" 'nil))
 
+(use-package sh-script
+  :config
+  (add-to-list 'auto-mode-alist '("\\.env.*\\'" . sh-mode)))
+
 (use-package winner
   :config
   (winner-mode 1))
