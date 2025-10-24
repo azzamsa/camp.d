@@ -101,6 +101,7 @@
 
     ;;; <leader> g --- git/version control
     "g"   '(nil :wk "git/vc")
+    "gg"  '(magit-status           :wk "git status")
     "gt"  '(git-timemachine-toggle :wk "Git time machine")
 
    ;;; <leader> h --- help
@@ -123,6 +124,7 @@
     "op"  '(neotree-project-dir :wk "Side panel")
     "ot"  '(camp-eat :wk "Open terminal")
     "oT"  '(terminal-here :wk "Open terminal here")
+    "ov"  '(vundo :wk "Visual Undo")
 
     ;;; <leader> p --- project
     "p"   '(nil                          :wk "project")

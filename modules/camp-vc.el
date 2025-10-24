@@ -4,9 +4,6 @@
 (use-package magit
   :ensure t
   :after nerd-icons
-  :init
-  (+map! :infix "g"
-    "g" #'magit-status)
   :config
   ;; Enable granular diff-highlights for all hunks
   ;; By default, changes are highlighted linewise for all but the selected hunk. This has performance reasons.

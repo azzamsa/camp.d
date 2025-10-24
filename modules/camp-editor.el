@@ -28,8 +28,6 @@
 (use-package vundo
   :ensure t
   :defer t
-  :init
-  (+map! "ov" #'vundo)
   :config
   (setq vundo-compact-display t
         vundo-window-max-height 6
