@@ -70,4 +70,10 @@
   :ensure t
   :mode ("/\\.\\(docker\\|fd\\|rg\\|ag\\|hg\\)?ignore\\'" . gitignore-mode))
 
+;; Jujutsu version control mode for Emacs inspired by Magit
+(use-package jj-mode
+  :ensure (:host github :repo "bolivier/jj-mode.el")
+  :config
+  (setq jj-log-display-function #'switch-to-buffer))
+
 (provide 'camp-vc)

@@ -102,6 +102,7 @@
     ;;; <leader> g --- git/version control
     "g"   '(nil :wk "git/vc")
     "gg"  '(magit-status           :wk "git status")
+    "gj"  '(jj-log                 :wk "jj log")
     "gt"  '(git-timemachine-toggle :wk "Git time machine")
 
    ;;; <leader> h --- help
