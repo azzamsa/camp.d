@@ -19,7 +19,7 @@ setup:
     # npm install -g yaml-language-server
 
 [doc('Tasks to make the code-base comply with the rules. Mostly used in git hooks')]
-comply: fmt lint
+comply: fmt lint meta
 
 [doc('Check if the repository comply with the rules and ready to be pushed')]
 check: fmt-check lint
@@ -35,6 +35,10 @@ fmt-check:
 [doc('Lint the codebase')]
 lint:
     typos
+
+[doc('Update meta files')]
+meta:
+    emacs -Q --batch --eval "(princ (emacs-version))" > emacs-version
 
 [doc('Create a new release. Example `cargo-release release minor --tag-name v0.2.0`')]
 release version:
