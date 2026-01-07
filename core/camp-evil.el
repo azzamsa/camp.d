@@ -57,6 +57,7 @@
   (evil-snipe-override-mode +1))
 
 (use-package evil-miryoku
+  :disabled
   :ensure (:host github :repo "azzamsa/evil-miryoku")
   ;; :ensure (evil-miryoku :repo ("~/projects/evil-miryoku" . "evil-miryoku"))
   :after evil
