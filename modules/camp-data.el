@@ -32,7 +32,6 @@
 
 (use-package ledger-mode
   :ensure t
-  :defer t
   :config
   (setq ledger-highlight-xact-under-point nil)
   (setq ledger-default-date-format ledger-iso-date-format))
@@ -41,6 +40,12 @@
   :ensure t
   :after (flycheck ledger-mode)
   :demand t)
+
+(use-package beancount
+  :ensure t
+  :config
+  (add-hook 'beancount-mode-hook #'flymake-bean-check-enable)
+  (add-hook 'beancount-mode-hook #'outline-minor-mode))
 
 (use-package typst-ts-mode
   :ensure (:host codeberg :repo "meow_king/typst-ts-mode"))
