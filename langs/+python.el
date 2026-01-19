@@ -7,4 +7,4 @@
   (add-to-list 'eglot-server-programs
                '(python-ts-mode . ("pylsp"))))
 
-(provide 'camp-python)
+(provide '+python)

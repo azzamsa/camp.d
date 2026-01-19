@@ -48,6 +48,7 @@
   (add-hook 'beancount-mode-hook #'outline-minor-mode))
 
 (use-package typst-ts-mode
+  :disabled
   :ensure (:host codeberg :repo "meow_king/typst-ts-mode"))
 
 (use-package scad-mode
@@ -66,4 +67,4 @@
   :mode "\\.hurl\\'"
   :ensure (:host github :repo "jaszhe/hurl-mode"))
 
-(provide 'camp-data)
+(provide '+data)

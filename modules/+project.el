@@ -45,4 +45,4 @@
   :hook (after-init . global-projection-hook-mode)
   :after project)
 
-(provide 'camp-project)
+(provide '+project)

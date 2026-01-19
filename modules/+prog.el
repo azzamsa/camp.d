@@ -87,4 +87,4 @@
       ("TWEAK" . "#fe9030")
       ("PERF"  . "#e09030"))))
 
-(provide 'camp-prog)
+(provide '+prog)

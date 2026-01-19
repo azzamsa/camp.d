@@ -53,4 +53,4 @@
   :init
   (global-lsp-bridge-mode))
 
-(provide 'camp-lsp)
+(provide '+lsp)

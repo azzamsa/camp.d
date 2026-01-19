@@ -10,8 +10,8 @@
 ;; Add directories to `load-path'
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 
-(require 'camp-vars)
-(require 'camp-utils)
+(require '+vars)
+(require '+utils)
 
 ;;; Write user custom variables to separate file instead of init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))

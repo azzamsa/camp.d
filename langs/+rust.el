@@ -21,4 +21,4 @@
   (setq rust-format-on-save t)
   (add-hook 'rustic-mode-hook 'eglot-ensure))
 
-(provide 'camp-rust)
+(provide '+rust)

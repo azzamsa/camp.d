@@ -20,4 +20,4 @@
   :hook (web-mode . emmet-mode)
   :after web-mode)
 
-(provide 'camp-python)
+(provide '+web)

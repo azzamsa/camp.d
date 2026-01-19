@@ -20,4 +20,4 @@
 ;;   :ensure (:host github :repo "hlissner/doom-snippets" :files ("*.el" "*"))
 ;;   :after yasnippet)
 
-(provide 'camp-snippets)
+(provide '+snippets)

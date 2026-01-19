@@ -3,5 +3,4 @@
 (use-package fish-mode
   :ensure t)
 
-
-(provide 'camp-python)
+(provide '+shell)

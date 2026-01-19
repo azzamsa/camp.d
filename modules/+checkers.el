@@ -53,4 +53,4 @@
   :ensure (:host github :repo "konrad1977/flyover")
   :hook (flycheck-mode . flyover-mode))
 
-(provide 'camp-checkers)
+(provide '+checkers)

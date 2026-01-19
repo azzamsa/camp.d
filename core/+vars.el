@@ -61,4 +61,4 @@
 (defvar camp-abbrev-file nil
   "Path to the abbreviations file.")
 
-(provide 'camp-vars)
+(provide '+vars)

@@ -1,19 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Which key
-(use-package which-key
-  :ensure t
-  :init
-  (setq which-key-sort-order #'which-key-key-order-alpha
-        which-key-sort-uppercase-first nil
-        which-key-add-column-padding 1
-        which-key-max-display-columns nil
-        which-key-min-display-lines 6
-        which-key-side-window-slot -10)
-  :config
-  (which-key-mode)
-  (which-key-setup-minibuffer))
-
 ;;; General.el
 (use-package general
   :ensure t
@@ -297,4 +283,4 @@ Defines keybindings specific to normal and visual state."
   `(with-eval-after-load 'camp-general-ready
      (general-nvmap ,@args)))
 
-(provide 'camp-keybindings)
+(provide '+keys)

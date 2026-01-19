@@ -1,10 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 (defvar camp-core-modules
-  '(bootstrap early builtin keybindings evil completion os utils vars))
+  '(bootstrap base builtin keys evil completion utils vars))
 
 (defvar camp-modules
-  '(snacks data editor prog lsp project spell tools ui theme vc multi-cursors files snippets checkers))
+  '(snacks data editor prog lsp project spell tools ui theme vc files snippets checkers))
 
 (defvar camp-langs
   '(go rust python web lua shell))
@@ -15,17 +15,17 @@
   ;; Core
   (dolist (module (mapcar #'symbol-name camp-core-modules))
     (+log "Loading core module \"%s\"" module)
-    (load (expand-file-name (format "core/camp-%s.el" module) user-emacs-directory) nil (not init-file-debug)))
+    (load (expand-file-name (format "core/+%s.el" module) user-emacs-directory) nil (not init-file-debug)))
 
   ;; Modules
   (dolist (module (mapcar #'symbol-name camp-modules))
     (+log "Loading module \"%s\"" module)
-    (load (expand-file-name (format "modules/camp-%s.el" module) user-emacs-directory) nil (not init-file-debug)))
+    (load (expand-file-name (format "modules/+%s.el" module) user-emacs-directory) nil (not init-file-debug)))
 
   ;; Langs
   (dolist (module (mapcar #'symbol-name camp-langs))
     (+log "Loading langs \"%s\"" module)
-    (load (expand-file-name (format "langs/%s.el" module) user-emacs-directory) nil (not init-file-debug)))
+    (load (expand-file-name (format "langs/+%s.el" module) user-emacs-directory) nil (not init-file-debug)))
 
   ;; Load user config when available
   (let ((config (expand-file-name "config.el" user-emacs-directory)))

@@ -11,4 +11,4 @@
   :config
   (add-hook 'lua-mode-hook 'eglot-ensure))
 
-(provide 'camp-lua)
+(provide '+lua)

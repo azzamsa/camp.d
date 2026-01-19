@@ -40,10 +40,7 @@
           (horizontal-stem . ?─))))
 
 (use-package undo-fu
-  :ensure t
-  :config
-  (with-eval-after-load 'evil
-    (evil-set-undo-system 'undo-fu)))
+  :ensure t)
 
 (use-package undo-fu-session
   :ensure t
@@ -69,12 +66,7 @@
 
 ;; Drag stuff around in Emacs
 (use-package drag-stuff
-  :ensure t
-  :defer t
-  :init
-  (+nvmap!
-    "<M-up>"   '(drag-stuff-up   :wk "Drag up")
-    "<M-down>" '(drag-stuff-down :wk "Drag down")))
+  :ensure t)
 
 (use-package indent-bars
   :ensure t
@@ -86,7 +78,7 @@
          ;; testing to see if it's specific to ns or emacs-mac builds, or is
          ;; just a general MacOS issue.
          (featurep :system 'macos)
-         ;; FIX: A bitmap init bug in emacs-pgtk (before v30) could cause
+         ;; A bitmap init bug in emacs-pgtk (before v30) could cause
          ;; crashes (see jdtsmith/indent-bars#3).
          (and (featurep 'pgtk)
               (< emacs-major-version 30)))
@@ -102,9 +94,7 @@
         indent-bars-highlight-current-depth nil))
 
 (use-package expand-region
-  :ensure t
-  :init
-  (+vmap! "v" #'er/expand-region))
+  :ensure t)
 
 (use-package helpful
   ;; a better *help* buffer
@@ -130,4 +120,4 @@
 (use-package dogears
   :ensure t)
 
-(provide 'cam-editor)
+(provide '+editor)

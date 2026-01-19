@@ -1,8 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package rg
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; Collection of Ridiculously Useful eXtensions for Emacs
 (use-package crux
@@ -23,4 +22,4 @@
       (delete-window)
     (eat-other-window "fish" nil)))
 
-(provide 'camp-tools)
+(provide '+tools)

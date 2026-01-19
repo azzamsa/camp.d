@@ -241,16 +241,18 @@
 
   (put 'downcase-region 'disabled nil))
 
-(use-package transient
-  :ensure t
-  :config
-  ;; Map ESC and q to quit transient
-  (keymap-set transient-map "<escape>" 'transient-quit-one)
-  (keymap-set transient-map "q" 'transient-quit-one)
-
-  (setq transient-history-file (expand-file-name "transient/history.el" camp-var-dir)
-        transient-levels-file (expand-file-name "transient/levels.el" camp-var-dir)
-        transient-values-file (expand-file-name "transient/values.el" camp-var-dir)))
+  ;; Which key
+  (use-package which-key
+    :init
+    (setq which-key-sort-order #'which-key-key-order-alpha
+          which-key-sort-uppercase-first nil
+          which-key-add-column-padding 1
+          which-key-max-display-columns nil
+          which-key-min-display-lines 6
+          which-key-side-window-slot -10)
+    :config
+    (which-key-mode)
+    (which-key-setup-minibuffer))
 
 (use-package password-cache
   :custom
@@ -360,14 +362,7 @@ Modified for my needs."
   (tab-bar-show t))
 
 (use-package elisp-mode
-  ;; defined in lisp/progmodes/elisp-mode.el
-  ;; using `use-package emacs-lisp-mode' produces
-  ;; so many oddities
-  :after evil evil-collection
-  :hook (prog-mode-defaults . emacs-lisp-mode)
-  :config
-  (evil-collection-define-key 'normal 'emacs-lisp-mode-map
-    "gz" 'nil))
+  :hook (prog-mode-defaults . emacs-lisp-mode))
 
 (use-package sh-script
   :config
@@ -451,4 +446,4 @@ Modified for my needs."
         ;; disable annoying messages in echo area!
         eglot-report-progress nil))
 
-(provide 'camp-builtin)
+(provide '+builtin)

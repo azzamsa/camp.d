@@ -3,7 +3,6 @@
 ;; It's Magit! A Git Porcelain inside Emacs.
 (use-package magit
   :ensure t
-  :after nerd-icons
   :config
   ;; Enable granular diff-highlights for all hunks
   ;; By default, changes are highlighted linewise for all but the selected hunk. This has performance reasons.
@@ -14,11 +13,7 @@
   ;; Relative time is hard to pin point.
   ;; (setq magit-log-margin '(t "%Y-%b-%d %I:%M %p " magit-log-margin-width t 18))
 
-  ;; Default args
-  (setq transient-values '((magit-rebase "--autosquash" "--autostash" "--committer-date-is-author-date")))
-
   (setq magit-format-file-function #'magit-format-file-nerd-icons)
-
   (setq magit-revision-show-gravatars t
         magit-save-repository-buffers nil
         ;; Show in new window
@@ -39,7 +34,6 @@
 (use-package magit-todos
   :ensure t
   :after magit
-  :demand t
   :config
   (magit-todos-mode 1))
 
@@ -59,7 +53,6 @@
 (use-package git-timemachine
   :ensure t
   :config
-  (evil-set-initial-state 'git-timemachine-mode 'emacs)
   ;; Sometimes I forget `git-timemachine' is enabled in a buffer, so instead of
   ;; showing revision details in the minibuffer, show them in
   ;; `header-line-format', which has better visibility.
@@ -76,4 +69,4 @@
   :config
   (setq jj-log-display-function #'switch-to-buffer))
 
-(provide 'camp-vc)
+(provide '+vc)

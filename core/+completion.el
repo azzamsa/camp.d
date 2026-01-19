@@ -60,9 +60,7 @@
   ;; using `map!` doesn't work
   (("C-." . embark-act)
    ("C-," . embark-dwim)
-   ("C-h B" . embark-bindings)
-   (:map embark-file-map
-         ("v" . +vsplit-file-open)))
+   ("C-h B" . embark-bindings))
   :config
   ;; Embark bug, the cursor doesn't follow the new buffer.
   (defun +vsplit-file-open (f)
@@ -99,13 +97,6 @@
   (setq vertico-cycle t
         vertico-count 12)
 
-  (with-eval-after-load 'evil
-    (define-key vertico-map (kbd "C-j") 'vertico-next)
-    (define-key vertico-map (kbd "C-k") 'vertico-previous)
-    (define-key vertico-map (kbd "M-h") 'vertico-directory-up)
-    (define-key vertico-map '[C-left]  'vertico-previous-group)
-    (define-key vertico-map '[C-right] 'vertico-next-group))
-
   (add-hook 'minibuffer-setup-hook #'vertico-repeat-save)
   (vertico-mode 1))
 
@@ -121,29 +112,10 @@
   :init
   (keymap-set minibuffer-local-map "C-r"   'consult-history)
   (keymap-set minibuffer-local-map "C-S-v" 'consult-yank-pop)
-  (+map!
-    [remap bookmark-jump]                 '(consult-bookmark        :wk "Jump to bookmark")
-    [remap evil-show-marks]               '(consult-mark            :wk "Show marks")
-    [remap evil-show-registers]           '(consult-register        :wk "Show registers")
-    [remap goto-line]                     '(consult-line            :wk "Go to line")
-    [remap imenu]                         '(consult-imenu           :wk "Imenu")
-    [remap Info-search]                   '(consult-info            :wk "Search in Info")
-    [remap locate]                        '(consult-locate          :wk "Locate")
-    [remap load-theme]                    '(consult-theme           :wk "Load theme")
-    [remap man]                           '(consult-man             :wk "Man")
-    [remap recentf-open-files]            '(consult-recent-file     :wk "Open recent file")
-    [remap switch-to-buffer]              '(consult-buffer          :wk "Switch to buffer")
-    [remap switch-to-buffer-other-window] '(consult-buffer-other-window :wk "Switch to buffer (other window)")
-    [remap switch-to-buffer-other-frame]  '(consult-buffer-other-frame  :wk "Switch to buffer (other frame)")
-    [remap yank-pop]                      '(consult-yank-pop        :wk "Yank pop")
-
-     ;;; <leader> f --- file
-    "fr"   '(consult-recent-file          :wk "Recent files"))
   :config
   (setq-default completion-in-region-function #'consult-completion-in-region)
   (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode)
   ;; Hide all special buffers
-
   (setq consult-buffer-filter '("\\*.")))
 
 (use-package consult-flycheck
@@ -166,4 +138,4 @@
   :disabled
   :ensure t)
 
-(provide 'camp-completion)
+(provide '+completion)

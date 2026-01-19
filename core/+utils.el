@@ -84,4 +84,4 @@ that directory."
     ;; remove `\n `
     (insert (s-replace "\n " " " (emacs-version)))))
 
-(provide 'camp-utils)
+(provide '+utils)

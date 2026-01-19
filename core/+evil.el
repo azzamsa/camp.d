@@ -109,4 +109,4 @@
   :init
   (evil-goggles-mode))
 
-(provide 'camp-evil)
+(provide '+evil)

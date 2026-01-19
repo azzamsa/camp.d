@@ -47,4 +47,4 @@
   (elpaca-use-package-mode))
 
 
-(provide 'camp-bootstrap)
+(provide '+bootstrap)

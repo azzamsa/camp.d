@@ -3,12 +3,3 @@ etc/themes/
 
 tree-sitter/
 eln-cache/
-
-# .cache/
-# eshell/
-# *.eld
-# elpa/
-# elpaca/
-# custom.el
-
-# personal.el
