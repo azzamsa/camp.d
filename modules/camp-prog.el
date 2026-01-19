@@ -49,6 +49,7 @@
 
 ;; Run code formatter on buffer contents without moving point
 (use-package apheleia
+  :disabled
   :ensure t
   :config
   ;; Don't assume Emacs indentation is correct
