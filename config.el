@@ -44,7 +44,7 @@
 ;; Camp
 ;;
 
-(setq camp-scratch-file "~/.local/share/meta/**scratch**.md")
+(setq camp-scratch-file "~/.local/share/meta/scratch.md")
 (+ensure-directory camp-scratch-file)
 
 (setq camp-abbrev-file "~/.local/share/meta/abbrevs.el")
