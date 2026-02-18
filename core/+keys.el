@@ -79,6 +79,7 @@
     "ff"   '(find-file                    :wk "Find file")
     "fe"   '(+find-file-in-emacsd         :wk "Find file in emacs.d")
     "fE"   '(+browse-in-emacsd            :wk "Browse emacs.d")
+    "fr"   '(consult-recent-file          :wk "Recent files")
     "fs"   '(basic-save-buffer            :wk "Save buffer")
     "fu"   '(crux-sudo-edit               :wk "Find file as sudo")
     "fU"   '(crux-sudo-edit               :wk "Edit file as sudo")
