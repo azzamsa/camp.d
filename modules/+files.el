@@ -7,6 +7,9 @@
 (use-package dirvish
   :ensure t
   :after dired
+  :init
+  (dirvish-override-dired-mode)
+  (setq dirvish-hide-details t)
   :config
   (setq dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir)))
 
