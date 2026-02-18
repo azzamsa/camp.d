@@ -8,9 +8,10 @@
   :ensure t
   :after dired
   :init
-  (dirvish-override-dired-mode)
   (setq dirvish-hide-details t)
   :config
+  (dirvish-override-dired-mode)
+  (setq dirvish-attributes '(nerd-icons subtree-state file-size vc-state git-msg))
   (setq dirvish-cache-dir (expand-file-name "dirvish" camp-cache-dir)))
 
 (provide '+files)
