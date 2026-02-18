@@ -66,7 +66,12 @@
 
 ;; Drag stuff around in Emacs
 (use-package drag-stuff
-  :ensure t)
+  :ensure t
+  :defer t
+  :init
+  (+nvmap!
+    "<M-up>"   '(drag-stuff-up   :wk "Drag up")
+    "<M-down>" '(drag-stuff-down :wk "Drag down")))
 
 ;; Fast, configurable indentation guide-bars for Emacs
 (use-package indent-bars
