@@ -7,12 +7,14 @@
         modus-themes-bold-constructs t)
   (setq modus-themes-common-palette-overrides
         '(
+          ;; magenta-intense is too harsh
+          ;; (cursor magenta-warmer)
+
           (bg-main     "#000000")
           (bg-dim      "#0d0e1c") ; bg-main
           (bg-active   "#1d2235") ; bg-dim
 
           (bg-main   bg-main)
-          (bg-region bg-active)
           ;; Modeline
           (bg-mode-line-active bg-active)
           (border-mode-line-active bg-mode-line-active)
@@ -20,4 +22,4 @@
           (border-mode-line-inactive bg-mode-line-inactive)
           ;; Line numbers
           (bg-line-number-active bg-dim)))
-  (load-theme 'modus-vivendi-tinted t))
+  (load-theme 'modus-vivendi t))
