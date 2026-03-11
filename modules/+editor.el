@@ -8,11 +8,6 @@
   ;; disable built-in auto-save.
   ;; There is no point of keeping the backups.
   (setq auto-save-default nil)
-
-  (add-to-list 'super-save-triggers 'magit-status)
-  (add-to-list 'super-save-triggers 'consult-buffer)
-  (add-to-list 'super-save-triggers 'consult-recent-file)
-
   (setq super-save-all-buffers t)
   ;; Save silently
   (setq super-save-silent t)
@@ -21,7 +16,6 @@
   ;; Enable deleting trailing white spaces before saving
   ;; (setq super-save-delete-trailing-whitespace t)
 
-  ;; Need to explicitly load the mode
   (super-save-mode +1))
 
 ;; Visualize and navigate the undo tree
