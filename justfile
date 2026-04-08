@@ -1,38 +1,42 @@
 #!/usr/bin/env -S just --justfile
 
-alias f := fmt
-alias l := lint
-alias c := comply
-alias k := check
-
 [doc('List available commands')]
 _default:
     just --list --unsorted
 
 [doc('Setup the project')]
 setup:
-    cp -n _scripts/hooks/pre-commit .git/hooks/
+    cp -n .scripts/hooks/pre-commit .git/hooks/
     # emacs, jinx
     sudo apt install --assume-yes libenchant-2-dev markdown
     # lsp
     cargo binstall emacs-lsp-booster
     # npm install -g yaml-language-server
 
-[doc('Tasks to make the code-base comply with the rules. Mostly used in git hooks')]
-comply: fmt lint meta
+[doc('Exhaustive quality check')]
+qqq: qa meta
 
-[doc('Check if the repository comply with the rules and ready to be pushed')]
-check: fmt-check lint
+[doc('Quality check')]
+qq: qa
 
-[doc('Format the codebase')]
+[doc('Quick quality check')]
+qa: fmt-check lint
+
+[doc('Fix before check')]
+qc: fix qq
+
+[doc('Enforce rules')]
+fix: fmt lint
+
+[doc('Format')]
 fmt:
     dprint fmt
 
-[doc('Check is the codebase properly formatted')]
+[doc('Check formatting')]
 fmt-check:
     dprint check
 
-[doc('Lint the codebase')]
+[doc('Lint')]
 lint:
     typos
 
