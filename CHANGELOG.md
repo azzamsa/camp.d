@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1](https://github.com/azzamsa/camp.d/compare/v1.1.0..v1.1.1) - 2026-04-08
+
+### ⚙️ Miscellaneous Tasks
+
+- No changelog in Github release - ([cd3e3ea](https://github.com/azzamsa/camp.d/commit/cd3e3ea771c65680dbc17f6b9cef34f05b8d9517))
+
 ## [1.1.0](https://github.com/azzamsa/camp.d/compare/v1.0.0..v1.1.0) - 2026-04-08
 
 ### ⛰️  Features
