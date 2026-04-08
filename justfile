@@ -5,13 +5,18 @@ _default:
     just --list --unsorted
 
 [doc('Setup the project')]
-setup:
-    cp -n .scripts/hooks/pre-commit .git/hooks/
+setup: _hooks
     # emacs, jinx
     sudo apt install --assume-yes libenchant-2-dev markdown
     # lsp
     cargo binstall emacs-lsp-booster
     # npm install -g yaml-language-server
+
+_hooks:
+    #!/usr/bin/env bash
+    for hook in .hooks/*; do \
+        ln -sf "../../$hook" ".git/hooks/$(basename $hook)"; \
+    done
 
 [doc('Exhaustive quality check')]
 qqq: qa meta
