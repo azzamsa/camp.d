@@ -184,6 +184,7 @@ All notable changes to this project will be documented in this file.
 
 ### 📚 Documentation
 
+- I don't use Colemak-DH anymore - ([722e77f](https://github.com/azzamsa/camp.d/commit/722e77fda049dde9d69c4a5aa247008b9e85f960))
 - These config should be somewhere else - ([ab8df69](https://github.com/azzamsa/camp.d/commit/ab8df69275c89f800e1bdea57af5c444f6de3f33))
 - Indent bars - ([16d678e](https://github.com/azzamsa/camp.d/commit/16d678ee10087dbf7b22c8b200163fa317663a87))
 - More lsp servers - ([6530f79](https://github.com/azzamsa/camp.d/commit/6530f7914e18b8f09af35dc6f8fe289007d1c75d))
@@ -272,6 +273,10 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- Better release script - ([ebfebeb](https://github.com/azzamsa/camp.d/commit/ebfebeb82c720b5e90da534b8ff9e2d4020c8226))
+- Upgrade dependencies - ([bf76497](https://github.com/azzamsa/camp.d/commit/bf7649714dbb05f700fd6c463ef8fe50f1ea302f))
+- Lint with `zizmore` - ([e08bb04](https://github.com/azzamsa/camp.d/commit/e08bb04f3643fb499740f37c4453ed04830e851e))
+- Better CHANGELOG format - ([ce58e66](https://github.com/azzamsa/camp.d/commit/ce58e669ccdb065913fdd5a3144a727dc0c17352))
 - Better locations for git hooks - ([fd22d4c](https://github.com/azzamsa/camp.d/commit/fd22d4c42e1913f7878e1ff5156c2ebf9ed0d7d4))
 - Better recipe - ([c4ad97b](https://github.com/azzamsa/camp.d/commit/c4ad97bd8b56919074f63b2caa5492598775fc22))
 - Upgrade dependencies - ([a736c2c](https://github.com/azzamsa/camp.d/commit/a736c2c8f95a757f90ae6fde996da27e035c65ba))
