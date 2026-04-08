@@ -2,15 +2,26 @@
 
 ;; Extra non-standard functionalities for Eglot
 (use-package eglot-x
+  :disabled
 	:after eglot
   :ensure (:host github :repo "nemethf/eglot-x")
   :commands (eglot-x-setup))
 
 ;; Boost `eglot' using `emacs-lsp-booster' (github.com/blahgeek/emacs-lsp-booster)
 (use-package eglot-booster
+  :disabled
   :ensure (:host github :repo "jdtsmith/eglot-booster")
 	:after eglot
 	:config	(eglot-booster-mode))
+
+;; Consult integration with Eglot
+(use-package consult-eglot
+  :disabled
+  :ensure t
+  :config
+  (consult-customize
+   consult-eglot-symbols
+   :initial (or (thing-at-point 'region t) (thing-at-point 'symbol t))))
 
 (use-package lsp-mode
   :disabled
@@ -52,5 +63,9 @@
                   :build (:not compile))
   :init
   (global-lsp-bridge-mode))
+
+(use-package consult-lsp
+  :disabled
+  :ensure t)
 
 (provide '+lsp)
