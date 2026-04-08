@@ -71,16 +71,20 @@
    completion-ignore-case t
 
    ;; === Performances ===
+   ;; Disable Bidirectional Text Scanning (arabic)
+   bidi-display-reordering 'left-to-right
+   bidi-paragraph-direction 'left-to-right
+   bidi-inhibit-bpa t
+   ;; Skip Fontification During Input
+   redisplay-skip-fontification-on-input t
+
    ;; Don’t compact font caches during GC
    inhibit-compacting-font-caches t
-   ;; Increase single chunk bytes to read from subprocess (default 4096)
-   read-process-output-max (condition-case nil
-                               ;; Android may raise permission-denied error
-                               (with-temp-buffer
-                                 (insert-file-contents "/proc/sys/fs/pipe-max-size")
-                                 (string-to-number (buffer-string)))
-                             ;; If an error occurred, fallback to the default value
-                             (error read-process-output-max))
+   ;; Increase Process Output Buffer for LSP (default 4096)
+   read-process-output-max (* 4 1024 1024) ; 4MB
+   ;; Don’t Render Cursors in Non-Focused Windows
+   cursor-in-non-selected-windows nil
+   highlight-nonselected-windows nil
 
    ;; === Aesthetics and UI ===
    ;; Do force frame size to be a multiple of char size
@@ -241,18 +245,18 @@
 
   (put 'downcase-region 'disabled nil))
 
-  ;; Which key
-  (use-package which-key
-    :init
-    (setq which-key-sort-order #'which-key-key-order-alpha
-          which-key-sort-uppercase-first nil
-          which-key-add-column-padding 1
-          which-key-max-display-columns nil
-          which-key-min-display-lines 6
-          which-key-side-window-slot -10)
-    :config
-    (which-key-mode)
-    (which-key-setup-minibuffer))
+;; Which key
+(use-package which-key
+  :init
+  (setq which-key-sort-order #'which-key-key-order-alpha
+        which-key-sort-uppercase-first nil
+        which-key-add-column-padding 1
+        which-key-max-display-columns nil
+        which-key-min-display-lines 6
+        which-key-side-window-slot -10)
+  :config
+  (which-key-mode)
+  (which-key-setup-minibuffer))
 
 (use-package password-cache
   :custom
