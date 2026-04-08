@@ -28,7 +28,7 @@ qq: qa
 qa: fmt-check lint
 
 [doc('Fix before check')]
-qc: fix qq
+qc: fix qq _build_info
 
 [doc('Enforce rules')]
 fix: fmt lint
@@ -45,10 +45,15 @@ fmt-check:
 lint:
     typos
 
-[doc('Update meta files')]
-meta:
-    emacs -Q --batch --eval "(princ (emacs-version))" > emacs-version
+_build_info:
+    @emacs -Q --batch --eval "(princ (emacs-version))" > emacs-version
 
 [doc('Create a new release')]
 release version:
     ./release {{ version }}
+
+[doc('Dependency analysis')]
+meta:
+    pnpx actions-up
+    actionlint
+    zizmor .github/workflows/*
