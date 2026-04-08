@@ -16,7 +16,6 @@ I want to go camping...
 ## Features
 
 - Evil mode (Doom experience) 👾
-- Colemak-dh 🐲
 - Tree-sitter 🌴
 - Pinned packages 📌
 - Custom emoji font 🎨
