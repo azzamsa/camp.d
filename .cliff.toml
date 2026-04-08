@@ -1,67 +1,91 @@
+[remote.github]
+owner = "azzamsa"
+repo = "camp.d"
+
 [changelog]
-# changelog header
 header = """
 # Changelog
-All notable changes to this project will be documented in this file.\n
+
+All notable changes to this project will be documented in this file.
+
 """
-# template for the changelog body
-# https://tera.netlify.app/docs/#introduction
+
 body = """
+{%- macro remote_url() -%}
+  https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}
+{%- endmacro -%}
+
+{% macro print_commit(commit) -%}
+    - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
+        {% if commit.breaking %}[**breaking**] {% endif %}\
+        {{ commit.message | upper_first }} - \
+        ([{{ commit.id | truncate(length=7, end="") }}]({{ self::remote_url() }}/commit/{{ commit.id }}))\
+{% endmacro -%}
+
 {% if version %}\
-    ## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+    {% if previous.version %}\
+        ## [{{ version | trim_start_matches(pat="v") }}]\
+          ({{ self::remote_url() }}/compare/{{ previous.version }}..{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}
+    {% else %}\
+        ## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+    {% endif %}\
 {% else %}\
     ## [unreleased]
 {% endif %}\
+
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | striptags | trim | upper_first }}
+    {% for commit in commits
+    | filter(attribute="scope")
+    | sort(attribute="scope") %}
+        {{ self::print_commit(commit=commit) }}
+    {%- endfor %}
     {% for commit in commits %}
-        {%- if commit.scope -%}
-            - **{{ commit.scope }}:** {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/azzamsa/camp.d/commit/{{ commit.id }}))
-            {% if commit.breaking -%}
-            {% raw %}  {% endraw %}- **BREAKING!** ⚠️ : {{ commit.breaking_description }}
-            {% endif -%}
-            {% if commit.body -%}
-            {% raw %}\n{% endraw %}{% raw %}  {% endraw %}{{ commit.body | indent(width=4) }}{% raw %}\n{% endraw %}
-            {% endif -%}
-        {% else -%}
-            - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/azzamsa/camp.d/commit/{{ commit.id }}))
-            {% if commit.breaking -%}
-            {% raw %}  {% endraw %}- **BREAKING!** ⚠️ : {{ commit.breaking_description }}
-            {% endif -%}
-            {% if commit.body -%}
-            {% raw %}\n{% endraw %}{% raw %}  {% endraw %}{{ commit.body | indent(width=4) }}{% raw %}\n{% endraw %}
-            {% endif -%}
+        {%- if not commit.scope -%}
+            {{ self::print_commit(commit=commit) }}
         {% endif -%}
     {% endfor -%}
-    {% raw %}\n{% endraw %}\
-{% endfor %}\n
+{% endfor %}
+
 """
-# remove the leading and trailing whitespaces from the template
+
+footer = ""
+
+# Remove leading and trailing whitespaces from the changelog's body.
 trim = true
-# changelog footer
-footer = """"""
+# An array of regex based postprocessors to modify the changelog.
+postprocessors = [
+  # Replace the placeholder `<REPO>` with a URL.
+  { pattern = '<REPO>', replace = "https://github.com/azzamsa/dot" }, # replace repository URL
+]
 
 [git]
-# allow only conventional commits
-# https://www.conventionalcommits.org
+# Parse commits according to the conventional commits specification.
 conventional_commits = true
-# regex for parsing and grouping commits
-commit_parsers = [
-    { message = "^feat", group = "<!-- 0 -->⛰️  Features" },
-    { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
-    { message = "^doc", group = "<!-- 3 -->📚 Documentation" },
-    { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
-    { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
-    { message = "^style", group = "<!-- 5 -->🎨 Styling" },
-    { message = "^test", group = "<!-- 6 -->🧪 Testing" },
-    { message = "^ci", group = "<!-- 7 -->🔧 CI/CD" },
-    { message = "^build", group = "<!-- 8 -->🛠️ Build" },
+# Exclude commits that do not match the conventional commits specification.
+filter_unconventional = true
+# Split commits on newlines, treating each line as an individual commit.
+split_commits = false
+commit_preprocessors = [
+  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](<REPO>/issues/${2}))" },
+  { pattern = '.*', replace_command = 'typos --write-changes -' },
 ]
-# filter out the commits that are not matched by commit parsers
-filter_commits = true
-# glob pattern for matching git tags
-tag_pattern = "v[0-9]*"
-# sort the tags topologically
+commit_parsers = [
+  { message = "^feat", group = "<!-- 0 -->⛰️  Features" },
+  { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^docs", group = "<!-- 3 -->📚 Documentation" },
+  { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
+  { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
+  { message = "^style", group = "<!-- 5 -->🎨 Styling" },
+  { message = "^test", group = "<!-- 6 -->🧪 Testing" },
+  { message = "^build", group = "<!-- 7 -->🛠️ Build" },
+  { message = "^chore|^ci", group = "<!-- 8 -->⚙️ Miscellaneous Tasks" },
+  { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
+]
+protect_breaking_commits = false
+filter_commits = false
+tag_pattern = "v[0-9].*"
+skip_tags = "beta|alpha"
+ignore_tags = "rc|v2.1.0|v2.1.1"
 topo_order = false
-# sort the commits inside sections by oldest/newest order
 sort_commits = "newest"

@@ -49,6 +49,6 @@ lint:
 meta:
     emacs -Q --batch --eval "(princ (emacs-version))" > emacs-version
 
-[doc('Create a new release. Example `cargo-release release minor --tag-name v0.2.0`')]
+[doc('Create a new release')]
 release version:
     ./release {{ version }}
