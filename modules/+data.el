@@ -1,8 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package yaml-ts-mode
-  :mode ("\\.yml\\'" "\\.yaml\\'")
-  :hook (yaml-ts-mode . eglot-ensure))
+  :mode ("\\.yml\\'" "\\.yaml\\'"))
 
 (use-package toml-ts-mode
   :mode "\\.toml\\'")

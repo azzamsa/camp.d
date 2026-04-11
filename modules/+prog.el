@@ -16,8 +16,7 @@
   :ensure t)
 
 (use-package rainbow-mode
-  :ensure t
-  :hook (prog-mode text-mode conf-mode))
+  :ensure t)
 
 (use-package colorful-mode
   :disabled
@@ -26,14 +25,14 @@
 
 ;; Emacs rainbow delimiters mode
 (use-package rainbow-delimiters
-  :ensure t
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :ensure t)
 
 (use-package highlight-numbers
   :ensure t
   :hook (prog-mode . highlight-numbers-mode))
 
 (use-package smartparens
+  :disabled
   :ensure t
   :config
   (sp-local-pair 'markdown-mode "```" "```")

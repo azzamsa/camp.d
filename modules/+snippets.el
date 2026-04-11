@@ -2,16 +2,17 @@
 
 ;; A template system for Emacs
 (use-package yasnippet
+  :disabled
   :ensure t
+  :defer t  ; don't load until needed
+  :hook ((prog-mode text-mode) . yas-minor-mode)  ; instead of global
   :config
   (setq private-yas-dir (no-littering-expand-etc-file-name "yasnippet/snippets"))
-  (push private-yas-dir yas-snippet-dirs)
-
-  (yas-reload-all)
-  (yas-global-mode +1))
+  (push private-yas-dir yas-snippet-dirs))
 
 ;; A collection of yasnippet snippets for many languages
 (use-package yasnippet-snippets
+  :disabled
   :ensure t
   :after yasnippet)
 

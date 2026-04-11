@@ -7,7 +7,6 @@
 
 (use-package go-ts-mode
   :mode "\\.go\\'"
-  :hook (go-ts-mode . eglot-ensure)
   :config
   (setq go-ts-mode-indent-offset 2) ; default: 8
   (add-hook 'before-save-hook #'eglot-format-buffer t t))

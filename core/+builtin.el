@@ -110,8 +110,8 @@
    undo-limit 10000000
    ;; 50MB (default is 240kB)
    undo-strong-limit 50000000
-   ;; 150MB (default is 24MB)
-   undo-outer-limit 150000000
+   ;; 50MB (default is 24MB)
+   undo-outer-limit 50000000
 
    ;; === Editing ===
    ;; Hitting TAB behavior
@@ -255,6 +255,7 @@
         which-key-min-display-lines 6
         which-key-side-window-slot -10)
   :config
+  (setq which-key-idle-delay 0.3)
   (which-key-mode)
   (which-key-setup-minibuffer))
 
@@ -341,7 +342,7 @@ Modified for my needs."
   ;; Tree-Sitter grammars
   (add-to-list 'treesit-extra-load-path (expand-file-name "tree-sitter" camp-var-dir))
   :custom
-  (treesit-font-lock-level 4))
+  (treesit-font-lock-level 3))
 
 (use-package project
   :demand t
@@ -380,8 +381,8 @@ Modified for my needs."
   :hook (kill-emacs . recentf-cleanup)
   :config
   (setq recentf-save-file (concat camp-var-dir "recentf-save.el")
-        ;; Increase the maximum number of saved items
-        recentf-max-saved-items 300
+        ;; Increase the maximum number of saved items (default: 20)
+        recentf-max-saved-items 100
         ;; Ignore case when searching recentf files
         recentf-case-fold-search t
         ;; Exclude some files from being remembered by recentf
@@ -401,9 +402,7 @@ Modified for my needs."
   (setq savehist-autosave-interval 60     ; save on kill only
         savehist-save-minibuffer-history t
         savehist-additional-variables
-        '(kill-ring                        ; persist clipboard
-          register-alist                   ; persist macros
-          mark-ring global-mark-ring       ; persist marks
+        '(mark-ring global-mark-ring       ; persist marks
           search-ring regexp-search-ring vertico-repeat-history) ; persist searches
         savehist-file (expand-file-name "savehist" camp-var-dir))
 

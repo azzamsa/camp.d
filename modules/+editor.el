@@ -45,6 +45,7 @@
   (global-undo-fu-session-mode 1))
 
 (use-package unicode-fonts
+  :disabled
   :ensure t
   :config
   (defun +unicode-fonts-setup ()
@@ -70,7 +71,7 @@
 ;; Fast, configurable indentation guide-bars for Emacs
 (use-package indent-bars
   :ensure t
-  :hook ((prog-mode text-mode conf-mode) . indent-bars-mode)
+  :hook ((prog-mode) . indent-bars-mode)
   :config
   (setq indent-bars-prefer-character
         (or
@@ -118,6 +119,7 @@
   (ws-butler-global-mode t))
 
 (use-package dogears
+  :disabled
   :ensure t)
 
 (provide '+editor)

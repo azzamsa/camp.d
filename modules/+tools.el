@@ -1,11 +1,13 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package rg
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; Collection of Ridiculously Useful eXtensions for Emacs
 (use-package crux
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package dockerfile-ts-mode
   :mode "\\Dockerfile\\'")

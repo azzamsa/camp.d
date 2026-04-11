@@ -34,6 +34,7 @@
 
 ;; One tab per project, with unique names - simple implementation of workspaces
 (use-package otpp
+  :disabled
   :ensure (:host github :repo "abougouffa/one-tab-per-project")
   :after project
   :config
@@ -41,6 +42,7 @@
 
 ;; Projectile like project management library built on Emacs' `project'
 (use-package projection
+  :disabled
   :ensure t
   :hook (after-init . global-projection-hook-mode)
   :after project)

@@ -11,7 +11,7 @@
   (setq corfu-cycle t ; Allows cycling through candidates
         corfu-auto t ; Enable auto completion
         corfu-auto-prefix 2 ; Complete with less prefix keys
-        corfu-auto-delay 0.5
+        corfu-auto-delay 1.0
         corfu-preselect 'first)
 
   (defun +corfu-enable-in-minibuffer ()
@@ -39,7 +39,6 @@
   (setq cape-dabbrev-check-other-buffers nil) ;; only check current buffer for completion
 
   (add-to-list 'completion-at-point-functions #'cape-file) ;; complete file names
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-emoji))
 
 ;;
@@ -74,7 +73,7 @@
 (use-package marginalia
   :ensure t
   :config
-  (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  (setq marginalia-annotators '(marginalia-annotators-light nil))
 
   ;; Icons integration
   (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup)

@@ -40,7 +40,7 @@
   :config
   (setq dirvish-hide-details t)
   (dirvish-override-dired-mode)
-  (setq dirvish-attributes '(nerd-icons subtree-state file-size vc-state))
+  (setq dirvish-attributes '(nerd-icons subtree-state file-size))
   (setq dirvish-quick-access-entries
         '(("h" "~/"      "Home")
           ("l" "~/labs/" "Labs")

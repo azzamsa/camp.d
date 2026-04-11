@@ -1,14 +1,10 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package js-ts-mode
-  :mode ("\\.js\\'" . js-ts-mode)
-  :config
-  (add-hook 'js-ts-mode-hook 'eglot-ensure))
+  :mode ("\\.js\\'" . js-ts-mode))
 
 (use-package typescript-ts-mode
-  :mode "\\.ts\\'"
-  :config
-  (add-hook 'typescript-ts-mode-hook 'eglot-ensure))
+  :mode "\\.ts\\'")
 
 (use-package web-mode
   :ensure t

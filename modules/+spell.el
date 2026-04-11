@@ -4,7 +4,7 @@
 (use-package jinx
   :ensure t
   :config
- (dolist (hook '(text-mode-hook prog-mode-hook conf-mode-hook))
+ (dolist (hook '(text-mode-hook prog-mode-hook))
     (add-hook hook #'jinx-mode)))
 
 (provide '+spell)

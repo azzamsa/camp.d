@@ -4,20 +4,15 @@
 (use-package magit
   :ensure t
   :config
-  ;; Enable granular diff-highlights for all hunks
-  ;; By default, changes are highlighted linewise for all but the selected hunk. This has performance reasons.
-  ;; https://magit.vc/manual/magit/Performance.html
-  (setq magit-diff-refine-hunk 'all)
-
   ;; Only enable this to debug your productivity calendar.
   ;; Relative time is hard to pin point.
   ;; (setq magit-log-margin '(t "%Y-%b-%d %I:%M %p " magit-log-margin-width t 18))
 
-  (setq magit-format-file-function #'magit-format-file-nerd-icons)
-  (setq magit-revision-show-gravatars t
-        magit-save-repository-buffers nil
+  (setq magit-save-repository-buffers nil
         ;; Show in new window
-        magit-display-buffer-function #'magit-display-buffer-fullcolumn-most-v1))
+        magit-display-buffer-function #'magit-display-buffer-fullcolumn-most-v1)
+
+  (setq magit-format-file-function #'magit-format-file-nerd-icons))
 
 ;; Edit Git commit messages - part of `magit'
 (use-package git-commit
@@ -41,11 +36,7 @@
 ;; Emacs package for highlighting uncommitted changes
 (use-package diff-hl
   :ensure t
-  :hook (find-file    . diff-hl-mode)
-  :hook (dired-mode   . diff-hl-dired-mode)
-  :hook (vc-dir-mode  . diff-hl-dir-mode)
-  :hook (diff-hl-mode . diff-hl-flydiff-mode)
-  :hook (diff-hl-mode . diff-hl-show-hunk-mouse-mode)
+  :hook ((prog-mode text-mode) . diff-hl-mode)
   :config
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh))

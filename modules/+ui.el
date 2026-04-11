@@ -14,6 +14,9 @@
   (setq doom-modeline-bar-width 5
         doom-modeline-height 37
         doom-modeline-buffer-encoding nil)
+  (setq doom-modeline-check-simple-format t  ; lighter checker segment
+        doom-modeline-env-version nil         ; skip runtime version (python/ruby/etc)
+        doom-modeline-workspace-name nil)
   (doom-modeline-mode 1))
 
 ;; Display typographical ligatures in major modes
@@ -21,69 +24,17 @@
   :ensure t
   :hook (prog-mode . ligature-mode)
   :config
-  ;; A fine-tuned list of per-language ligatures, constructed from:
-  ;; - Iosevka: https://typeof.net/Iosevka/customizer
-  ;; - Fira Code: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
-  ;; - Cascadia Code: https://github.com/microsoft/cascadia-code/wiki/Coding-ligature-coverage
-  (defvar +ligature-common-prog
-    `("<<" "<<<" ">>>" ">>" ">>=" "<<=" "<=" ">=" "::" ":::" "..=" "::<" "=="
-      "*=" "+=" "<|" "<|>" "|>" "++" "+++" "&&" "||" "/=" "--" "#!" "::="
-      "#[" "]#" "{|" "|}" "__"))
-
-  (defvar +ligature-c-like ; C, C++, C#, Java, Rust, JS, PHP, Go, V
-    `("!=" "<>" "/*" "*/" "//" "///" "^=" "|=" "?." "??" "<~>"))
-
-  (defvar +ligature-html ; HTML, XML, JS, PHP
-    `("</" "</>" "/>" "<!--" "<!---" "www"))
-
-  (defvar +ligature-brackets ; Ruby, PHP, Julia, ML, Haskell, Raku, Dafny, Swift, Idris, PHP
-    `("<>" "<:" ":=" "*+" "<*" "<*>" "*>" "<." "<.>" ".>" "+*" "=*"
-      "=:" ":>" "(*" "*)" "/*" "*/"))
-
-  (defvar +ligature-js `(,@+ligature-c-like ,@+ligature-html "!==" "!===" "==="))
-
-  (defvar +ligature-lisp `(";;" ";;;"))
-
-  (defvar +ligature-markdown
-    `("##" "###" "####" "#####" "######" "--" "---" "----" "-----" "------"))
-
-  (defvar +ligature-functional ; ML, Ocaml, F#, Idris, Coq, Haskell, Elm, PureScript
-    `(,@+ligature-brackets "~~" "~-" "<>" "\\/" "/\\" "|-" "-|" "[|" "|]" "%%" "<$" "<$>" "$>" "=/="))
-
-  (defvar +ligature-arrows
-    `("<-" "->" "<<-" "->>" "<--" "-->" "<---" "--->"
-      "=>" "<==" "==>" "<===" "===>" "<<=" "=>>" "<<==" "==>>" "<->" "<=>"
-      "<~~" "~~>" "<-->" "<--->" "<---->" "<==>" "<===>" "<====>"))
-
-  (defvar +ligature-arrows-extra
-    '("-<<" "-<" "-<-" "->-" ">-" ">>-" "=<<" "=<" "=<=" "=>="
-      "<<==>>" "|-|-|" "|=|=|" "/=/" "=<<=" "=>>=" "-<<-" "->>-" "||-" "-||"
-      "<=//" "//=>" "<=|" "|=>" "<-|" "|->" "<-<<" ">>->" "<=<<" ">>=>"
-      "__|__" "/==/==/" "//==//==//" "|==|==|" "||==||==||" "<==<==<" ">==>==>"
-      "<<==<<==<<" ">>==>>==>>" "|--|--|" "||--||--||" "<--<--<" ">-->-->"
-      "<<--<<--<<" ">>-->>-->>"))
-
-  (ligature-set-ligatures 't '("ff" "ffi" "Fl" "Tl" "fi" "fj" "fl" "ft" "www"))
-  (ligature-set-ligatures '(prog-mode conf-mode) `(,@+ligature-common-prog ,@+ligature-arrows ,@+ligature-arrows-extra))
-  (ligature-set-ligatures '(text-mode) `(,@+ligature-arrows ,@+ligature-arrows-extra))
-  (ligature-set-ligatures '(js-mode typescript-mode typescript-ts-mode php-ts-mode php-mode) +ligature-js)
-  (ligature-set-ligatures '(julia-mode julia-ts-mode ess-julia-mode ruby-mode ruby-ts-mode php-mode) +ligature-brackets)
-  (ligature-set-ligatures '(markdown-mode markdown-ts-mode) +ligature-markdown)
-  (ligature-set-ligatures '(html-mode nxml-mode) +ligature-html)
-  (ligature-set-ligatures
-   '( emacs-lisp-mode lisp-mode lisp-data-mode common-lisp-mode
-      hy-mode scheme-mode geiser-mode)
-   +ligature-lisp)
-  (ligature-set-ligatures
-   '( c-mode c++-mode opencl-c-mode cuda-mode llvm-ts-mode java-mode
-      java-ts-mode csharp-mode csharp-ts-mode rust-mode rust-ts-mode
-      go-mode go-ts-mode go-mod-ts-mode v-mode v-ts-mode zig-mode zig-ts-mode)
-   +ligature-c-like)
-  (ligature-set-ligatures
-   '( haskell-mode haskell-ts-mode elm-mode elm-ts-mode purescript-mode
-      purescript-ts-mode ml-mode caml-mode tuareg-mode fsharp-mode fstar-mode
-      fsharp-ts-mode dafny-mode swift-mode coq-mode idris-mode)
-   +ligature-functional))
+  (ligature-set-ligatures 'prog-mode
+                          '(;; Common programming
+                            "==" "!=" ">=" "<=" "::" ":::" ".." "..." "..="
+                            "+=" "-=" "*=" "/=" "&&" "||" "--" "++" "__"
+                            "|>" "<|" "<|>" "#!" "#[" "]#"
+                            ;; Arrows
+                            "->" "<-" "=>" "<=>" "<->" "-->" "<--" "->>" "<<-"
+                            ;; Rust-specific
+                            "/*" "*/" "//" "///" "?." "??" "|=" "^="
+                            ;; Typography
+                            "ff" "fi" "fl" "ffi")))
 
 (use-package visual-fill-column
   :ensure t
@@ -104,34 +55,24 @@
   :ensure t
   :demand t
   :init
-  (defun camp-dashboard-insert-quote (list-size)
-    "Insert a random quote into the dashboard."
-    (dashboard-insert-heading "Quote of the Day:" nil (nerd-icons-faicon "nf-fa-commenting_o" :face 'dashboard-heading))
-    (insert "\n")
-    (insert "    " (propertize (string-trim (if (executable-find "quotes") (shell-command-to-string "quotes --period --quoted --emoji") "🦾 Practice, It's Practice, Practice.")) 'face 'bold) "\n"))
+  (defun daily-quote (_list-size)
+    (insert (propertize "🦾 Practice, It's Practice, Practice." 'face 'bold)))
   :custom
-  (dashboard-set-heading-icons t)
-  (dashboard-set-file-icons t)
   (dashboard-center-content t)
-  (dashboard-banner-ascii "Camp")
+  (dashboard-set-heading-iconQ t)
+  (dashboard-set-file-icons t)
+  (dashboard-icon-type 'nerd-icons)
   (dashboard-banner-logo-title "Want to go camping?")
-  (dashboard-items '((recents . 5) (projects . 5) (bookmarks . 5)))
+  (dashboard-startup-banner (concat user-emacs-directory "docs/logo.png"))
   (dashboard-image-banner-max-width 600)
   (dashboard-projects-backend 'project-el)
-  (dashboard-startup-banner (concat user-emacs-directory "docs/logo.png"))
   (dashboard-items '((daily-quote)
                      (recents . 5)
-                     (projects . 5)
-                     (bookmarks . 5)))
-  (dashboard-item-generators '((daily-quote . camp-dashboard-insert-quote)
+                     (projects . 5)))
+  (dashboard-item-generators '((daily-quote . daily-quote)
                                (recents . dashboard-insert-recents)
-                               (projects . dashboard-insert-projects)
-                               (bookmarks . dashboard-insert-bookmarks)))
+                               (projects . dashboard-insert-projects)))
   :config
-  (setq dashboard-icon-type 'nerd-icons)
-
-  ;; Avoid opening the dashboard when Emacs starts with an open file.
-  (unless (cl-some #'buffer-file-name (buffer-list))
-    (dashboard-open)))
+  (dashboard-setup-startup-hook))
 
 (provide '+ui)

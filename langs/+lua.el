@@ -7,8 +7,6 @@
   :disabled
   :ensure t
   :mode "\\.lua$"
-  :interpreter "lua"
-  :config
-  (add-hook 'lua-mode-hook 'eglot-ensure))
+  :interpreter "lua")
 
 (provide '+lua)
