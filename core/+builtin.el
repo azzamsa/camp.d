@@ -2,6 +2,7 @@
 
 (use-package emacs
   :config
+  (keymap-global-set "C-s" #'basic-save-buffer)
   (setopt
    ;; === Default directories for builtin packages ===
    custom-theme-directory (+ensure-directory camp-etc-dir "themes/")
@@ -59,6 +60,8 @@
    enable-recursive-minibuffers t
    ;; Kill the shell buffer after exit
    shell-kill-buffer-on-exit t
+   ;; Emacs doesn't play well with fish
+   shell-file-name "/bin/bash"
    ;; Revert non-file buffers like dired
    global-auto-revert-non-file-buffers t
    ;; Don't prompt for confirmation when we create a new file or buffer
@@ -403,7 +406,7 @@ Modified for my needs."
         savehist-save-minibuffer-history t
         savehist-additional-variables
         '(mark-ring global-mark-ring       ; persist marks
-          search-ring regexp-search-ring vertico-repeat-history) ; persist searches
+                    search-ring regexp-search-ring vertico-repeat-history) ; persist searches
         savehist-file (expand-file-name "savehist" camp-var-dir))
 
   (savehist-mode +1))
@@ -448,5 +451,9 @@ Modified for my needs."
         eglot-extend-to-xref t ; can be interesting!
         ;; disable annoying messages in echo area!
         eglot-report-progress nil))
+
+(use-package eldoc
+  :config
+  (setq eldoc-idle-delay 3))
 
 (provide '+builtin)

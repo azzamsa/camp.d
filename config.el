@@ -6,7 +6,7 @@
 
 (setq user-full-name "azzamsa"
       ;; prevent search engines from indexing the user's email address
-      user-mail-address (concat "noreply" "@" "azzamsa" "." "com"))
+      user-mail-address (rot13 "abercyl@nmmnzfn.pbz"))
 
 ;;
 ;; UI
@@ -23,24 +23,6 @@
                                 :unicode-font-family ,+emoji-font))
 
 ;;
-;; Built-in
-;;
-
-(with-eval-after-load 'company
-  (setq company-idle-delay 1))
-
-(with-eval-after-load 'eldoc
-  (setq eldoc-idle-delay 3))
-
-
-;;
-;; Custom Global Keybindings
-;;
-
-(keymap-global-set "C-s" (lambda ()
-                           (interactive)
-                           (basic-save-buffer)))
-;;
 ;; Camp
 ;;
 
@@ -49,10 +31,3 @@
 
 (setq camp-abbrev-file "~/.local/share/meta/abbrevs.el")
 (setq abbrev-file-name (+ensure-directory camp-abbrev-file))
-
-;;
-;; Modules
-;;
-
-;; Emacs doesn't play well with fish
-(setq shell-file-name "/bin/bash")
