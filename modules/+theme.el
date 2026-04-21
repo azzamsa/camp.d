@@ -1,6 +1,35 @@
 ;; -*- lexical-binding: t; -*-
 
+(use-package tokyo-night
+  :vc (:url "https://github.com/bbatsov/tokyo-night-emacs" :rev :newest)
+  :config
+  ;; Tokyonight black
+  (setq  tokyo-night-override-colors-alist
+         '(
+           ;; Background shades
+           ("tokyo-bg-darkest"    . "#000000")
+           ("tokyo-bg-dark"       . "#000000")
+           ("tokyo-bg"            . "#000000")
+
+           ;; Foreground shades
+           ("tokyo-fg"            . "#ffffff")
+           ("tokyo-fg-dark"       . "#c0caf5")
+           ("tokyo-fg-muted"      . "#a9b1d6")
+           ("tokyo-fg-gutter"     . "#3b4261")
+
+           ;; UI elements
+           ("tokyo-line-nr"       . "#787c99")
+           ("tokyo-line-nr-cur"   . "#7dcfff")
+           ;; ("tokyo-selection"     . "#515c7e") ; 6.59:1 on white
+           ;; ("tokyo-selection"     . "#283457") ; 12.21:1 on white
+           ("tokyo-selection"     . "#292e42") ; 13.42:1 on white
+
+           ;; brighter comments
+           ("tokyo-comment" . "#9aa5ce")))
+  (load-theme 'tokyo-night t))
+
 (use-package modus-themes
+  :disabled
   :ensure t
   :config
   (setq modus-themes-italic-constructs t
