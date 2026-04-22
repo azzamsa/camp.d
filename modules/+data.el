@@ -9,6 +9,9 @@
 (use-package json-ts-mode
   :mode ("\\.json\\|\\.jsonc\\'"))
 
+(use-package jsonnet-mode
+  :ensure t)
+
 (use-package just-mode
   :ensure t
   :defer t)
