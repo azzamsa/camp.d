@@ -1,0 +1,59 @@
+[tools]
+typos = "latest"
+actionlint = "latest"
+zizmor = "latest"
+
+[tasks.setup]
+confirm = 'Are you sure?'
+description = "Setup the project"
+depends = ["hooks"]
+
+[tasks.hooks]
+hide = true
+description = "Setup Git hooks"
+run = "mise hooks"
+
+[tasks.qc]
+description = "Fix before check"
+depends = ["fix", "qq"]
+
+[tasks.qqq]
+description = "Exhaustive quality check"
+depends = ["qa", "meta"]
+
+[tasks.qq]
+description = "Quality check"
+depends = ["qa"]
+
+[tasks.qa]
+description = "Quick quality check"
+depends = ["fmt-check", "lint"]
+
+[tasks.fix]
+description = "Enforce rules"
+depends = ["fmt", "lint"]
+
+[tasks.fmt]
+description = "Format"
+
+[tasks.fmt-check]
+description = "Check formatting"
+
+[tasks.lint]
+description = "Lint"
+depends = ["fmt-check"]
+run = "typos"
+
+[tasks.update-emacs-version]
+description = "Generate Emacs build"
+hide = true
+run = "mise run update-emacs-version"
+
+[tasks.release]
+description = "Create a new release"
+run = "./release $1"
+
+[tasks.meta]
+description = "Dependency analysis"
+interactive = true
+run = ["pnpx actions-up", "actionlint", "zizmor .github/workflows/*"]
